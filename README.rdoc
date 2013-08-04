@@ -1,3 +1,6 @@
+Alice M. // ichthala
+Wesley Carr // Swelly
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
