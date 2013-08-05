@@ -219,7 +219,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :twitter, 'xcEO3ldf5JaXsA0SFmESpQ', 'ANaa57kvWlaxe7A9jN2ltXwYxjaWS3wvIkbzEyG5dU'
+  config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_KEY_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
