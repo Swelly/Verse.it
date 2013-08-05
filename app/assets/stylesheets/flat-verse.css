@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Eagle+Lake|Monda|Jacques+Francois");
 @font-face {
   font-family: "Flat-UI-Icons";
   src: url("../fonts/Flat-UI-Icons.eot");
@@ -398,19 +398,21 @@ you can use the generic selector below, but it's slower:
 }
 body {
   color: #34495e;
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
+  font-family: 'Antic Slab', serif;
+  font-size: 15px;
   line-height: 1.231;
+  background-image:url('bgTile.jpg');
+  background-repeat:repeat;
 }
 input,
 button,
 select,
 textarea {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Antic Slab', serif;
   font-size: 14px;
 }
 a {
-  color: #16a085;
+  color: #9E855E;
   text-decoration: none;
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -419,20 +421,24 @@ a {
   -webkit-backface-visibility: hidden;
 }
 a:hover {
-  color: #1abc9c;
+  color: #7AA1A7;
   text-decoration: none;
 }
 h1,
 .h1 {
+  font-family: 'Eagle Lake', cursive;
   font-size: 62.006px /* 64px */;
 }
 h2,
 .h2 {
+  font-family: 'Eagle Lake', cursive;
   font-size: 51.996px /* 52px */;
 }
 h3,
 .h3 {
+  font-family: 'Eagle Lake', cursive;
   font-size: 39.998000000000005px /* 40px */;
+  border-bottom: 1px dotted;
 }
 h4,
 .h4 {
@@ -484,6 +490,7 @@ h6 {
 }
 p {
   font-size: 18.004px;
+  color: #638085;
   /* 18px */
 
   line-height: 1.722169;
@@ -1251,7 +1258,7 @@ a.muted:focus {
 }
 .navbar-unread,
 .navbar-new {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Antic Slab', serif;
   background-color: #1abc9c;
   border-radius: 50%;
   color: #ffffff;
@@ -1418,7 +1425,7 @@ a.muted:focus {
   background-color: #ffffff;
   border: 2px solid transparent;
   color: #526476;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Antic Slab', serif;
   font-size: 14.994px;
   /* 15px */
 
@@ -1784,7 +1791,7 @@ input[type="color"],
 .uneditable-input {
   border: 2px solid #bdc3c7;
   color: #34495e;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Eagle Lake', cursive;
   font-size: 14px;
   padding: 8px 5px;
   height: 21px;
@@ -3203,7 +3210,7 @@ input.search-query {
   background: transparent;
   border: none;
   color: #34495e;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Antic Slab', serif;
   font-size: 14px;
   margin: 0px;
   padding: 0 0 0 5px;
@@ -5540,7 +5547,7 @@ input.search-query {
   background-color: #2a7aaf;
   border-radius: 50%;
   color: #ffffff;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Eagle Lake', cursive;
   font-size: 11.998px;
   font-weight: 500;
   line-height: 18.998px;
