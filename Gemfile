@@ -23,7 +23,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
   gem 'pry-rails'           # Causes rails console to open pry
