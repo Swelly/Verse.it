@@ -14,8 +14,7 @@
 /log/*.log
 /tmp
 .DS_Store
-<<<<<<< HEAD
 .env
-=======
-.env
->>>>>>> 8b7263985122d619425ad0aede86e3cf3217a250
+
+
+
