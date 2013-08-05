@@ -5,6 +5,11 @@ VerseApp::Application.routes.draw do
   root :to => 'welcome#index'
   get '/about' => 'welcome#about', :as => 'about'
   get '/contact' => 'welcome#contact', :as => 'contact'
+
+  resources :users
+  resources :poems
+  resources :titles
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
