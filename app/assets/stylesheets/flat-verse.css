@@ -1,4 +1,5 @@
-@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Lobster+Two");
+@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Eagle+Lake|Monda|Jacques+Francois");
+
 .inline-block {
   display: inline-block;
   zoom: 1;
@@ -370,9 +371,15 @@ a.muted:focus {
 .btn.btn-mini {
   font-size: 30px;
   /* 12px */
+<<<<<<< HEAD
   margin: 0 0 5px 0;
   padding: 8px 15px 7px 15px;
   line-height: 0.75;
+=======
+
+  padding: 8px 13px 9px;
+  line-height: 1.2;
+>>>>>>> 3d8feed0ec8401ffa2ee85ccdd2ec4fdb5296176
 }
 .btn.btn-embossed {
   -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
@@ -468,18 +475,6 @@ a.muted:focus {
 .btn.btn-inverse.active {
   background-color: #2c3e50;
 }
-.btn > [class^="fui-"] {
-  margin: 0 4px;
-  position: relative;
-  top: 1px;
-  vertical-align: top;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-}
-.btn > [class^="fui-"].pull-right {
-  margin-right: 0px;
-}
 .btn-toolbar .btn.active {
   color: #ffffff;
 }
@@ -492,10 +487,6 @@ a.muted:focus {
   -webkit-border-radius: 0 6px 6px 0;
   -moz-border-radius: 0 6px 6px 0;
   border-radius: 0 6px 6px 0;
-}
-.btn-toolbar .btn > [class^="fui-"] {
-  font-size: 16px;
-  top: 0;
 }
 .btn-tip {
   font-weight: 300;
@@ -665,9 +656,6 @@ a.muted:focus {
 .navbar .brand:focus {
   color: #1abc9c;
 }
-.navbar .brand[class*="fui-"] {
-  font-weight: normal;
-}
 .navbar .brand small {
   line-height: 1;
 }
@@ -736,19 +724,6 @@ a.muted:focus {
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus {
   color: #CB973D;
-}
-.navbar .nav > li > a[class*="fui-"] {
-  font-size: 24px;
-  font-weight: normal;
-}
-.navbar .nav > li > a > [class*="fui-"] {
-  font-size: 24px;
-  margin: -4px 0 0;
-  position: relative;
-  top: 4px;
-}
-.navbar .nav > li > a > [class*="fui-"] + * {
-  margin-left: 12px;
 }
 .navbar .nav ul {
   border-radius: 4px;
@@ -2643,13 +2618,6 @@ input.search-query {
 .input-append.input-datepicker .btn {
   border-left-width: 0;
 }
-.input-datepicker [class*="fui-"] {
-  font-size: 15.988px;
-  /* 16px */
-
-  margin-left: -1px;
-  margin-right: 2px;
-}
 .control-group.focus .input-datepicker input {
   border-color: #1abc9c;
 }
@@ -3407,14 +3375,6 @@ input.search-query {
 .pager li > span:active {
   background-color: #2c3e50;
 }
-.pager li > a [class*="fui-"] + span,
-.pager li > span [class*="fui-"] + span {
-  margin-left: 8px;
-}
-.pager li > a span + [class*="fui-"],
-.pager li > span span + [class*="fui-"] {
-  margin-left: 8px;
-}
 .pagination {
   position: relative;
 }
@@ -3569,20 +3529,6 @@ input.search-query {
   padding-left: 23px;
   padding-right: 23px;
 }
-.pagination > .btn.previous [class*="fui-"],
-.pagination > .btn.next [class*="fui-"] {
-  font-size: 16px;
-  margin-left: -2px;
-  margin-top: -2px;
-}
-.pagination > .btn.next {
-  margin-left: 8px;
-  margin-right: 0;
-}
-.pagination > .btn.next [class*="fui-"] {
-  margin-right: -2px;
-  margin-left: 4px;
-}
 @media (max-width: 480px) {
   .pagination > .btn {
     display: block;
@@ -3615,9 +3561,6 @@ input.search-query {
   }
   .pagination > .btn:first-child.btn-inverse {
     border-bottom-color: #5d6d7e;
-  }
-  .pagination > .btn:first-child > [class*="fui"] {
-    margin-left: -20px;
   }
   .pagination > .btn + ul {
     padding: 0;
@@ -3655,9 +3598,6 @@ input.search-query {
   }
   .pagination > .btn + ul + .btn.btn-inverse {
     border-bottom-color: #5d6d7e;
-  }
-  .pagination > .btn + ul + .btn > [class*="fui"] {
-    margin-right: -20px;
   }
   .pagination ul {
     display: block;
@@ -4316,10 +4256,6 @@ input.search-query {
 .table th {
   color: #526476;
   padding-bottom: 14px;
-}
-.table i[class*="fui-"] {
-  vertical-align: baseline;
-  font-size: 20px;
 }
 .table .checkbox,
 .table .radio {
@@ -5561,143 +5497,7 @@ input.search-query {
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================ */
-.has-switch {
-  border-radius: 30px;
-  display: inline-block;
-  cursor: pointer;
-  line-height: 1.231;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  width: 80px;
-  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
-  mask: url('../images/switch/mask.png') 0 0 no-repeat;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-.has-switch.deactivate {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  cursor: default !important;
-}
-.has-switch.deactivate label,
-.has-switch.deactivate span {
-  cursor: default !important;
-}
-.has-switch > div {
-  width: 162%;
-  position: relative;
-  top: 0;
-}
-.has-switch > div.switch-animate {
-  -webkit-transition: left 0.25s ease-out;
-  -moz-transition: left 0.25s ease-out;
-  -o-transition: left 0.25s ease-out;
-  transition: left 0.25s ease-out;
-  -webkit-backface-visibility: hidden;
-}
-.has-switch > div.switch-off {
-  left: -63%;
-}
-.has-switch > div.switch-off label {
-  background-color: #7f8c9a;
-  border-color: #bdc3c7;
-  -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
-  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
-}
-.has-switch > div.switch-on {
-  left: 0%;
-}
-.has-switch > div.switch-on label {
-  background-color: #1abc9c;
-}
-.has-switch input[type=checkbox] {
-  display: none;
-}
-.has-switch span {
-  cursor: pointer;
-  font-size: 14.994px;
-  font-weight: 700;
-  float: left;
-  height: 29px;
-  line-height: 19px;
-  margin: 0;
-  padding-bottom: 6px;
-  padding-top: 5px;
-  position: relative;
-  text-align: center;
-  width: 50%;
-  z-index: 1;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: 0.25s ease-out;
-  -moz-transition: 0.25s ease-out;
-  -o-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
-  -webkit-backface-visibility: hidden;
-}
-.has-switch span.switch-left {
-  border-radius: 30px 0 0 30px;
-  background-color: #34495e;
-  color: #1abc9c;
-  border-left: 1px solid transparent;
-}
-.has-switch span.switch-right {
-  border-radius: 0 30px 30px 0;
-  background-color: #bdc3c7;
-  color: #ffffff;
-  text-indent: 7px;
-}
-.has-switch span.switch-right [class*="fui-"] {
-  text-indent: 0;
-}
-.has-switch label {
-  border: 4px solid #34495e;
-  border-radius: 50%;
-  float: left;
-  height: 21px;
-  margin: 0 -15px 0 -14px;
-  padding: 0;
-  position: relative;
-  vertical-align: middle;
-  width: 21px;
-  z-index: 100;
-  -webkit-transition: 0.25s ease-out;
-  -moz-transition: 0.25s ease-out;
-  -o-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
-  -webkit-backface-visibility: hidden;
-}
-.switch-square {
-  border-radius: 6px;
-  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
-  mask: url('../images/switch/mask.png') 0 0 no-repeat;
-}
-.switch-square > div.switch-off label {
-  border-color: #7f8c9a;
-  border-radius: 6px 0 0 6px;
-}
-.switch-square span.switch-left {
-  border-radius: 6px 0 0 6px;
-}
-.switch-square span.switch-left [class*="fui-"] {
-  text-indent: -10px;
-}
-.switch-square span.switch-right {
-  border-radius: 0 6px 6px 0;
-}
-.switch-square span.switch-right [class*="fui-"] {
-  text-indent: 5px;
-}
-.switch-square label {
-  border-radius: 0 6px 6px 0;
-  border-color: #1abc9c;
-}
+
 .carousel {
   margin-bottom: 0;
   -webkit-border-radius: 5px;
