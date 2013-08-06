@@ -293,34 +293,34 @@ a.muted:focus {
 }
 .btn {
   border: none;
-  background: #bdc3c7;
+  background: #ACA69E;
   color: #ffffff;
-  padding: 9px 12px 10px;
+  padding: 5px 9px 6px;
   line-height: 22px;
   text-decoration: none;
   text-shadow: none;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+  -webkit-transition: 0.20s;
+  -moz-transition: 0.20s;
+  -o-transition: 0.20s;
+  transition: 0.20s;
   -webkit-backface-visibility: hidden;
 }
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
-  background-color: #cacfd2;
+  background-color: #8A7C6B;
   color: #ffffff;
   outline: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.05s;
   -webkit-backface-visibility: hidden;
 }
 .btn:active,
@@ -349,24 +349,12 @@ a.muted:focus {
   line-height: 22px;
   padding: 15px 20px 16px;
 }
-.btn.btn-huge > [class^="fui-"] {
-  top: 1px;
-}
-.btn.btn-huge > [class^="fui-"].pull-right {
-  margin-right: -2px;
-}
 .btn.btn-large {
   font-size: 16.996px;
   /* 17px */
 
   line-height: 20px;
   padding: 12px 18px 13px;
-}
-.btn.btn-large > [class^="fui-"] {
-  top: 0;
-}
-.btn.btn-large > [class^="fui-"].pull-right {
-  margin-right: -2px;
 }
 .btn.btn-small {
   font-size: 12.992px;
@@ -375,18 +363,12 @@ a.muted:focus {
   line-height: 20px;
   padding: 6px 13px 8px;
 }
-.btn.btn-small > [class^="fui-"] {
-  top: 1px;
-}
 .btn.btn-mini {
-  font-size: 11.998px;
+  font-size: 30px;
   /* 12px */
-
-  padding: 8px 13px 9px;
-  line-height: 1.2;
-}
-.btn.btn-mini > [class^="fui-"] {
-  top: 0;
+  margin: 0 0 5px 0;
+  padding: 8px 15px 7px 15px;
+  line-height: 0.75;
 }
 .btn.btn-embossed {
   -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
