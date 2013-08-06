@@ -8,9 +8,11 @@ VerseApp::Application.routes.draw do
 
   get '/poems/select_user' => 'poems#select_user'
 
-  resources :users
+  resources :users, except: :new
   resources :poems
   resources :titles
+
+  post '/poems/new' => 'poems#new'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

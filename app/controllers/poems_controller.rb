@@ -23,9 +23,20 @@ class PoemsController < ApplicationController
     end
   end
 
-  # GET
+  # POST (quirk for our app, POST posts the source user name)
   # shows the two-panel poem creation page
   def new
+    # query Twitter API to get source user's last 30 tweets
+
+    # respond with JSON for user info + his last 30 tweets
+    respond_to do |format|
+      format.json {
+        render json: {
+          :user => @user,
+          :tweets => @tweets
+        }
+      }
+    end
   end
 
   # POST
