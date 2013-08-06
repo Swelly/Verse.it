@@ -16,11 +16,15 @@
 
 var currUserIndex = 0;
 var userDivs = [];
+var box;
+
+// XXX
+// I have two potential iteration variables, div id or global variable, which is better?
 
 var createUserDisplay = function(divID, user) {
   var userDisplay = $('<div></div>');
   userDisplay.append('<img src="' + user.profile_image_url + '"><br>');
-  userDisplay.append(user.screen_name + '<br>');
+  userDisplay.append('<a href="http://www.twitter.com/' + user.screen_name +'">' + user.screen_name + '</a><br>');
   userDisplay.append(user.name + '<br>');
   userDisplay.append(user.description + '<br>');
   userDisplay.append(user.status.text);
@@ -29,6 +33,9 @@ var createUserDisplay = function(divID, user) {
 };
 
 $(function() {
+
+  box = $('#user-select');
+
   $.ajax({
     url: '/poems/select_user',
     dataType: 'json',
@@ -37,7 +44,7 @@ $(function() {
     console.log(data);
 
     $(data).each(function(index, user) { userDivs.push(createUserDisplay(index, user)); });
-    console.log('USERDIVS'+userDivs[0].html());
+    box.html(userDivs[currUserIndex]);
   });
 
   $('#left-arrow').click(scrollLeft);
@@ -49,7 +56,7 @@ var scrollLeft = function() {
   console.log('clicked');
   if (currUserIndex !== 0) {
     currUserIndex -= 1;
-    $('#user-select').html($(userDivs[currUserIndex]));
+    box.html($(userDivs[currUserIndex]));
   }
 };
 
@@ -57,7 +64,7 @@ var scrollRight = function() {
   console.log('r');
   if (currUserIndex < userDivs.length - 1) {
     currUserIndex += 1;
-    $('#user-select').html($(userDivs[currUserIndex]));
+    box.html($(userDivs[currUserIndex]));
   }
 };
 
