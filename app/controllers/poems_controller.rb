@@ -11,17 +11,21 @@ class PoemsController < ApplicationController
   end
 
   # GET
-  # shows the form for creating a new poem
-  # (i.e. select user, then the two-panel dragging display)
-  def new
+  # shows the form for selecting a user
+  def select_user
     @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
     @users.each_with_index do |user, index|
       @users[index] = Twitter.user(user)
     end
     respond_to do |format|
       format.html
-      format.js {}
+      format.json {render json: @users}
     end
+  end
+
+  # GET
+  # shows the two-panel poem creation page
+  def new
   end
 
   # POST

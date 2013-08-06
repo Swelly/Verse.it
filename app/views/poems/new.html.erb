@@ -1,21 +1,9 @@
-<ul>
-<% @users.each do |user| %>
-  <li><%= user.screen_name %></li>
-<% end %>
-</ul>
-
 <div id="left-arrow" class="span3">
   <-
 </div>
 
 <div id="user-select">
 </div>
-
-<% @users.each_with_index do |user, index| %>
-<div id="<%= index %>" class="user-display-hidden">
-  <h3><%= user.screen_name %></h3>
-</div>
-<% end %>
 
 <div id="right-arrow" class="span3">
   ->
