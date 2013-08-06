@@ -10,6 +10,9 @@ class PoemsController < ApplicationController
   def show
   end
 
+  def new
+  end
+
   # GET
   # shows the form for selecting a user
   def select_user
@@ -25,17 +28,15 @@ class PoemsController < ApplicationController
 
   # POST (quirk for our app, POST posts the source user name)
   # shows the two-panel poem creation page
-  def new
+  def write_poem
+    handle = params[:handle]
+
     # query Twitter API to get source user's last 30 tweets
+    @tweets = Twitter.user_timeline(handle)
 
     # respond with JSON for user info + his last 30 tweets
     respond_to do |format|
-      format.json {
-        render json: {
-          :user => @user,
-          :tweets => @tweets
-        }
-      }
+      format.json { render json: @tweets }
     end
   end
 

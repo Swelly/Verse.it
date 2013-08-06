@@ -6,13 +6,12 @@ VerseApp::Application.routes.draw do
   get '/about' => 'welcome#about', :as => 'about'
   get '/contact' => 'welcome#contact', :as => 'contact'
 
+  post '/poems/write_poem' => 'poems#write_poem'
   get '/poems/select_user' => 'poems#select_user'
 
-  resources :users, except: :new
   resources :poems
+  resources :users
   resources :titles
-
-  post '/poems/new' => 'poems#new'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
