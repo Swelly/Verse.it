@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
+  gem 'rspec'
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
   gem 'pry-debugger'        # Adds step, next, finish, and continue commands and breakpoints
