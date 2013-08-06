@@ -7,7 +7,7 @@
       <li><%= link_to('About', '/about') %></li>
       <!-- XXX -->
       <% if current_user %>
-        <li id="username"><%= link_to(current_user.username, "/users/#{current_user.id}") %></li>
+        <li id="username"><%= link_to(current_user.twitter_handle, "/users/#{current_user.id}") %></li>
       <% end %>
     </ul>
   </div>

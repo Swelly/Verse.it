@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(:version => 20130806132337) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "uid"
-    t.string   "provider"
     t.string   "twitter_handle"
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_secret"
