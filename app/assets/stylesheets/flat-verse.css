@@ -81,10 +81,13 @@ body {
   background-color: rgba(40,50,250,0.1);
   border: 1px solid black;
 }
-.punctuation {
+.punctuation-panel {
   min-height: 70px;
   margin-top: 5px;
   background-color: rgba(40,50,230,0.1);
+}
+.punct {
+  font-size: 12px;
 }
 input,
 button,
