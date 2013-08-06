@@ -219,7 +219,14 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET']
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+  config.omniauth :twitter,
+    ENV['YOUR_CONSUMER_KEY'],
+    ENV['YOUR_CONSUMER_SECRET'],
+    strategy_class: OmniAuth::Strategies::Twitter
+    {scope: 'email, offline_access',
+    client_options: {ssl:
+      {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   # config.omniauth :twitter,
   #   ENV['OAUTH_TOKEN'],

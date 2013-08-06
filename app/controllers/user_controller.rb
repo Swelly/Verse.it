@@ -1,4 +1,4 @@
-class UsersContoller < ApplicationController
+class UserController < ApplicationController
 
   # GET
   # shows a user profile

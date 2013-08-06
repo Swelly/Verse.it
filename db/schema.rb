@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805185451) do
+ActiveRecord::Schema.define(:version => 20130806004839) do
 
   create_table "favorites", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20130805185451) do
     t.string   "url"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "twitter"
-    t.string   "u_id"
+    t.string   "provider"
+    t.string   "uid"
     t.string   "name"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -50,9 +50,14 @@ ActiveRecord::Schema.define(:version => 20130805185451) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "twitter_handle"
+    t.string   "twitter_oauth_token"
+    t.string   "twitter_oauth_secret"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["twitter_handle"], :name => "index_users_on_twitter_handle", :unique => true
+  add_index "users", ["twitter_oauth_token", "twitter_oauth_secret"], :name => "index_users_on_twitter_oauth_token_and_twitter_oauth_secret"
 
 end
