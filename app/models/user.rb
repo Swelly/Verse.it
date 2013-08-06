@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :provider,
                   :uid, :name, :email,
-                  :twitter_oath_token,
-                  :twitter_oath_secret,
+                  :twitter_oauth_token,
+                  :twitter_oauth_secret,
                   :remember_me, :password,
                   :password_confirmation
 
@@ -20,17 +20,18 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-      unless user
-        user = User.create(
-                             name:auth.extra.raw_info.name,
-                             provider:auth.provider,
-                             uid:auth.uid,
-                             email:auth.info.email,
-                             twitter_oauth_token: auth.credentials.token,
-                             twitter_oauth_secret: auth.credentials.secret,
-                             password:Devise.friendly_token[0,20]
-                             )
-      end
+    unless user
+      user = User.create(
+                           name:auth.extra.raw_info.name,
+                           provider:auth.provider,
+                           uid:auth.uid,
+                           email:auth.info.email,
+                           twitter_oauth_token: auth.credentials.token,
+                           twitter_oauth_secret: auth.credentials.secret,
+                           password:Devise.friendly_token[0,20]
+                           )
+    end
+    return user
   end
 
   # def password=(pw)
