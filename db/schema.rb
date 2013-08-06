@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806004839) do
+ActiveRecord::Schema.define(:version => 20130806132337) do
 
   create_table "favorites", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130806004839) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email",                  :default => ""
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

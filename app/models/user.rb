@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :provider,
                   :uid, :name, :email,
-                  :twitter_oath_token,
-                  :twitter_oath_secret,
+                  :twitter_oauth_token,
+                  :twitter_oauth_secret,
                   :remember_me, :password,
                   :password_confirmation
 
