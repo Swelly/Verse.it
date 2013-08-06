@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Eagle+Lake|Monda|Jacques+Francois");
+@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Lobster+Two");
 @font-face {
   font-family: "Flat-UI-Icons";
   src: url("../fonts/Flat-UI-Icons.eot");
@@ -426,17 +426,17 @@ a:hover {
 }
 h1,
 .h1 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 62.006px /* 64px */;
 }
 h2,
 .h2 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 51.996px /* 52px */;
 }
 h3,
 .h3 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 39.998000000000005px /* 40px */;
   border-bottom: 1px dotted;
 }
@@ -1791,7 +1791,7 @@ input[type="color"],
 .uneditable-input {
   border: 2px solid #bdc3c7;
   color: #34495e;
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 14px;
   padding: 8px 5px;
   height: 21px;
@@ -5547,7 +5547,7 @@ input.search-query {
   background-color: #2a7aaf;
   border-radius: 50%;
   color: #ffffff;
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 11.998px;
   font-weight: 500;
   line-height: 18.998px;
