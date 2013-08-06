@@ -12,7 +12,6 @@
 
 body {
   position: relative;
-  padding-top: 40px;
 }
 
 /* Code in headings */
@@ -28,6 +27,7 @@ h3 code {
 
 body > .navbar {
   font-size: 13px;
+  border-bottom: 1.5px solid white;
 }
 
 /* Change the docs' brand */

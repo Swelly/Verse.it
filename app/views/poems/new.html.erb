@@ -1,17 +1,61 @@
-<div id="left-arrow" class="span3">
-  <-
+<div id="all-user-selection">
+  <div id="left-arrow" class="span3">
+    <-
+  </div>
+
+  <div id="user-select">
+  </div>
+
+  <div id="right-arrow" class="span3">
+    ->
+  </div>
+
+  <div class="clearfix:after">
+    <button id="user-select-button">I like this one!</button>
+  </div>
 </div>
 
-<div id="user-select">
-</div>
 
-<div id="right-arrow" class="span3">
-  ->
-</div>
+<div id="poem-page" class="hidden">
+  <div id = "instructions-header">
+    <p id = "instruct"> <!-- Click to hide this header text -->
+      Click on any word in the tweet list to move it into your poem blotter
+    </p>
+  </div>
 
-<div class="clearfix:after">
-  <button id="user-select-button">I like this one!</button>
+  <div class="poem-wrapper"> <!-- Holds the dynamic aspects -->
+
+    <div id = "tweets">
+      <p>User with listed tweets here</p>
+      <!-- Tweets will occupy this window -->
+    </div>
+
+    <div id = "poem-form"> <!-- Holds the poem and the punctuation -->
+
+      <div class = "poem">
+        <!-- Words will go in here once tweet text is clicked -->
+      </div>
+      <div class = "punctuation-panel">
+        <!-- clickable spans to add punctuation in front of words -->
+        <button class = "btn btn-mini"  id = "comma">,</button>
+        <button class = "btn btn-mini"  id = "period">.</button>
+        <button class = "btn btn-mini"  id = "question">?</button>
+        <button class = "btn btn-mini"  id = "bang">!</button>
+        <button class = "btn btn-mini"  id = "colon">:</button>
+        <button class = "btn btn-mini"  id = "semicolon">;</button>
+        <button class = "btn btn-mini"  id = "newline">¬</button>
+      </div> <!-- Panel end -->
+
+      <!-- Will update with every character entered -->
+        <div id = "char_count">Counter</div>
+    </div>
+    <!-- Poem form end -->
+
+  </div>
+  <!-- Wrapper end -->
+
 </div>
+<!-- Page end -->
 
 <script>
 
@@ -85,8 +129,12 @@ var initiatePoemCreation = function() {
   }).done(function(data) {
     // returned data = { user: user info, tweets: array of last 30 tweets }
     // use the returned data to generate the poem creation view
+    // XXX
     // perhaps another ajax request, this time returning html?
     console.log(data);
+
+
+
   });
 };
 
