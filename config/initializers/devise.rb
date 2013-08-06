@@ -219,6 +219,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :twitter,
     ENV['YOUR_CONSUMER_KEY'],
@@ -228,6 +229,7 @@ Devise.setup do |config|
     client_options: {ssl:
       {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
+<<<<<<< HEAD
   # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   # config.omniauth :twitter,
   #   ENV['OAUTH_TOKEN'],
@@ -236,6 +238,10 @@ Devise.setup do |config|
   #   {scope: 'email, offline_access',
   #   client_options: {ssl:
   #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+=======
+
+
+>>>>>>> 37ba06d89d356c7d1f3f555d4e545c41d1897f95
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
