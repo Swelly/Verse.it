@@ -10,7 +10,7 @@
 </div>
 
 <div class="clearfix:after">
-  <%= button_to "I like this one!" %>
+  <button id="user-select-button">I like this one!</button>
 </div>
 
 <script>
@@ -83,7 +83,6 @@ var initiatePoemCreation = function() {
     dataType: 'json',
     data: user
   }).done(function(data) {
-    console.log("YAY");
     // returned data = { user: user info, tweets: array of last 30 tweets }
     // use the returned data to generate the poem creation view
     // perhaps another ajax request, this time returning html?
