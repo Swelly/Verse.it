@@ -1,6 +1,6 @@
 VerseApp::Application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   root :to => 'welcome#index'
   get '/about' => 'welcome#about', :as => 'about'
