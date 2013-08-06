@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "verse.itapp@gmail.com"
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -86,7 +86,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "11146e04d0deb5ff52f04e09da471999d8aeb04d3bf86e4a0d6365aa6f2b0df5541a958a6d0e855f914d8dc2948a6f9a5111e539316dc61c27f93cd626da8037"
+  # config.pepper = "4df0ba9be2a85e7cf2548b7310e31dd8a0aba7e11abf1c1a84c18bf758bf029e0ecba92f88abdb7f67a5be312d3b4cc04e72b6e19a026bdaf8a2291e508c8367"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -131,7 +131,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@]+@[^@]+\z/
+  # config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -159,7 +159,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  config.maximum_attempts = 20
+  # config.maximum_attempts = 20
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
@@ -167,7 +167,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  config.reset_password_keys = [ :email ]
+  # config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -219,15 +219,16 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :twitter, ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET']
-  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  # config.omniauth :twitter,
-  #   ENV['OAUTH_TOKEN'],
-  #   ENV['OAUTH_TOKEN_SECRET'],
-  #   strategy_class: OmniAuth::Strategies::Twitter
-  #   {scope: 'email, offline_access',
-  #   client_options: {ssl:
-  #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+  config.omniauth :twitter,
+    ENV['YOUR_CONSUMER_KEY'],
+    ENV['YOUR_CONSUMER_SECRET'],
+    strategy_class: OmniAuth::Strategies::Twitter
+    {scope: 'email, offline_access',
+    client_options: {ssl:
+      {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
