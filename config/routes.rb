@@ -8,9 +8,9 @@ VerseApp::Application.routes.draw do
 
   post '/poems/write_poem' => 'poems#write_poem'
   get '/poems/select_user' => 'poems#select_user'
+  get '/users/:id' => 'users#show', :as => 'profile'
 
   resources :poems
-  resources :users
   resources :titles
 
   # Sample of regular route:
