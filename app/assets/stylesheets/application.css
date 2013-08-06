@@ -12,6 +12,28 @@
  *= require_tree .
  */
 
+body {
+  padding-top: 60px !important;
+}
+
+.tweet-text {
+  font-size: 1em;
+  line-height: 1;
+  color: #222;
+}
+
+.tweet-time {
+  font-size: .75em;
+  line-height: 1;
+  color: #888;
+}
+
+.tweet {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 #left-arrow {
   float: left;
 }
@@ -34,4 +56,9 @@
   height: 800px;
   width: 400px;
   display: none;
+}
+
+.tweet {
+  background-color: #ffc;
+  border-radius: 5px;
 }

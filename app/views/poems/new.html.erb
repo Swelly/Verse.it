@@ -16,6 +16,7 @@
 </div>
 
 
+
 <div id="poem-page" class="hidden">
   <div id = "instructions-header">
     <p id = "instruct"> <!-- Click to hide this header text -->
@@ -26,7 +27,7 @@
   <div class="poem-wrapper"> <!-- Holds the dynamic aspects -->
 
     <div id = "tweets">
-      <p>User with listed tweets here</p>
+      <p id="user-handle"></p>
       <!-- Tweets will occupy this window -->
     </div>
 
@@ -82,6 +83,7 @@ var createUserDisplay = function(divID, user) {
 };
 
 $(function() {
+
   box = $('#user-select');
 
   // get some random users
@@ -131,9 +133,31 @@ var initiatePoemCreation = function() {
     // use the returned data to generate the poem creation view
     // XXX
     // perhaps another ajax request, this time returning html?
+
     console.log(data);
 
+    $('#user-handle').text('@' + data[0].user.screen_name);
 
+    var tweets = [];
+    _.each(data, function(aTweet) {
+      tweets.push(aTweet);
+    })
+
+    // XXX
+    // Can I extract this iterator?
+    var tweetDivs = _.map(tweets, function(tweet) {
+      var tweetDiv = $('<div class="tweet"></div>');
+      tweetDiv.append('<p class="tweet-text">' + tweet.text + '</p>');
+      tweetDiv.append('<p class="tweet-time">' + tweet.created_at + '</p>');
+      return tweetDiv;
+    });
+
+    _.each(tweetDivs, function(element) {
+      $("#tweets").append(element);
+    });
+
+    $('#all-user-selection').hide(1000);
+    $('#poem-page').removeClass('hidden').show(1000);
 
   });
 };
