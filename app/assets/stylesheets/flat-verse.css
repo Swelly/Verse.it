@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Eagle+Lake|Monda|Jacques+Francois");
+@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Lobster+Two");
 
 .inline-block {
   display: inline-block;
@@ -31,6 +31,69 @@ body {
   background-image:url('bgTile.jpg');
   background-repeat:repeat;
 }
+
+.poem-page {
+  display: block;
+  margin: 0 75px 0 75px;
+  padding: 20px 10px;
+  width: auto;
+  height: 1000px;
+}
+
+.instructions-header {
+  display: inline-block;
+}
+
+#instruct {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 20px;
+  color: #A47A4B;
+  font-weight: bolder;
+}
+.poem-wrapper {
+  width: auto;
+  height: auto;
+}
+
+#tweets {
+  float: left;
+  width: 400px;
+  min-width: 200px;
+  min-height: 525px;
+  padding: 20px;
+  border: 3px dotted black;
+  background-color: rgba(101,100,100,0.1);
+}
+
+#poem-form {
+  float: right;
+  position: relative;
+  width: 400px;
+  min-width: 200px;
+  min-height: 525px;
+  padding: 20px 20px 18px 20px;
+  border: 3px dotted black;
+  background-color: rgba(101,100,100,0.1);
+}
+
+.poem {
+  min-height: 450px;
+  background-color: rgba(40,50,250,0.1);
+  border: 1px solid black;
+}
+.punctuation-panel {
+  text-align: center;
+  min-height: 40px;
+  margin-top: 5px;
+  background-color: rgba(40,50,230,0.1);
+}
+#char_count {
+  float: right;
+  border-radius: 6px;
+  background-color: rgba(255,50,230,0.8);
+  padding: 5px;
+}
 input,
 button,
 select,
@@ -53,17 +116,17 @@ a:hover {
 }
 h1,
 .h1 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 62.006px /* 64px */;
 }
 h2,
 .h2 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 51.996px /* 52px */;
 }
 h3,
 .h3 {
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 39.998000000000005px /* 40px */;
   border-bottom: 1px dotted;
 }
@@ -78,20 +141,6 @@ h5,
 h6,
 .h6 {
   font-size: 23.996px /* 24px */;
-}
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  line-height: 1.2em;
 }
 h1 {
   font-weight: 700;
@@ -119,19 +168,8 @@ p {
   font-size: 18.004px;
   color: #638085;
   /* 18px */
-
   line-height: 1.722169;
   /* 31px */
-
-}
-.lead {
-  font-size: 28px;
-  /* 28px */
-
-  line-height: 1.4642745000000001;
-  /* 41px */
-
-  font-weight: 300;
 }
 small {
   font-size: 84%;
@@ -260,34 +298,34 @@ a.muted:focus {
 }
 .btn {
   border: none;
-  background: #bdc3c7;
+  background: #ACA69E;
   color: #ffffff;
-  padding: 9px 12px 10px;
+  padding: 5px 9px 6px;
   line-height: 22px;
   text-decoration: none;
   text-shadow: none;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+  -webkit-transition: 0.20s;
+  -moz-transition: 0.20s;
+  -o-transition: 0.20s;
+  transition: 0.20s;
   -webkit-backface-visibility: hidden;
 }
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
-  background-color: #cacfd2;
+  background-color: #8A7C6B;
   color: #ffffff;
   outline: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.05s;
   -webkit-backface-visibility: hidden;
 }
 .btn:active,
@@ -331,11 +369,17 @@ a.muted:focus {
   padding: 6px 13px 8px;
 }
 .btn.btn-mini {
-  font-size: 11.998px;
+  font-size: 30px;
   /* 12px */
+<<<<<<< HEAD
+  margin: 0 0 5px 0;
+  padding: 8px 15px 7px 15px;
+  line-height: 0.75;
+=======
 
   padding: 8px 13px 9px;
   line-height: 1.2;
+>>>>>>> 3d8feed0ec8401ffa2ee85ccdd2ec4fdb5296176
 }
 .btn.btn-embossed {
   -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
@@ -679,7 +723,7 @@ a.muted:focus {
 }
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus {
-  color: #1abc9c;
+  color: #CB973D;
 }
 .navbar .nav ul {
   border-radius: 4px;
@@ -783,7 +827,7 @@ a.muted:focus {
 
 }
 .navbar-inverse .navbar-inner {
-  background: #34495e;
+  background: rgba(52,73,94,1);
   filter: unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)");
 }
 .navbar-inverse .brand {
@@ -1368,7 +1412,7 @@ input[type="color"],
 .uneditable-input {
   border: 2px solid #bdc3c7;
   color: #34495e;
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 14px;
   padding: 8px 5px;
   height: 21px;
@@ -5085,7 +5129,7 @@ input.search-query {
   background-color: #2a7aaf;
   border-radius: 50%;
   color: #ffffff;
-  font-family: 'Eagle Lake', cursive;
+  font-family: 'Lobster Two', cursive;
   font-size: 11.998px;
   font-weight: 500;
   line-height: 18.998px;

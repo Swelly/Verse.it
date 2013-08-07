@@ -229,20 +229,6 @@ Devise.setup do |config|
     client_options: {ssl:
       {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
-<<<<<<< HEAD
-  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  # config.omniauth :twitter,
-  #   ENV['OAUTH_TOKEN'],
-  #   ENV['OAUTH_TOKEN_SECRET'],
-  #   strategy_class: OmniAuth::Strategies::Twitter
-  #   {scope: 'email, offline_access',
-  #   client_options: {ssl:
-  #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-=======
-
-
->>>>>>> 37ba06d89d356c7d1f3f555d4e545c41d1897f95
-
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

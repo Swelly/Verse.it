@@ -1,10 +1,187 @@
-<div id="left-arrow" class="span3">
-  <-
+<div id="all-user-selection">
+  <div id="left-arrow" class="span3">
+    <-
+  </div>
+
+  <div id="user-select">
+  </div>
+
+  <div id="right-arrow" class="span3">
+    ->
+  </div>
+
+  <div class="clearfix:after">
+    <button id="user-select-button">I like this one!</button>
+  </div>
 </div>
 
-<div id="user-select">
-</div>
 
-<div id="right-arrow" class="span3">
-  ->
+
+<div id="poem-page" class="hidden">
+  <div id = "instructions-header">
+    <p id = "instruct"> <!-- Click to hide this header text -->
+      Click on any word in the tweet list to move it into your poem blotter
+    </p>
+  </div>
+
+  <div class="poem-wrapper"> <!-- Holds the dynamic aspects -->
+
+    <div id="tweets">
+      <p id="user-handle"></p>
+      <!-- Tweets will occupy this window -->
+    </div>
+
+    <div id="poem-form"> <!-- Holds the poem and the punctuation -->
+
+      <div class="poem">
+        <!-- Words will go in here once tweet text is clicked -->
+      </div>
+      <div class="punctuation-panel">
+        <!-- clickable spans to add punctuation in front of words -->
+        <button class = "btn btn-mini"  id = "comma">,</button>
+        <button class = "btn btn-mini"  id = "period">.</button>
+        <button class = "btn btn-mini"  id = "question">?</button>
+        <button class = "btn btn-mini"  id = "bang">!</button>
+        <button class = "btn btn-mini"  id = "colon">:</button>
+        <button class = "btn btn-mini"  id = "semicolon">;</button>
+        <button class = "btn btn-mini"  id = "newline">¬</button>
+      </div> <!-- Panel end -->
+
+      <!-- Will update with every character entered -->
+        <div id="char_count">Counter</div>
+    </div>
+    <!-- Poem form end -->
+
+    <button id="genius">Genius!</button>
+    <p>Share your masterpiece with the world!</p>
+  </div>
+  <!-- Wrapper end -->
+
 </div>
+<!-- Poem page end -->
+
+<script>
+
+/////////////////////////
+// SOURCE USER SELECTION
+/////////////////////////
+
+var currUserIndex = 0;
+var userDivs = [];
+var box;
+
+// XXX
+// I have two potential iteration variables, div id or global variable, which is better?
+
+var createUserDisplay = function(divID, user) {
+  var userDisplay = $('<div></div>');
+  userDisplay.append('<img src="' + user.profile_image_url + '"><br>');
+  userDisplay.append('<span class="handle"><a href="http://www.twitter.com/' + user.screen_name +'">' + user.screen_name + '</a></span><br>');
+  userDisplay.append(user.name + '<br>');
+  userDisplay.append(user.description + '<br>');
+  userDisplay.append(user.status.text);
+  userDisplay.attr('id', divID);
+  return userDisplay;
+};
+
+$(function() {
+
+  box = $('#user-select');
+
+  // get some random users
+  $.ajax({
+    url: '/poems/select_user',
+    dataType: 'json',
+    type: 'GET'
+  }).done(function(data) { //handle the json response
+    console.log(data);
+
+    $(data).each(function(index, user) { userDivs.push(createUserDisplay(index, user)); });
+    box.html(userDivs[currUserIndex]);
+  });
+
+  $('#left-arrow').click(scrollLeft);
+  $('#right-arrow').click(scrollRight);
+  $('#user-select-button').click(initiatePoemCreation);
+
+  $('#genius').click(saveAndShare);
+
+});
+
+var scrollLeft = function() {
+  if (currUserIndex !== 0) {
+    currUserIndex -= 1;
+    box.html($(userDivs[currUserIndex]));
+  }
+};
+
+var scrollRight = function() {
+  if (currUserIndex < userDivs.length - 1) {
+    currUserIndex += 1;
+    box.html($(userDivs[currUserIndex]));
+  }
+};
+
+/////////////////////////
+// POEM CREATION
+/////////////////////////
+
+var initiatePoemCreation = function() {
+  var user = {
+    handle: $('.handle')[0].innerText
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: '/poems/write_poem',
+    dataType: 'json',
+    data: user
+  }).done(function(data) {
+    // returned data = { user: user info, tweets: array of last 30 tweets }
+    // use the returned data to generate the poem creation view
+    // XXX
+    // perhaps another ajax request, this time returning html?
+
+    console.log(data);
+
+    $('#user-handle').text('@' + data[0].user.screen_name);
+
+    var tweets = [];
+    _.each(data, function(aTweet) {
+      tweets.push(aTweet);
+    })
+
+    // XXX
+    // Can I extract this iterator?
+    var tweetDivs = _.map(tweets, function(tweet) {
+      var tweetDiv = $('<div class="tweet"></div>');
+      tweetDiv.append('<p class="tweet-text">' + tweet.text + '</p>');
+      tweetDiv.append('<p class="tweet-time">' + tweet.created_at + '</p>');
+      return tweetDiv;
+    });
+
+    _.each(tweetDivs, function(element) {
+      $('#tweets').append(element);
+    });
+
+    $('#all-user-selection').hide(1000);
+    $('#poem-page').removeClass('hidden').show(1000);
+
+  });
+};
+
+var saveAndShare = function() {
+  // save the poem as a variable
+  var poem = {};
+  poem.text = $('#poem').text();
+  poem.source_user = $('#user-handle').text();
+
+  // send the poem to poems#create via Ajax request
+  $.ajax({
+    type: 'POST',
+    url: '/poems',
+    data: poem
+  });
+};
+
+</script>
