@@ -66,7 +66,7 @@ body {
   border: 3px dotted black;
   background-color: rgba(101,100,100,0.1);
 }
-#words {
+.words {
   font-size: inherit;
 }
 #poem-form {

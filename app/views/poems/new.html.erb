@@ -160,30 +160,38 @@ var initiatePoemCreation = function() {
       return tweetDiv;
     });
 
+    // process HTML within tweets to make each word a span with class "word"
+    // then append each element to the tweets div
     _.each(tweetDivs, function(element) {
+      var textInTweet = $(element).find('.tweet-text')[0].innerText;
+      var wordsArray = textInTweet.split(" ");
+      for (var i = 0; i < wordsArray.length; i += 1) {
+        wordsArray[i] = ("<span class='word'>" + wordsArray[i] + " </span>");
+      }
+      var wordsInSpans = _.reduce(wordsArray, function(memo, word){ return memo + word; });
+      $(element).find('.tweet-text')[0].innerHTML = wordsInSpans;
       $('#tweets').append(element);
     });
-    var textInTweet = $('p.tweet-text').text();
-    var wordsArray = textInTweet.split(" ");
-    var spanArray = []
-    for (var i = 0; i < wordsArray.length; i++) {
-      spanArray.push("<span class='words'>" + wordsArray[i] + "</span>");
-    }
-    console.log(spanArray);
 
     $('#all-user-selection').hide(1000);
     $('#poem-page').removeClass('hidden').show(1000);
 
-    // Need to decide how to display words 'magnets' so these
-    // buttons can match. Simple append functionality for now.
-    // will also want to add to charcount on each click.
-    $('.punctuation-panel .btn').click(function() {
-       var poemButton = this;
-      $(poemButton).clone().appendTo('.poem')
-    });
-
   });
 };
+
+// XX
+// On Click add the word to the poem form with the button styling
+// var addWord = function() {
+//   $('span.word')
+  //creates a new div with the styling we want
+  //appends to poem
+// };
+// $('.word').click(addWord);
+
+$('.punctuation-panel .btn').click(function() {
+   var poemButton = this;
+  $(poemButton).clone().appendTo('.poem')
+});
 
 var saveAndShare = function() {
   // save the poem as a variable
