@@ -8,6 +8,7 @@ class PoemsController < ApplicationController
   # GET
   # shows a single poem and its metadata
   def show
+    @poem = Poem.find(params[:id])
   end
 
   def new
