@@ -188,18 +188,22 @@ var initiatePoemCreation = function() {
 
     $('#all-user-selection').hide(1000);
     $('#poem-page').removeClass('hidden').show(1000);
+    $('.word').click(addWord);
 
   });
 };
 
-// XX
-// On Click add the word to the poem form with the button styling
-// var addWord = function() {
-//   $('span.word')
-  //creates a new div with the styling we want
-  //appends to poem
-// };
-// $('.word').click(addWord);
+var addWord = function(event) {
+  // create a new div with the styling we want
+  var word = $(event.target).text();
+  word = word.trim();
+  word = word.replaceAll("([a-z]+)[?:!.,;]*", "$1");
+
+  var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
+
+  // append to poem
+  $('.poem').append(wordButton);
+};
 
 // Appends punctuation (if clicked) to poem form
 $('.punctuation-panel .btn').click(function() {
