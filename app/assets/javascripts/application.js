@@ -13,7 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
-};

@@ -47,7 +47,7 @@ class PoemsController < ApplicationController
 
     # XXX
     # This text is hard-coded for now but will be retrieved from #poem div
-    @poem.text = 'Once upon a midnight dreary, while I pondered weak and weary, over many a quaint and curious volume of forgotten lore, While I nodded, nearly napping, suddenly there came a tapping, as of someone gently rapping, rapping at my chamber door. "Tis some visitor", I muttered, "tapping at my chamber door. Only this, and nothing more.'
+    @poem.text = params[:text]
     @poem.source_user = params[:source_user]
     @poem.user = current_user
 
