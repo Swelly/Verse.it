@@ -11,7 +11,7 @@
   </div>
 
   <div class="clearfix:after">
-    <button id="user-select-button">I like this one!</button>
+    <button class= "btn btn-info" id="user-select-button">I like this one!</button>
   </div>
 </div>
 
@@ -52,7 +52,7 @@
     </div>
     <!-- Poem form end -->
 
-    <button id="genius">Genius!</button>
+    <button class="btn btn-info" id="genius">Genius!</button>
     <p>Share your masterpiece with the world!</p>
   </div>
   <!-- Wrapper end -->
@@ -167,7 +167,7 @@ var initiatePoemCreation = function() {
     $('#all-user-selection').hide(1000);
     $('#poem-page').removeClass('hidden').show(1000);
 
-    // Need to decide how to display text 'magnets' so these
+    // Need to decide how to display words 'magnets' so these
     // buttons can match. Simple append functionality for now.
     // will also want to add to charcount on each click.
     $('.punctuation-panel .btn').click(function() {

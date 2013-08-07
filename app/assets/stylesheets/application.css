@@ -18,12 +18,13 @@ body {
 
 .tweet-text {
   font-size: 1em;
-  line-height: 1;
-  color: #222;
+  line-height: 1.2;
+  color: #363220;
 }
 
 .tweet-time {
   font-size: .75em;
+  font-style: italic;
   line-height: 1;
   color: #888;
 }
@@ -59,6 +60,6 @@ body {
 }
 
 .tweet {
-  background-color: #ffc;
+  background-color: rgba(228,228,108,0.3);
   border-radius: 5px;
 }

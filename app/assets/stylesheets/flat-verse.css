@@ -58,10 +58,11 @@ body {
 }
 #tweets {
   float: left;
+  overflow: scroll;
   width: 400px;
   min-width: 200px;
-  min-height: 525px;
-  padding: 20px;
+  height: 508px;
+  padding: 10px 20px 20px 20px;
   border: 3px dotted black;
   background-color: rgba(101,100,100,0.1);
 }
@@ -71,7 +72,7 @@ body {
   position: relative;
   width: 400px;
   min-width: 200px;
-  min-height: 525px;
+  height: 500px;
   padding: 20px 20px 18px 20px;
   border: 3px dotted black;
   background-color: rgba(101,100,100,0.1);
@@ -93,6 +94,12 @@ body {
   border-radius: 6px;
   background-color: rgba(255,50,230,0.8);
   padding: 5px;
+}
+
+#user-handle {
+  font-family: 'Lobster Two', cursive;
+  font-size: 30px;
+  border-bottom: 1px solid #363220;
 }
 input,
 button,
@@ -369,12 +376,10 @@ a.muted:focus {
   padding: 6px 13px 8px;
 }
 .btn.btn-mini {
-  font-size: 30px;
-  /* 12px */
-  margin: 0 1px 5px 1px;
-  padding: 8px 15px 7px 15px;
+  font-size: 25px;
+  margin: 5px 2px 1px 3px;
+  padding: 5px 15px;
   line-height: 0.75;
-  padding: 8px 13px 9px;
   line-height: 1.2;
 }
 .btn.btn-embossed {
