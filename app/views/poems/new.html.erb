@@ -1,3 +1,6 @@
+<!-- XXX
+THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
+
 <div id="all-user-selection">
   <div id="left-arrow" class="span3">
     <-
@@ -59,6 +62,16 @@
 
 </div>
 <!-- Poem page end -->
+
+<!-- XXX
+REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
+<div id="you-posted" class="hidden">
+  <p>Excellent work! You've shared your art with the Twitterverse!</p>
+  <%= button_to 'Write another?', '/poems/new', method: "get" %>
+  <%= button_to 'Go to the salon', '/poems', method: "get" %>
+</div>
+
+
 
 <script>
 
@@ -180,7 +193,8 @@ var saveAndShare = function() {
   $.ajax({
     type: 'POST',
     url: '/poems',
-    data: poem
+    data: poem,
+    dataType: 'script'
   });
 };
 

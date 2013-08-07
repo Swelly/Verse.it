@@ -52,15 +52,30 @@ class PoemsController < ApplicationController
     @poem.user = current_user
 
     if @poem.save
+
+      token = current_user.twitter_oauth_token #||= ENV['YOUR_OAUTH_TOKEN']
+      secret = current_user.twitter_oauth_secret #||= ENV['YOUR_OAUTH_TOKEN_SECRET']
+
+      client = Twitter::Client.new(
+        consumer_key: ENV['YOUR_CONSUMER_KEY'],
+        consumer_secret: ENV['YOUR_CONSUMER_SECRET'],
+        oauth_token: token,
+        oauth_token_secret: secret
+      )
+
       tweet_text = '#vrsit '
       tweet_text += params[:source_user] + ' '
       tweet_text += @poem.text.truncate(95) + ' '
       tweet_text += 'verse.it/poems/' + @poem.id.to_s
-      Twitter.update(tweet_text)
+      client.update(tweet_text)
+
     else
+      # XXX
     end
 
-    redirect_to '/'
+    respond_to do |format|
+      format.js {}
+    end
 
   end
 
