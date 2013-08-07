@@ -175,12 +175,13 @@ var saveAndShare = function() {
   var poem = {};
   poem.text = $('#poem').text();
   poem.source_user = $('#user-handle').text();
-  poem.user = current_user;
 
-  // send the poem to create via Ajax request
-
+  // send the poem to poems#create via Ajax request
+  $.ajax({
+    type: 'POST',
+    url: '/poems',
+    data: poem
+  });
 };
-
-
 
 </script>
