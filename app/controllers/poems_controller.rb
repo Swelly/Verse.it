@@ -70,9 +70,12 @@ class PoemsController < ApplicationController
       client.update(tweet_text)
 
     else
+      # XXX
     end
 
-    redirect_to '/'
+    respond_to do |format|
+      format.js {}
+    end
 
   end
 
