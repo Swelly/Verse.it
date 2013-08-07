@@ -163,6 +163,13 @@ var initiatePoemCreation = function() {
     _.each(tweetDivs, function(element) {
       $('#tweets').append(element);
     });
+    var textInTweet = $('p.tweet-text').text();
+    var wordsArray = textInTweet.split(" ");
+    var spanArray = []
+    for (var i = 0; i < wordsArray.length; i++) {
+      spanArray.push("<span class='words'>" + wordsArray[i] + "</span>");
+    }
+    console.log(spanArray);
 
     $('#all-user-selection').hide(1000);
     $('#poem-page').removeClass('hidden').show(1000);
