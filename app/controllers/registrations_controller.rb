@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def edit
+    @user = current_user
+  end
+
   def update
     if params[resource_name][:password].blank?
       params[resource_name].delete(:password)

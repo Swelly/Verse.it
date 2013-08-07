@@ -1,8 +1,9 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   # GET
   # shows a user profile
   def show
+    @user = User.find(params[:id])
   end
 
   # GET
