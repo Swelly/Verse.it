@@ -159,6 +159,14 @@ var initiatePoemCreation = function() {
     $('#all-user-selection').hide(1000);
     $('#poem-page').removeClass('hidden').show(1000);
 
+    // Need to decide how to display text 'magnets' so these
+    // buttons can match. Simple append functionality for now.
+    // will also want to add to charcount on each click.
+    $('.punctuation-panel .btn').click(function() {
+       var poemButton = this;
+      $(poemButton).clone().appendTo('.poem')
+    });
+
   });
 };
 
