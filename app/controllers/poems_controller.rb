@@ -43,6 +43,25 @@ class PoemsController < ApplicationController
   # POST
   # adds the poem to the database and redirects to show
   def create
+    @poem = Poem.create()
+
+    # XXX
+    # This text is hard-coded for now but will be retrieved from #poem div
+    @poem.text = 'Once upon a midnight dreary, while I pondered weak and weary, over many a quaint and curious volume of forgotten lore, While I nodded, nearly napping, suddenly there came a tapping, as of someone gently rapping, rapping at my chamber door. "Tis some visitor", I muttered, "tapping at my chamber door. Only this, and nothing more.'
+    @poem.source_user = params[:source_user]
+    @poem.user = current_user
+
+    if @poem.save
+      tweet_text = '#vrsit '
+      tweet_text += params[:source_user] + ' '
+      tweet_text += @poem.text.truncate(95) + ' '
+      tweet_text += 'verse.it/poems/' + @poem.id.to_s
+      Twitter.update(tweet_text)
+    else
+    end
+
+    redirect_to '/'
+
   end
 
   # GET

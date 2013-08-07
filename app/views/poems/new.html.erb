@@ -26,17 +26,17 @@
 
   <div class="poem-wrapper"> <!-- Holds the dynamic aspects -->
 
-    <div id = "tweets">
+    <div id="tweets">
       <p id="user-handle"></p>
       <!-- Tweets will occupy this window -->
     </div>
 
-    <div id = "poem-form"> <!-- Holds the poem and the punctuation -->
+    <div id="poem-form"> <!-- Holds the poem and the punctuation -->
 
-      <div class = "poem">
+      <div class="poem">
         <!-- Words will go in here once tweet text is clicked -->
       </div>
-      <div class = "punctuation-panel">
+      <div class="punctuation-panel">
         <!-- clickable spans to add punctuation in front of words -->
         <button class = "btn btn-mini"  id = "comma">,</button>
         <button class = "btn btn-mini"  id = "period">.</button>
@@ -48,15 +48,17 @@
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
-        <div id = "char_count">Counter</div>
+        <div id="char_count">Counter</div>
     </div>
     <!-- Poem form end -->
 
+    <button id="genius">Genius!</button>
+    <p>Share your masterpiece with the world!</p>
   </div>
   <!-- Wrapper end -->
 
 </div>
-<!-- Page end -->
+<!-- Poem page end -->
 
 <script>
 
@@ -102,6 +104,8 @@ $(function() {
   $('#right-arrow').click(scrollRight);
   $('#user-select-button').click(initiatePoemCreation);
 
+  $('#genius').click(saveAndShare);
+
 });
 
 var scrollLeft = function() {
@@ -117,6 +121,10 @@ var scrollRight = function() {
     box.html($(userDivs[currUserIndex]));
   }
 };
+
+/////////////////////////
+// POEM CREATION
+/////////////////////////
 
 var initiatePoemCreation = function() {
   var user = {
@@ -153,7 +161,7 @@ var initiatePoemCreation = function() {
     });
 
     _.each(tweetDivs, function(element) {
-      $("#tweets").append(element);
+      $('#tweets').append(element);
     });
 
     $('#all-user-selection').hide(1000);
@@ -170,9 +178,18 @@ var initiatePoemCreation = function() {
   });
 };
 
-/////////////////////////
-// POEM CREATION
-/////////////////////////
+var saveAndShare = function() {
+  // save the poem as a variable
+  var poem = {};
+  poem.text = $('#poem').text();
+  poem.source_user = $('#user-handle').text();
 
+  // send the poem to poems#create via Ajax request
+  $.ajax({
+    type: 'POST',
+    url: '/poems',
+    data: poem
+  });
+};
 
 </script>
