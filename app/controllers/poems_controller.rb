@@ -43,6 +43,11 @@ class PoemsController < ApplicationController
   # POST
   # adds the poem to the database and redirects to show
   def create
+    # XXX
+    # Need to retrive poem and user from the page! But how??
+    @poem_text = "Once upon a midnight dreary, while I pondered weak and weary, over many a quaint and curious volume of forgotten lore, While I nodded, nearly napping, suddenly there came a tapping, as of someone gently rapping, rapping at my chamber door. 'Tis some visitor', I muttered, 'tapping at my chamber door. Only this, and nothing more."
+    @source_user = "ichthala"
+
   end
 
   # GET
