@@ -32,7 +32,7 @@ body {
   background-repeat:repeat;
 }
 
-.poem-page {
+#poem-page {
   display: block;
   margin: 0 75px 0 75px;
   padding: 20px 10px;
