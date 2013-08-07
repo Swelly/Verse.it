@@ -52,6 +52,7 @@ group :development, :test do
                             # https://github.com/dejan/rails_panel/tree/master/meta_request
   gem 'rails-erd'           # Diagrams your models. NOTE! $ brew install graphviz
                             # https://github.com/voormedia/rails-erd
+  gem 'rspec-rails', '~> 2.0' # Rspec-rails is a testing framework for Rails 3.x and 4.x.
 end
 
 # To use ActiveModel has_secure_password
