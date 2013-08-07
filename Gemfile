@@ -33,7 +33,9 @@ gem 'jquery-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
-  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
   gem 'pry-debugger'        # Adds step, next, finish, and continue commands and breakpoints
@@ -52,6 +54,15 @@ group :development, :test do
                             # https://github.com/dejan/rails_panel/tree/master/meta_request
   gem 'rails-erd'           # Diagrams your models. NOTE! $ brew install graphviz
                             # https://github.com/voormedia/rails-erd
+end
+
+group :test do
+
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+
 end
 
 # To use ActiveModel has_secure_password
