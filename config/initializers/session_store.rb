@@ -1,6 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
-VerseApp::Application.config.session_store :cookie_store, key: '_Verse_app_session'
+# No longer using cookie based sessions. Using Redis cache instead
+VerseApp::Application.config.session_store :redis_store
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
