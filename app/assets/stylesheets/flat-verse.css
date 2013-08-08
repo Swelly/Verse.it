@@ -66,8 +66,12 @@ body {
   border: 3px dotted black;
   background-color: rgba(101,100,100,0.1);
 }
-.words {
+.word {
   font-size: inherit;
+  background-color: rgba(101,100,100,0.1);
+  border-radius: 5px;
+  margin: 0 1px;
+  padding-left: 5px;
 }
 #poem-form {
   float: right;
@@ -76,20 +80,20 @@ body {
   min-width: 200px;
   height: 500px;
   padding: 20px 20px 18px 20px;
-  border: 3px dotted black;
-  background-color: rgba(101,100,100,0.1);
+  /*border: 3px dotted black;*/
+  /*background-color: rgba(101,100,100,0.1);*/
 }
 
 .poem {
   min-height: 450px;
-  background-color: rgba(40,50,250,0.1);
+  background-color: rgba(101,100,100,0.1);
   border: 1px solid black;
 }
 .punctuation-panel {
   text-align: center;
   min-height: 40px;
   margin-top: 5px;
-  background-color: rgba(40,50,230,0.1);
+  /*background-color: rgba(40,50,230,0.1);*/
 }
 #char_count {
   float: right;

@@ -49,10 +49,11 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">;</button>
         <button class = "btn btn-mini punct">¬</button>
         <button class = "btn btn-mini"  id="backspace">backspace</button>
+        <button class = "btn btn-mini-clear"  id="clear">CLEAR</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
-        <div id="char_count">Counter</div>
+        <div id="char-count">140</div>
     </div>
     <!-- Poem form end -->
 
@@ -122,7 +123,14 @@ $(function() {
 
   $('#genius').click(saveAndShare);
 
+  counter = $('#char-count');
+  count = 0;
+
 });
+
+var updateCounter = function() {
+  counter.text((140 - count).toString());
+}
 
 var scrollLeft = function() {
   if (currUserIndex !== 0) {
@@ -189,7 +197,7 @@ var initiatePoemCreation = function() {
       $('#tweets').append(element);
     });
 
-    $('#all-user-selection').hide(1000);
+    $('#all-user-selection').slideUp(1000);
     $('#poem-page').removeClass('hidden').show(1000);
     $('.word').click(addWord);
 
@@ -201,24 +209,59 @@ var addWord = function(event) {
   // create a new div with the styling we want
   var word = $(event.target).text();
   word = word.trim();
+
   // XXX
   // remove leading and trailing punctuation from words
 
-  var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
+  if ( count + word.length + 1 <= 140 ) {
+    if ($('.poem .btn').length === 0) {
+      count = word.length;
+      console.log('first word added, count: ' + count);
+    }
+    else {
+      console.log("else");
+      count = count + word.length + 1;
+    }
+    updateCounter();
+    var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
+    $('.poem').append(wordButton);
+  }
 
-  // append to poem
-  $('.poem').append(wordButton);
 };
 
 // Appends punctuation (if clicked) to poem form
 $('.punct').click(function() {
-  var poemButton = this;
-  $(poemButton).clone().appendTo('.poem')
+  if (count < 140) {
+    count += 1;
+    updateCounter();
+    var poemButton = this;
+    $(poemButton).clone().appendTo('.poem');
+  }
 });
 
 // Removes the last child when backspace is clicked
 $('#backspace').click(function() {
-  $(".poem :last-child").remove();
+  if ($(".poem .btn").length !== 0) {
+    var removeLength = $(".poem :last-child").text().length;
+    if (removeLength === count) {
+      count = 0;
+    }
+    else {
+      // the +1 is for the extra space char removed
+      count -= (removeLength + 1);
+    }
+    updateCounter();
+
+    $(".poem :last-child").remove();
+  }
+});
+
+$('#clear').click(function() {
+  $(".poem").html() = '';
+});
+
+$('#instruct').click(function() {
+  $('#instruct').slideUp(400);
 });
 
 // saves and shares poem when Genius! button is clicked

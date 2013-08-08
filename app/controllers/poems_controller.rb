@@ -17,7 +17,10 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
+    # XXX
+    # query Twitter API to get random users
     @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks', 'zreitano', 'tibbon', 'stefanoblackest']
+
     @users.each_with_index do |user, index|
       @users[index] = Twitter.user(user)
     end
