@@ -17,7 +17,7 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
+    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks', 'zreitano', 'tibbon', 'stefanoblackest']
     @users.each_with_index do |user, index|
       @users[index] = Twitter.user(user)
     end
@@ -66,7 +66,7 @@ class PoemsController < ApplicationController
 
       tweet_text = '#vrsit '
       tweet_text += params[:source_user] + ' '
-      tweet_text += @poem.text.truncate(95) + ' '
+      tweet_text += @poem.text.truncate(90) + ' '
       tweet_text += 'verse.it/poems/' + @poem.id.to_s
       client.update(tweet_text)
 

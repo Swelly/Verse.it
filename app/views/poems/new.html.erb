@@ -47,7 +47,7 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">!</button>
         <button class = "btn btn-mini punct">:</button>
         <button class = "btn btn-mini punct">;</button>
-        <button class = "btn btn-mini" id="newline">¬</button>
+        <button class = "btn btn-mini punct">¬</button>
         <button class = "btn btn-mini"  id="backspace">backspace</button>
       </div> <!-- Panel end -->
 
@@ -196,6 +196,7 @@ var initiatePoemCreation = function() {
   });
 };
 
+// Appends a word to the poem panel when it's clicked in the tweet panel
 var addWord = function(event) {
   // create a new div with the styling we want
   var word = $(event.target).text();
@@ -215,18 +216,27 @@ $('.punct').click(function() {
   $(poemButton).clone().appendTo('.poem')
 });
 
+// Removes the last child when backspace is clicked
 $('#backspace').click(function() {
   $(".poem :last-child").remove();
 });
 
+// saves and shares poem when Genius! button is clicked
 var saveAndShare = function() {
   // save the poem as a variable
   var poem = {};
   var text = "";
   $.each($('.poem')[0].children, function(index, element) {
-    text += element.innerText + ' ';
+    if ($(element).hasClass('punct')) {
+      text = text.trim() + element.innerText + ' ';
+    }
+    else {
+      text += element.innerText + ' ';
+    }
   });
-  poem.text = text.trim();
+  text = text.trim();
+  text = text.split('¬').join('\n');
+  poem.text = text;
 
   poem.source_user = $('#user-handle').text();
 
