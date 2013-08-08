@@ -18,15 +18,16 @@ class PoemsController < ApplicationController
   # shows the form for selecting a user
   def select_user
     # @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
-    # # GET statuses/sample to return 10 random users?
     # @users.each_with_index do |user, index|
     #   @users[index] = Twitter.user(user)
     # end
 
-    @tweets = Rails.cache.fetch("friends-#{current_user.name}", expires_in: 10.minutes) do
-      Twitter.user_timeline('tibbon')
+    # Error handling with Redis. This line will fetch the Redis cache in case
+    # the user has exceeded our API calls. The cache should contain the last call
+    # to the Twitter API - most recent timeline tweets.
+    @users = Rails.cache.fetch("friends-#{current_user.name}", expires_in: 10.minutes) do
+      Twitter.friends
     end
-
 
     respond_to do |format|
       format.html
@@ -40,6 +41,7 @@ class PoemsController < ApplicationController
     handle = params[:handle]
 
     # query Twitter API to get source user's last 30 tweets
+    # XXX
     begin
       @tweets = Twitter.user_timeline(handle)
     rescue Twitter::Error::TooManyRequests

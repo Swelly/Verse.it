@@ -1,6 +1,9 @@
 VerseApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #Using redis store for caching instead of application caching or cookies
   config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
   config.action_dispatch.rack_cache = {
     metastore:   "redis://localhost:6379/1/metastore",
