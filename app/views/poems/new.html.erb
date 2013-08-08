@@ -216,7 +216,12 @@ $('.punct').click(function() {
 });
 
 $('#backspace').click(function() {
+  // clever
   $(".poem :last-child").remove();
+});
+
+$('#instruct').click(function() {
+  $('#instruct').toggle(800);
 });
 
 var saveAndShare = function() {

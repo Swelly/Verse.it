@@ -76,8 +76,8 @@ body {
   min-width: 200px;
   height: 500px;
   padding: 20px 20px 18px 20px;
-  border: 3px dotted black;
-  background-color: rgba(101,100,100,0.1);
+  /*border: 3px dotted black;*/
+  /*background-color: rgba(101,100,100,0.1);*/
 }
 
 .poem {
@@ -89,7 +89,7 @@ body {
   text-align: center;
   min-height: 40px;
   margin-top: 5px;
-  background-color: rgba(40,50,230,0.1);
+  /*background-color: rgba(40,50,230,0.1);*/
 }
 #char_count {
   float: right;
