@@ -47,9 +47,9 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">!</button>
         <button class = "btn btn-mini punct">:</button>
         <button class = "btn btn-mini punct">;</button>
-        <button class = "btn btn-mini" id="newline">¬</button>
-        <button class = "btn btn-mini"  id="backspace">backspace</button>
-        <button class = "btn btn-mini-clear"  id="clear">CLEAR</button>
+        <button class = "btn btn-mini"  id="backspace">undo</button>
+        <button class = "btn btn-mini" id="newline">newline</button>
+        <button class = "btn btn-danger"  id="clear">CLEAR</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
@@ -220,8 +220,13 @@ $('#backspace').click(function() {
   // clever
   $(".poem :last-child").remove();
 });
-$('#clear').click
 
+//clears the poem form (reset)
+$('#clear').click(function() {
+  $('.poem').children().remove();
+})
+
+// rids of the instructions
 $('#instruct').click(function() {
   $('#instruct').slideUp(400);
 });
