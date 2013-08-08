@@ -60,6 +60,10 @@ body {
 }
 
 .tweet {
-  background-color: rgba(228,228,108,0.3);
+  background-color: rgba(203,151,61,0.1);
   border-radius: 5px;
+}
+
+.poem-text {
+  font-size: 2em;
 }

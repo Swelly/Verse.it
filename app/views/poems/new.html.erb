@@ -41,13 +41,15 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
       </div>
       <div class="punctuation-panel">
         <!-- clickable spans to add punctuation in front of words -->
-        <button class = "btn btn-mini"  id = "comma">,</button>
-        <button class = "btn btn-mini"  id = "period">.</button>
-        <button class = "btn btn-mini"  id = "question">?</button>
-        <button class = "btn btn-mini"  id = "bang">!</button>
-        <button class = "btn btn-mini"  id = "colon">:</button>
-        <button class = "btn btn-mini"  id = "semicolon">;</button>
-        <button class = "btn btn-mini"  id = "newline">¬</button>
+        <button class = "btn btn-mini punct">,</button>
+        <button class = "btn btn-mini punct">.</button>
+        <button class = "btn btn-mini punct">?</button>
+        <button class = "btn btn-mini punct">!</button>
+        <button class = "btn btn-mini punct">:</button>
+        <button class = "btn btn-mini punct">;</button>
+        <button class = "btn btn-mini" id="newline">¬</button>
+        <button class = "btn btn-mini"  id="backspace">backspace</button>
+        <button class = "btn btn-mini-clear"  id="clear">CLEAR</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
@@ -63,6 +65,8 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
 </div>
 <!-- Poem page end -->
 
+
+<!-- "You posted!" page -->
 <!-- XXX
 REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
 <div id="you-posted" class="hidden">
@@ -186,31 +190,51 @@ var initiatePoemCreation = function() {
       $('#tweets').append(element);
     });
 
-    $('#all-user-selection').hide(1000);
+    $('#all-user-selection').slideUp(1000);
     $('#poem-page').removeClass('hidden').show(1000);
+    $('.word').click(addWord);
 
   });
 };
 
-// XX
-// On Click add the word to the poem form with the button styling
-// var addWord = function() {
-//   $('span.word')
-  //creates a new div with the styling we want
-  //appends to poem
-// };
-// $('.word').click(addWord);
+var addWord = function(event) {
+  // create a new div with the styling we want
+  var word = $(event.target).text();
+  word = word.trim();
+  // XXX
+  // remove leading and trailing punctuation from words
+
+  var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
+
+  // append to poem
+  $('.poem').append(wordButton);
+};
 
 // Appends punctuation (if clicked) to poem form
-$('.punctuation-panel .btn').click(function() {
-   var poemButton = this;
+$('.punct').click(function() {
+  var poemButton = this;
   $(poemButton).clone().appendTo('.poem')
+});
+
+$('#backspace').click(function() {
+  // clever
+  $(".poem :last-child").remove();
+});
+$('#clear').click
+
+$('#instruct').click(function() {
+  $('#instruct').slideUp(400);
 });
 
 var saveAndShare = function() {
   // save the poem as a variable
   var poem = {};
-  poem.text = $('#poem').text();
+  var text = "";
+  $.each($('.poem')[0].children, function(index, element) {
+    text += element.innerText + ' ';
+  });
+  poem.text = text.trim();
+
   poem.source_user = $('#user-handle').text();
 
   // send the poem to poems#create via Ajax request
