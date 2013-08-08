@@ -48,8 +48,8 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">:</button>
         <button class = "btn btn-mini punct">;</button>
         <button class = "btn btn-mini punct">¬</button>
-        <button class = "btn btn-mini"  id="backspace">backspace</button>
-        <button class = "btn btn-mini-clear"  id="clear">CLEAR</button>
+        <button class = "btn btn-mini" id="backspace">backspace</button>
+        <button class = "btn btn-mini-clear" id="clear">CLEAR</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
@@ -257,7 +257,9 @@ $('#backspace').click(function() {
 });
 
 $('#clear').click(function() {
-  $(".poem").html() = '';
+  $(".poem").html('');
+  count = 0;
+  updateCounter();
 });
 
 $('#instruct').click(function() {
