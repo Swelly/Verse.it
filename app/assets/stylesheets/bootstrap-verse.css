@@ -618,6 +618,7 @@ a:focus {
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
+  padding-top: 30px;
 }
 
 .container:before,
@@ -4417,6 +4418,7 @@ input[type="submit"].btn.btn-mini {
   padding: 10px 20px 10px;
   margin-left: -20px;
   font-size: 20px;
+  margin-right: 35px;
   font-weight: 200;
   color: #777777;
   text-shadow: 0 1px 0 #ffffff;
@@ -4445,7 +4447,6 @@ input[type="submit"].btn.btn-mini {
 .navbar .divider-vertical {
   height: 40px;
   margin: 0 9px;
-  border-right: 1px solid #ffffff;
   border-left: 1px solid #f2f2f2;
 }
 
@@ -4597,7 +4598,7 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   left: 0;
   display: block;
-  float: left;
+  float: right;
   margin: 0 10px 0 0;
 }
 

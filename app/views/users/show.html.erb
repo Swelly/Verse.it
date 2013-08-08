@@ -1,14 +1,16 @@
-<h1><%= @user.twitter_handle %></h1>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
-<p><%= link_to @user.url, @user.url %></p><br>
+<div class = "container">
+  <h1><%= @user.twitter_handle %></h1>
+  <p><%= @user.name %></p>
+  <p><%= @user.email %></p>
+  <p><%= link_to @user.url, @user.url %></p><br>
 
-<p><%= @user.bio %></p>
+  <p><%= @user.bio %></p>
 
-<h2><%= @user.twitter_handle %>'s Poems:</h2>
+  <h2><%= @user.twitter_handle %>'s Poems:</h2>
 
-<h2><%= @user.twitter_handle %>'s Titles:</h2>
+  <h2><%= @user.twitter_handle %>'s Titles:</h2>
 
-<% if current_user && current_user.id == @user.id %>
-  <%= render 'devise/menu/registration_items' %>
-<% end %>
+  <% if current_user && current_user.id == @user.id %>
+    <%= render 'devise/menu/registration_items' %>
+  <% end %>
+</div>
