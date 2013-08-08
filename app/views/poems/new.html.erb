@@ -220,7 +220,10 @@ $('#backspace').click(function() {
   // clever
   $(".poem :last-child").remove();
 });
-$('#clear').click
+
+$('#clear').click(function() {
+  $('.poem').children().remove();
+})
 
 $('#instruct').click(function() {
   $('#instruct').slideUp(400);
