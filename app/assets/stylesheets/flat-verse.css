@@ -66,8 +66,12 @@ body {
   border: 3px dotted black;
   background-color: rgba(101,100,100,0.1);
 }
-.words {
+.word {
   font-size: inherit;
+  background-color: rgba(101,100,100,0.1);
+  border-radius: 5px;
+  margin: 0 1px;
+  padding-left: 5px;
 }
 #poem-form {
   float: right;
@@ -82,7 +86,7 @@ body {
 
 .poem {
   min-height: 450px;
-  background-color: rgba(40,50,250,0.1);
+  background-color: rgba(101,100,100,0.1);
   border: 1px solid black;
 }
 .punctuation-panel {

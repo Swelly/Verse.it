@@ -49,6 +49,7 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">;</button>
         <button class = "btn btn-mini" id="newline">¬</button>
         <button class = "btn btn-mini"  id="backspace">backspace</button>
+        <button class = "btn btn-mini-clear"  id="clear">CLEAR</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
@@ -189,7 +190,7 @@ var initiatePoemCreation = function() {
       $('#tweets').append(element);
     });
 
-    $('#all-user-selection').hide(1000);
+    $('#all-user-selection').slideUp(1000);
     $('#poem-page').removeClass('hidden').show(1000);
     $('.word').click(addWord);
 
@@ -219,9 +220,10 @@ $('#backspace').click(function() {
   // clever
   $(".poem :last-child").remove();
 });
+$('#clear').click
 
 $('#instruct').click(function() {
-  $('#instruct').toggle(800);
+  $('#instruct').slideUp(400);
 });
 
 var saveAndShare = function() {
