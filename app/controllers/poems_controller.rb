@@ -17,11 +17,17 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
-    # query Twitter API to get random users
-    @users.each_with_index do |user, index|
-      @users[index] = Twitter.user(user)
+    # @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
+    # # GET statuses/sample to return 10 random users?
+    # @users.each_with_index do |user, index|
+    #   @users[index] = Twitter.user(user)
+    # end
+
+    @tweets = Rails.cache.fetch("friends-#{current_user.name}", expires_in: 10.minutes) do
+      Twitter.user_timeline('tibbon')
     end
+
+
     respond_to do |format|
       format.html
       format.json {render json: @users}
@@ -34,8 +40,12 @@ class PoemsController < ApplicationController
     handle = params[:handle]
 
     # query Twitter API to get source user's last 30 tweets
-    @tweets = Twitter.user_timeline(handle)
-
+    begin
+      @tweets = Twitter.user_timeline(handle)
+    rescue Twitter::Error::TooManyRequests
+      puts "Twitter API Rate Limit Exceeded"
+      @tweets = {}
+    end
     # respond with JSON for user info + his last 30 tweets
     respond_to do |format|
       format.json { render json: @tweets }
