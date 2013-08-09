@@ -1,5 +1,5 @@
 <% unless @titles.empty? %>
-  $('#titles').text('<p>You\'ve earned a title!</p><%= render @titles %>');
+  $('#titles').html('<p>You\'ve earned a title!</p><p>Check out your profile to see your new titles.</p>');
 <% end %>
 
 $('#poem-page').hide(1000);
