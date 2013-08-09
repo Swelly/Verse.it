@@ -57,8 +57,6 @@ class PoemsController < ApplicationController
       format.json {render json: @users}
     end
 
-    puts "LALALALAA\n\n\n\n\n"
-
   end
 
   # POST (quirk for our app, POST posts the source user name)
