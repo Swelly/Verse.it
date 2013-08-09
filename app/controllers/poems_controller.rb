@@ -17,7 +17,7 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'tcclevela', 'antonwheel', 'horse_ebooks']
+    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'tcclevela', 'antonwheel', 'horse_ebooks', 'catlandbooks']
     @users.each_with_index do |user, index|
       @users[index] = Twitter.user(user)
     end
@@ -103,6 +103,7 @@ class PoemsController < ApplicationController
       @titles = []
       if title_first_post
         @titles.push(Title.find(1))
+        # current_user.titles
       end
 
       if title_let_us(@poem.text)
