@@ -4,7 +4,7 @@ namespace :twitter do
 
     require 'tweetstream'
 
-    Twitteruser.delete_all
+    #Twitteruser.delete_all
 
     TweetStream.configure do |config|
       config.consumer_key = ENV['YOUR_CONSUMER_KEY']
@@ -13,10 +13,32 @@ namespace :twitter do
       config.oauth_token_secret = ENV['YOUR_OAUTH_TOKEN_SECRET']
       config.auth_method        = :oauth
     end
+    puts "about to stream"
 
-    TweetStream::Client.new.sample do |status|
+    client = TweetStream::Client
+    puts client
+    client.new.sample do |status|
       puts "#{status.user.screen_name}"
       Twitteruser.create(screen_name: status.user.screen_name)
+    end
+
+    client.on_limit do |skip_count|
+      # do something
+      puts "limited"
+    end
+
+    client.on_error do |err|
+      puts err
+    end
+
+    client.on_enhance_your_calm do
+      # do something
+      puts "enhance calm"
+    end
+
+    client.control.info do |info|
+      # do something
+      puts info
     end
 
   end
