@@ -102,12 +102,12 @@ class PoemsController < ApplicationController
       # TIME TO CHECK FOR TITLES
       @titles = []
       if title_first_post
-        @titles.push(Title.find(1))
+        @titles.push(Title.where(title: "Apprentice Wordsmith").first)
         # current_user.titles
       end
 
       if title_let_us(@poem.text)
-        @titles.push(Title.find(2))
+        @titles.push(Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first)
       end
 
       tweet_text = '#vrsit '
