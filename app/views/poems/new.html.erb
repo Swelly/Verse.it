@@ -118,7 +118,6 @@ $(function() {
     dataType: 'json',
     type: 'GET'
   }).done(function(data) { //handle the json response
-    console.log(data);
 
     $(data).each(function(index, user) { userDivs.push(createUserDisplay(index, user)); });
     box.html(userDivs[currUserIndex]);
@@ -132,8 +131,6 @@ $(function() {
 
   counter = $('#char-count');
   count = 0;
-
-  console.log("finished window load");
 
 });
 
@@ -174,8 +171,6 @@ var initiatePoemCreation = function() {
     // use the returned data to generate the poem creation view
     // XXX
     // perhaps another ajax request, this time returning html?
-
-    console.log(data);
 
     $('#user-handle').text('@' + data[0].user.screen_name);
 
@@ -225,10 +220,8 @@ var addWord = function(event) {
   if ( count + word.length + 1 <= 140 ) {
     if ($('.poem .btn').length === 0) {
       count = word.length;
-      console.log('first word added, count: ' + count);
     }
     else {
-      console.log("else");
       count = count + word.length + 1;
     }
     updateCounter();

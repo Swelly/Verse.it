@@ -17,47 +17,43 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    # @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
-    # @users.each_with_index do |user, index|
-    #   @users[index] = Twitter.user(user)
-    # end
+    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'tcclevela', 'antonwheel', 'horse_ebooks']
+    @users.each_with_index do |user, index|
+      @users[index] = Twitter.user(user)
+    end
 
     # Error handling with Redis. This line will fetch the Redis cache in case
     # the user has exceeded our API calls. The cache should contain the last call
     # to the Twitter API - most recent timeline tweets.
 
-    @users = []
+    # @users = []
 
-    tweets = Twitter.home_timeline(count: 30)
-    tweets.each do |tweet|
-      # XXX
-      # I don't want to compare the entire object, just one property
-      # How can I do that here?
-      theUser = tweet.user
-      unless @users.find_index(theUser)
-        @users.push(theUser)
-        if @users.count >= 10
-          break
-        end
-      end
-    end
+    # tweets = Twitter.home_timeline(count: 30)
+    # tweets.each do |tweet|
+    #   # XXX
+    #   # I don't want to compare the entire object, just one property
+    #   # How can I do that here?
+    #   theUser = tweet.user
+    #   unless @users.find_index(theUser)
+    #     @users.push(theUser)
+    #     if @users.count >= 10
+    #       break
+    #     end
+    #   end
+    # end
 
-    @users.each_with_index do |user, index|
-      collection = Twitter.friends(user.screen_name).users
-      # binding.pry
-      unless collection.empty?
-        @users[index] = collection[rand(0...collection.length)]
-      end
-    end
-
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
+    # @users.each_with_index do |user, index|
+    #   collection = Twitter.friends(user.screen_name).users
+    #   # binding.pry
+    #   unless collection.empty?
+    #     @users[index] = collection[rand(0...collection.length)]
+    #   end
+    # end
 
     respond_to do |format|
       format.html
       format.json {render json: @users}
     end
-
-    puts "LALALALAA\n\n\n\n\n"
 
   end
 

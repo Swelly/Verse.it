@@ -1,5 +1,8 @@
 <% unless @titles.empty? %>
-  $('#titles').text('<p>You\'ve earned a title!</p><%= render @titles %>');
+  $('#titles').html('<p>You\'ve earned a title!</p>');
+  <% @titles.each do |title| %>
+    <%= render :partial => 'title' %>
+  <% end %>
 <% end %>
 
 $('#poem-page').hide(1000);
