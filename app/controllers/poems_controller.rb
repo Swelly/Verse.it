@@ -17,7 +17,23 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'tcclevela', 'antonwheel', 'horse_ebooks', 'catlandbooks']
+    # @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'tcclevela', 'antonwheel', 'horse_ebooks', 'catlandbooks']
+    # @users.each_with_index do |user, index|
+    #   @users[index] = Twitter.user(user)
+    # end
+
+    @users = []
+
+    while @users.count < 9
+      offset = rand(Twitteruser.count)
+      rand_sn = Twitteruser.first(:offset => offset).screen_name
+      unless @users.find_index(rand_sn)
+        @users << rand_sn
+      end
+    end
+
+    @users << 'horse_ebooks'
+
     @users.each_with_index do |user, index|
       @users[index] = Twitter.user(user)
     end
