@@ -17,6 +17,7 @@ gem 'redis-rails' # provides a full set of stores (*Cache*, Session, HTTP Cache)
 gem 'pg'
 
 gem 'twitter'
+gem 'tweetstream'
 
 # Gems used only for assets and not required
 # in production environments by default.
