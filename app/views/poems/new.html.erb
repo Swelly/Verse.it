@@ -94,6 +94,11 @@ var currUserIndex = 0;
 var userDivs = [];
 var box;
 
+var counterStuff = {
+  count: 0,
+  counter: null
+}
+
 // XXX
 // I have two potential iteration variables, div id or global variable, which is better?
 
@@ -129,13 +134,13 @@ $(function() {
 
   $('#genius').click(saveAndShare);
 
-  counter = $('#char-count');
-  count = 0;
+  counterStuff.counter = $('#char-count');
+  counterStuff.count = 0;
 
 });
 
 var updateCounter = function() {
-  counter.text((140 - count).toString());
+  counterStuff.counter.text((140 - counterStuff.count).toString());
 }
 
 var scrollLeft = function() {
@@ -217,12 +222,12 @@ var addWord = function(event) {
   // XXX
   // remove leading and trailing punctuation from words
 
-  if ( count + word.length + 1 <= 140 ) {
+  if ( counterStuff.count + word.length + 1 <= 140 ) {
     if ($('.poem .btn').length === 0) {
-      count = word.length;
+      counterStuff.count = word.length;
     }
     else {
-      count = count + word.length + 1;
+      counterStuff.count = counterStuff.count + word.length + 1;
     }
     updateCounter();
     var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
@@ -233,8 +238,8 @@ var addWord = function(event) {
 
 // Appends punctuation (if clicked) to poem form
 $('.punct').click(function() {
-  if (count < 140) {
-    count += 1;
+  if (counterStuff.count < 140) {
+    counterStuff.count += 1;
     updateCounter();
     var poemButton = this;
     $(poemButton).clone().appendTo('.poem');
@@ -245,12 +250,12 @@ $('.punct').click(function() {
 $('#backspace').click(function() {
   if ($(".poem .btn").length !== 0) {
     var removeLength = $(".poem :last-child").text().length;
-    if (removeLength === count) {
-      count = 0;
+    if (removeLength === counterStuff.count) {
+      counterStuff.count = 0;
     }
     else {
       // the +1 is for the extra space char removed
-      count -= (removeLength + 1);
+      counterStuff.count -= (removeLength + 1);
     }
     updateCounter();
 
@@ -260,7 +265,7 @@ $('#backspace').click(function() {
 
 $('#clear').click(function() {
   $(".poem").html('');
-  count = 0;
+  counterStuff.count = 0;
   updateCounter();
 });
 
