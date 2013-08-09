@@ -7,7 +7,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'dotenv-rails'
-gem 'redis-rails'
+
+gem 'redis-rails' # provides a full set of stores (*Cache*, Session, HTTP Cache)
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -17,17 +17,48 @@ class PoemsController < ApplicationController
   # GET
   # shows the form for selecting a user
   def select_user
-    # XXX
-    # query Twitter API to get random users
-    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks', 'zreitano', 'tibbon', 'stefanoblackest']
+    # @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
+    # @users.each_with_index do |user, index|
+    #   @users[index] = Twitter.user(user)
+    # end
+
+    # Error handling with Redis. This line will fetch the Redis cache in case
+    # the user has exceeded our API calls. The cache should contain the last call
+    # to the Twitter API - most recent timeline tweets.
+
+    @users = []
+
+    tweets = Twitter.home_timeline(count: 30)
+    tweets.each do |tweet|
+      # XXX
+      # I don't want to compare the entire object, just one property
+      # How can I do that here?
+      theUser = tweet.user
+      unless @users.find_index(theUser)
+        @users.push(theUser)
+        if @users.count >= 10
+          break
+        end
+      end
+    end
 
     @users.each_with_index do |user, index|
-      @users[index] = Twitter.user(user)
+      collection = Twitter.friends(user.screen_name).users
+      # binding.pry
+      unless collection.empty?
+        @users[index] = collection[rand(0...collection.length)]
+      end
     end
+
+    @users = ['ichthala', 'wescarr17', 'seraphicmanta', 'antonwheel', 'horse_ebooks']
+
     respond_to do |format|
       format.html
       format.json {render json: @users}
     end
+
+    puts "LALALALAA\n\n\n\n\n"
+
   end
 
   # POST (quirk for our app, POST posts the source user name)
@@ -36,8 +67,13 @@ class PoemsController < ApplicationController
     handle = params[:handle]
 
     # query Twitter API to get source user's last 30 tweets
-    @tweets = Twitter.user_timeline(handle)
-
+    # XXX
+    begin
+      @tweets = Twitter.user_timeline(handle)
+    rescue Twitter::Error::TooManyRequests
+      puts "Twitter API Rate Limit Exceeded"
+      @tweets = {}
+    end
     # respond with JSON for user info + his last 30 tweets
     respond_to do |format|
       format.json { render json: @tweets }
@@ -66,6 +102,16 @@ class PoemsController < ApplicationController
         oauth_token: token,
         oauth_token_secret: secret
       )
+
+      # TIME TO CHECK FOR TITLES
+      @titles = []
+      if title_first_post
+        @titles.push(Title.find(1))
+      end
+
+      if title_let_us(@poem.text)
+        @titles.push(Title.find(2))
+      end
 
       tweet_text = '#vrsit '
       tweet_text += params[:source_user] + ' '
@@ -96,6 +142,24 @@ class PoemsController < ApplicationController
   # DELETE
   # deletes a poem, redirects to user profile?
   def destroy
+  end
+
+  #####################################
+  ### TITLES
+  #####################################
+
+  def title_first_post
+    if current_user.poems.count == 0
+      return true
+    end
+    return false
+  end
+
+  def title_let_us(poem_text)
+    if poem_text.length < 70
+      return true
+    end
+    return false
   end
 
 end

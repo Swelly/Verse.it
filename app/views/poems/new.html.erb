@@ -47,9 +47,9 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
         <button class = "btn btn-mini punct">!</button>
         <button class = "btn btn-mini punct">:</button>
         <button class = "btn btn-mini punct">;</button>
-        <button class = "btn btn-mini punct">¬</button>
-        <button class = "btn btn-mini" id="backspace">backspace</button>
-        <button class = "btn btn-mini-clear" id="clear">CLEAR</button>
+        <button class = "btn btn-mini" id="backspace">delete</button>
+        <button class = "btn btn-mini" id="newline">newline</button>
+        <button class = "btn btn-danger" id="clear">clear</button>
       </div> <!-- Panel end -->
 
       <!-- Will update with every character entered -->
@@ -71,8 +71,9 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
 REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
 <div id="you-posted" class="hidden">
   <p>Excellent work! You've shared your art with the Twitterverse!</p>
-  <%= button_to 'Write another?', '/poems/new', method: "get" %>
-  <%= button_to 'Go to the salon', '/poems', method: "get" %>
+  <div id="titles"></div>
+  <%= button_to 'Write another?', '/poems/new', method: 'get' %>
+  <%= button_to 'Go to the salon', '/poems', method: 'get' %>
 </div>
 
 
@@ -262,6 +263,12 @@ $('#clear').click(function() {
   updateCounter();
 });
 
+//clears the poem form (reset)
+$('#clear').click(function() {
+  $('.poem').children().remove();
+})
+
+// rids of the instructions
 $('#instruct').click(function() {
   $('#instruct').slideUp(400);
 });
