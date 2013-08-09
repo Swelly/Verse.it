@@ -13,12 +13,17 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
     <%= image_tag "arrowRight.png" %>
   </div>
 
-  <div class="clearfix:after">
+  <div>
     <button class= "btn btn-info" id="user-select-button">I like this one!</button>
   </div>
+
+  <div id="user-search" class="clearfix:after">
+    <label for="search">Or, find a user of your choice:</label>
+    <input id="search" name="search" type="text" />
+    <input id="user-search-button" type="submit" value="I want this one!" />
+  </div>
+
 </div>
-
-
 
 <div id="poem-page" class="hidden">
   <div id = "instructions-header">
@@ -131,6 +136,7 @@ $(function() {
   $('#left-arrow').click(scrollLeft);
   $('#right-arrow').click(scrollRight);
   $('#user-select-button').click(initiatePoemCreation);
+  $('#user-search-button').click(initiatePoemCreation);
 
   $('#genius').click(saveAndShare);
 
@@ -161,10 +167,19 @@ var scrollRight = function() {
 // POEM CREATION
 /////////////////////////
 
-var initiatePoemCreation = function() {
-  var user = {
-    handle: $('.handle')[0].innerText
-  };
+var initiatePoemCreation = function(event) {
+
+  var user;
+  if ($(event.target).attr('id') === "user-select-button") {
+    user = {
+      handle: $('.handle')[0].innerText
+    };
+  }
+  else if ($(event.target).attr('id') === "user-search-button") {
+    user = {
+      handle: $('#search').val()
+    }
+  }
 
   $.ajax({
     type: 'POST',
