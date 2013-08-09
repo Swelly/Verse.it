@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.create(
                            name:auth.extra.raw_info.name,
-                           twitter_handle:auth.info.screen_name,
+                           twitter_handle:auth.extra.raw_info.screen_name,
                            provider:auth.provider,
                            uid:auth.uid,
                            email:auth.info.email,
@@ -35,10 +35,6 @@ class User < ActiveRecord::Base
     end
     return user
   end
-
-  # def password=(pw)
-  #   self.encrypted_password = pw
-  # end
 
   def self.new_with_session(params, session)
     super.tap do |user|
