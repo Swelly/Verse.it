@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                   :twitter_oauth_secret,
                   :remember_me, :password,
                   :password_confirmation,
-                  :bio, :url
+                  :bio, :url, :twitter_handle
 
   devise :database_authenticatable,
               :registerable, :recoverable,
