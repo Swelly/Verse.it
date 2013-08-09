@@ -74,6 +74,12 @@ REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
   <div id="titles"></div>
   <%= button_to 'Write another?', '/poems/new', method: 'get' %>
   <%= button_to 'Go to the salon', '/poems', method: 'get' %>
+<div class = "container">
+  <div id="you-posted" class="hidden">
+    <p>Excellent work! You've shared your art with the Twitterverse!</p>
+    <%= button_to 'Write another?', '/poems/new', method: "get" %>
+    <%= button_to 'Go to the salon', '/poems', method: "get" %>
+  </div>
 </div>
 
 
@@ -275,7 +281,15 @@ $('#instruct').click(function() {
   $('#instruct').slideUp(400);
 });
 
-// saves and shares poem when Genius! button is clicked
+// refactor later. Can put mouseout function in hover function
+$('img').hover(function() {
+    $(this).css("opacity", '0.70');
+});
+$('img').mouseout(function() {
+    $(this).css('opacity', '1.0');
+});
+
+// genius button shares to twitter
 var saveAndShare = function() {
   // save the poem as a variable
   var poem = {};
