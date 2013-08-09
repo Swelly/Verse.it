@@ -3,6 +3,7 @@ class PoemsController < ApplicationController
   # GET
   # shows some recent or popular poems?
   def index
+    @poems = Poem.order("created_at DESC")[0..29]
   end
 
   # GET
