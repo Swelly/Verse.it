@@ -101,13 +101,21 @@ class PoemsController < ApplicationController
 
       # TIME TO CHECK FOR TITLES
       @titles = []
-      if title_first_post
-        @titles.push(Title.where(title: "Apprentice Wordsmith").first)
-        # current_user.titles
+
+      if current_user.titles.where(title: "Apprenctice Wordsmith").blank?
+        if title_first_post
+          aTitle = Title.where(title: "Apprentice Wordsmith").first
+          @titles.push(aTitle)
+          current_user.titles << aTitle
+        end
       end
 
-      if title_let_us(@poem.text)
-        @titles.push(Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first)
+      if current_user.titles.where(title: "Let Us Go Through Certain Half-Deserted Tweets").blank?
+        if title_let_us(@poem.text)
+          aTitle = Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
+          @titles.push(aTitle)
+          current_user.titles << aTitle
+        end
       end
 
       tweet_text = '#vrsit '
@@ -146,7 +154,8 @@ class PoemsController < ApplicationController
   #####################################
 
   def title_first_post
-    if current_user.poems.count == 0
+    puts "COUNT #{current_user.poems.count.to_s} \n\n\n\n\n"
+    if current_user.poems.count == 1
       return true
     end
     return false
