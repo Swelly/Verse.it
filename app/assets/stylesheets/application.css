@@ -36,14 +36,17 @@ body {
 }
 
 #left-arrow {
-  float: left;
+  margin-top: 25px;
+  text-align: right;
 }
 
 #right-arrow {
-  float: right;
+  margin-top: 25px;
+  width: 35px;
+  text-align: left;
 }
 #user-select {
-  height: 820px;
+  height: 500px;
   width: 420px;
   float: left;
 }

@@ -31,7 +31,10 @@ body {
   background-image:url('bgTile.jpg');
   background-repeat:repeat;
 }
-
+#all-user-selection {
+  width: auto;
+  height: auto;
+}
 #poem-page {
   display: block;
   margin: 0 75px 0 75px;
@@ -83,7 +86,6 @@ body {
   /*border: 3px dotted black;*/
   /*background-color: rgba(101,100,100,0.1);*/
 }
-
 .poem {
   min-height: 450px;
   background-color: rgba(101,100,100,0.1);
@@ -113,6 +115,10 @@ body {
   font-family: 'Lobster Two', cursive;
   font-size: 30px;
   border-bottom: 1px solid #363220;
+}
+#user-select-button {
+  float: left;
+  margin-top: 100px;
 }
 input,
 button,
@@ -425,17 +431,17 @@ a.muted:focus {
   background-color: #16a085;
 }
 .btn.btn-info {
-  background-color: #3498db;
+  background-color: rgba(52,73,94,0.85);
 }
 .btn.btn-info:hover,
 .btn.btn-info:focus,
 .btn-group:focus .btn.btn-info.dropdown-toggle {
-  background-color: #5dade2;
+  background-color: rgba(159,130,81,0.85);
 }
 .btn.btn-info:active,
 .btn-group.open .btn.btn-info.dropdown-toggle,
 .btn.btn-info.active {
-  background-color: #2c81ba;
+  background-color: #B79C6D;
 }
 .btn.btn-danger {
   background-color: #ec7063;
