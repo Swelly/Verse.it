@@ -129,6 +129,8 @@ class PoemsController < ApplicationController
   # DELETE
   # deletes a poem, redirects to user profile?
   def destroy
+    Poem.find(params[:id]).destroy
+    redirect_to("/users/#{current_user.id}")
   end
 
   #####################################

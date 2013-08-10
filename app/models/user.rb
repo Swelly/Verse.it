@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
                            twitter_oauth_token: auth.credentials.token,
                            twitter_oauth_secret: auth.credentials.secret,
                            password:Devise.friendly_token[0,20],
-                           word_count:0
+                           word_count:0,
+                           url: ''
                            )
     end
     return user

@@ -212,7 +212,7 @@ var initiatePoemCreation = function(event) {
     // then append each element to the tweets div for poem form entry
     _.each(tweetDivs, function(element) {
       var textInTweet = $(element).find('.tweet-text')[0].innerText;
-      var wordsArray = textInTweet.split(" ");
+      var wordsArray = textInTweet.split(/\s/);
       for (var i = 0; i < wordsArray.length; i += 1) {
         wordsArray[i] = ("<span class='word'>" + wordsArray[i] + " </span>");
       }
