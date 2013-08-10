@@ -146,6 +146,7 @@ class PoemsController < ApplicationController
     # I would love to DRY up this code by just iterating
     # through the titles, but each title needs to be
     # associated with its function. What to do?
+    # Can I use blocks?
 
     # Apprentice Wordsmith
     unless user_titles.include?("Apprentice Wordsmith")
