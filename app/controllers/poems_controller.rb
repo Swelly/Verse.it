@@ -190,7 +190,7 @@ class PoemsController < ApplicationController
     end
 
     # # John Tweets
-    # unless current_user.titles.where(title: "John Tweets").blank?
+    # unless user_titles.include?("John Tweets")
     #   if title_john_tweets(aPoem.text)
     #     received_titles << Title.where(title: "John Tweets").first
     #   end
@@ -203,12 +203,12 @@ class PoemsController < ApplicationController
     #   end
     # end
 
-    # # Lovecraftian
-    # unless current_user.titles.where(title: "Lovecraftian").blank?
-    #   if title_lovecraftian(aPoem.text)
-    #     received_titles << Title.where(title: "Lovecraftian").first
-    #   end
-    # end
+    # Lovecraftian
+    unless user_titles.include?("Lovecraftian")
+      if title_lovecraftian(aPoem.text)
+        received_titles << Title.where(title: "Lovecraftian").first
+      end
+    end
 
     # Duke of Repartee
     unless user_titles.include?("Duke of Repartee")
@@ -277,6 +277,45 @@ class PoemsController < ApplicationController
     end
 
     return false
+  end
+
+  def title_lovecraftian(poem_text)
+    words = poem_text.downcase.gsub(/[^a-z\s\-\']/, '').split
+
+    lovecraft_words = ['lovecraft',
+      'yog-sothoth',
+      'shoggoth',
+      'shub-niggurath',
+      'cthulhu',
+      'r\'lyeh',
+      'kadath',
+      'ulthar',
+      'azathoth',
+      'celephais',
+      'nyarlathotep',
+      'necronomicon',
+      'al-hazred',
+      'fhtagn',
+      'arkham',
+      'dunwich',
+      'miskatonic',
+      'leng',
+      'eldritch',
+      'non-euclidean',
+      'innsmouth',
+      'tsathoggua',
+      'dagon',
+      'tekeli-li'
+    ]
+
+    words.each do |word|
+      if lovecraft_words.include?(word)
+        return true
+      end
+    end
+
+    return false
+
   end
 
   def title_repartee(source_user)

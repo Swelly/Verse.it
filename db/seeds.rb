@@ -28,7 +28,7 @@ Title.create(title: "Wordsworthy",
 
 Title.create(title: "Charge of the Tweet Brigade",
   description: "You've written 600 words on Verse.it.",
-  image: "title-tweet-bridge.jpg")
+  image: "title-tweet-brigade.jpg")
 
 Title.create(title: "Byronic Hero",
   description: "Byron himself would be proud of your brooding words!",
