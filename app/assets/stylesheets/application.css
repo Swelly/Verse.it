@@ -16,6 +16,10 @@ body {
   padding-top: 60px !important;
 }
 
+.title-img {
+  width: 400px;
+}
+
 .tweet-text {
   font-size: 1em;
   line-height: 1.2;

@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
                   :twitter_oauth_secret,
                   :remember_me, :password,
                   :password_confirmation,
-                  :bio, :url, :twitter_handle
+                  :bio, :url, :twitter_handle,
+                  :word_count
 
   devise :database_authenticatable,
               :registerable, :recoverable,
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user.twitter_handle === nil
+    if user && user.twitter_handle === nil
       user.twitter_handle = auth.extra.raw_info.screen_name
     end
     unless user
@@ -33,7 +34,8 @@ class User < ActiveRecord::Base
                            email:auth.info.email,
                            twitter_oauth_token: auth.credentials.token,
                            twitter_oauth_secret: auth.credentials.secret,
-                           password:Devise.friendly_token[0,20]
+                           password:Devise.friendly_token[0,20],
+                           word_count:0
                            )
     end
     return user
