@@ -1,8 +1,18 @@
 VerseApp::Application.routes.draw do
 
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", :registrations => 'registrations' }
+
   root :to => 'welcome#index'
   get '/about' => 'welcome#about', :as => 'about'
   get '/contact' => 'welcome#contact', :as => 'contact'
+
+  post '/poems/write_poem' => 'poems#write_poem'
+  get '/poems/select_user' => 'poems#select_user'
+  get '/users/:id' => 'users#show', :as => 'profile'
+
+  resources :poems
+  resources :titles
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

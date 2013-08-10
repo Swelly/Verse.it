@@ -11,6 +11,67 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130810001146) do
+
+  create_table "favorites", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "poems", :force => true do |t|
+    t.text     "text"
+    t.string   "source_user"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "titles", :force => true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "description"
+  end
+
+  create_table "titles_users", :force => true do |t|
+    t.integer "title_id"
+    t.integer "user_id"
+  end
+
+  create_table "twitterusers", :force => true do |t|
+    t.string   "screen_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.text     "bio"
+    t.string   "url"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "email",                  :default => ""
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "twitter_handle"
+    t.string   "twitter_oauth_token"
+    t.string   "twitter_oauth_secret"
+    t.integer  "word_count"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["twitter_handle"], :name => "index_users_on_twitter_handle", :unique => true
+  add_index "users", ["twitter_oauth_token", "twitter_oauth_secret"], :name => "index_users_on_twitter_oauth_token_and_twitter_oauth_secret"
 
 end

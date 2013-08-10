@@ -1,0 +1,25 @@
+User
+-Twitter name
+-email
+-bio
+-homepage link
+-timestamps
+-has many badges
+-has many poems
+-has many favorites
+-has many poems, through: favorites
+// will the duplicate poem relationship mess things up?
+
+Poem
+-text
+-belongs_to :user
+-source_user (user whence the tweets came) --> string
+-has many favorites
+-has many users, through: favorites
+-timestamps
+
+Titles
+-title
+-image
+-timestamps
+// Phil said the logic for checking badges could be done as a before_save validation on the poem

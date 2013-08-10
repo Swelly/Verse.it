@@ -11,3 +11,66 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  padding-top: 60px !important;
+}
+
+.title-img {
+  width: 300px;
+}
+
+.tweet-text {
+  font-size: 1em;
+  line-height: 1.2;
+  color: #363220;
+}
+
+.tweet-time {
+  font-size: .75em;
+  font-style: italic;
+  line-height: 1;
+  color: #888;
+}
+
+.tweet {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#left-arrow {
+  margin-top: 25px;
+  text-align: right;
+}
+
+#right-arrow {
+  margin-top: 25px;
+  width: 35px;
+  text-align: left;
+}
+#user-select {
+  height: 500px;
+  width: 420px;
+  float: left;
+}
+
+.user-display {
+  height: 800px;
+  width: 400px;
+}
+
+.user-display-hidden {
+  height: 800px;
+  width: 400px;
+  display: none;
+}
+
+.tweet {
+  background-color: rgba(203,151,61,0.1);
+  border-radius: 5px;
+}
+
+.poem-text {
+  font-size: 2em;
+}

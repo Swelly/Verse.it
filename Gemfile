@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
-
+ruby "1.9.3"
 gem 'rails', '3.2.13'
+gem 'twitter'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem 'dotenv-rails'
+
+gem 'redis-rails' # provides a full set of stores (*Cache*, Session, HTTP Cache)
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,6 +16,8 @@ gem 'rails', '3.2.13'
 # gem 'sqlite3'
 gem 'pg'
 
+gem 'twitter'
+gem 'tweetstream'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,7 +33,10 @@ end
 
 gem 'jquery-rails'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 group :development, :test do
+  gem 'rspec'
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
   gem 'pry-debugger'        # Adds step, next, finish, and continue commands and breakpoints
@@ -42,6 +55,7 @@ group :development, :test do
                             # https://github.com/dejan/rails_panel/tree/master/meta_request
   gem 'rails-erd'           # Diagrams your models. NOTE! $ brew install graphviz
                             # https://github.com/voormedia/rails-erd
+  gem 'rspec-rails', '~> 2.0' # Rspec-rails is a testing framework for Rails 3.x and 4.x.
 end
 
 # To use ActiveModel has_secure_password

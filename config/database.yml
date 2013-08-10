@@ -7,9 +7,10 @@ development:
   adapter: postgresql
   encoding: unicode
   database: verse_development
-  pool: 5
-  username: verse
-  password:
+  # pool: 5
+  # username: verse
+  # password:
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,10 +23,10 @@ test:
   username: verse
   password:
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: verse_production
-  pool: 5
-  username: verse
-  password:
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: verse_production
+#   pool: 5
+#   username: verse
+#   password:

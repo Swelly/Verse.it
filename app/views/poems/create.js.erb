@@ -1,0 +1,6 @@
+<% unless @titles.empty? %>
+  $('#titles').html('<p>You\'ve earned a title!</p><%= render @titles %>');
+<% end %>
+
+$('#poem-page').hide(1000);
+$('#you-posted').removeClass('hidden').show(1000);
