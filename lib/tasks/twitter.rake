@@ -4,7 +4,7 @@ namespace :twitter do
 
     require 'tweetstream'
 
-    #Twitteruser.delete_all
+    Twitteruser.delete_all
 
     TweetStream.configure do |config|
       config.consumer_key = ENV['YOUR_CONSUMER_KEY']
@@ -20,6 +20,16 @@ namespace :twitter do
     client.new.sample do |status|
       puts "#{status.user.screen_name}"
       Twitteruser.create(screen_name: status.user.screen_name)
+    end
+
+    users_i_like = ['ichthala',
+      'wescarr17',
+      'seraphicmanta',
+      'catlandbooks',
+      'stefanoblackest']
+
+    users_i_like.each do |user|
+      Twitteruser.create(screen_name: user)
     end
 
     client.on_limit do |skip_count|
