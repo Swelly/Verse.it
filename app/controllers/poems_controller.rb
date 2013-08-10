@@ -39,34 +39,6 @@ class PoemsController < ApplicationController
       @users[index] = Twitter.user(user)
     end
 
-    # Error handling with Redis. This line will fetch the Redis cache in case
-    # the user has exceeded our API calls. The cache should contain the last call
-    # to the Twitter API - most recent timeline tweets.
-
-    # @users = []
-
-    # tweets = Twitter.home_timeline(count: 30)
-    # tweets.each do |tweet|
-    #   # XXX
-    #   # I don't want to compare the entire object, just one property
-    #   # How can I do that here?
-    #   theUser = tweet.user
-    #   unless @users.find_index(theUser)
-    #     @users.push(theUser)
-    #     if @users.count >= 10
-    #       break
-    #     end
-    #   end
-    # end
-
-    # @users.each_with_index do |user, index|
-    #   collection = Twitter.friends(user.screen_name).users
-    #   # binding.pry
-    #   unless collection.empty?
-    #     @users[index] = collection[rand(0...collection.length)]
-    #   end
-    # end
-
     respond_to do |format|
       format.html
       format.json {render json: @users}
@@ -104,10 +76,19 @@ class PoemsController < ApplicationController
 
     if @poem.save
 
-      # first we tweet the poem
+      # update the user's word_count
+      current_user.word_count += @poem.text.split.size
+
+      # then check for titles
+      @titles = check_for_titles(@poem.text)
+      @titles.each do |title|
+        current_user.titles << title
+      end
+
       token = current_user.twitter_oauth_token #||= ENV['YOUR_OAUTH_TOKEN']
       secret = current_user.twitter_oauth_secret #||= ENV['YOUR_OAUTH_TOKEN_SECRET']
 
+      # time to tweet the poem!
       client = Twitter::Client.new(
         consumer_key: ENV['YOUR_CONSUMER_KEY'],
         consumer_secret: ENV['YOUR_CONSUMER_SECRET'],
@@ -120,15 +101,6 @@ class PoemsController < ApplicationController
       tweet_text += @poem.text.truncate(90) + ' '
       tweet_text += 'verse.it/poems/' + @poem.id.to_s
       client.update(tweet_text)
-
-      # update the user's word_count
-      current_user.word_count += @poem.text.split.size
-
-      # TIME TO CHECK FOR TITLES
-      @titles = check_for_titles(@poem.text)
-      @titles.each do |title|
-        user.titles << title
-      end
 
     else
       # XXX
@@ -214,37 +186,37 @@ class PoemsController < ApplicationController
       end
     end
 
-    # Byronic Hero
-    unless user_titles.include?("Byronic Hero")
-      if title_byronic(poem_text)
-        aTitle = Title.where(title: "Byronic Hero").first
-        received_titles.push(aTitle)
-      end
-    end
+    # # Byronic Hero
+    # unless user_titles.include?("Byronic Hero")
+    #   if title_byronic(poem_text)
+    #     aTitle = Title.where(title: "Byronic Hero").first
+    #     received_titles.push(aTitle)
+    #   end
+    # end
 
-    # John Tweets
-    unless current_user.titles.where(title: "John Tweets").blank?
-      if title_john_tweets(poem_text)
-        aTitle = Title.where(title: "John Tweets").first
-        received_titles.push(aTitle)
-      end
-    end
+    # # John Tweets
+    # unless current_user.titles.where(title: "John Tweets").blank?
+    #   if title_john_tweets(poem_text)
+    #     aTitle = Title.where(title: "John Tweets").first
+    #     received_titles.push(aTitle)
+    #   end
+    # end
 
-    # Lovecraftian
-    unless current_user.titles.where(title: "Lovecraftian").blank?
-      if title_lovecraftian(poem_text)
-        aTitle = Title.where(title: "Lovecraftian").first
-        received_titles.push(aTitle)
-      end
-    end
+    # # Lovecraftian
+    # unless current_user.titles.where(title: "Lovecraftian").blank?
+    #   if title_lovecraftian(poem_text)
+    #     aTitle = Title.where(title: "Lovecraftian").first
+    #     received_titles.push(aTitle)
+    #   end
+    # end
 
-    # Duke of Repartee
-    unless current_user.titles.where(title: "Duke of Repartee").blank?
-      if title_repartee
-        aTitle = Title.where(title: "Duke of Repartee").first
-        received_titles.push(aTitle)
-      end
-    end
+    # # Duke of Repartee
+    # unless current_user.titles.where(title: "Duke of Repartee").blank?
+    #   if title_repartee
+    #     aTitle = Title.where(title: "Duke of Repartee").first
+    #     received_titles.push(aTitle)
+    #   end
+    # end
 
     return received_titles
   end # end of check_for_titles
@@ -264,11 +236,11 @@ class PoemsController < ApplicationController
   end
 
   def title_wordsworthy
-    return user.word_count >= 100
+    return current_user.word_count >= 100
   end
 
   def title_tweet_brigade
-    return user.word_count >= 600
+    return current_user.word_count >= 600
   end
 
 end
