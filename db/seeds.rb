@@ -19,7 +19,7 @@ Title.create(title: "Lord Tennyson",
   image: "title-tennyson.jpg")
 
 Title.create(title: "Let Us Go Through Certain Half-Deserted Tweets",
-  description: "You wrote a poem with fewer than 70 characters.",
+  description: "You wrote a poem with 70 or fewer characters.",
   image: "title-let-us.jpg")
 
 Title.create(title: "Wordsworthy",
