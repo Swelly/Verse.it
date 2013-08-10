@@ -150,72 +150,70 @@ class PoemsController < ApplicationController
     # Apprentice Wordsmith
     unless user_titles.include?("Apprentice Wordsmith")
       if title_first_post
-        aTitle = Title.where(title: "Apprentice Wordsmith").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Apprentice Wordsmith").first
       end
     end
 
     # Lord Tennyson
     unless user_titles.include?("Lord Tennyson")
       if title_tennyson
-        aTitle = Title.where(title: "Lord Tennyson").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Lord Tennyson").first
       end
     end
 
     # Let Us Go Through Certain Half-Deserted Tweets
     unless user_titles.include?("Let Us Go Through Certain Half-Deserted Tweets")
       if title_let_us(aPoem.text)
-        aTitle = Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
       end
     end
 
     # Wordsworthy
     unless user_titles.include?("Wordsworthy")
       if title_wordsworthy
-        aTitle = Title.where(title: "Wordsworthy").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Wordsworthy").first
       end
     end
 
     # Charge of the Tweet Brigade
     unless user_titles.include?("Charge of the Tweet Brigade")
       if title_tweet_brigade
-        aTitle = Title.where(title: "Charge of the Tweet Brigade").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Charge of the Tweet Brigade").first
       end
     end
 
-    # # Byronic Hero
-    # unless user_titles.include?("Byronic Hero")
-    #   if title_byronic(aPoem.text)
-    #     aTitle = Title.where(title: "Byronic Hero").first
-    #     received_titles.push(aTitle)
-    #   end
-    # end
+    # Byronic Hero
+    unless user_titles.include?("Byronic Hero")
+      if title_byronic(aPoem.text)
+        received_titles << Title.where(title: "Byronic Hero").first
+      end
+    end
 
     # # John Tweets
     # unless current_user.titles.where(title: "John Tweets").blank?
     #   if title_john_tweets(aPoem.text)
-    #     aTitle = Title.where(title: "John Tweets").first
-    #     received_titles.push(aTitle)
+    #     received_titles << Title.where(title: "John Tweets").first
+    #   end
+    # end
+
+    # # A True Poe-t
+    # unless user_titles.include?("A True Poe-t")
+    #   if title_poe(poem_text)
+    #     received_titles << Title.where(title: "A True Poe-t").first
     #   end
     # end
 
     # # Lovecraftian
     # unless current_user.titles.where(title: "Lovecraftian").blank?
     #   if title_lovecraftian(aPoem.text)
-    #     aTitle = Title.where(title: "Lovecraftian").first
-    #     received_titles.push(aTitle)
+    #     received_titles << Title.where(title: "Lovecraftian").first
     #   end
     # end
 
     # Duke of Repartee
-    unless user_titles.include?(title: "Duke of Repartee")
+    unless user_titles.include?("Duke of Repartee")
       if title_repartee(aPoem.source_user)
-        aTitle = Title.where(title: "Duke of Repartee").first
-        received_titles.push(aTitle)
+        received_titles << Title.where(title: "Duke of Repartee").first
       end
     end
 
@@ -244,10 +242,46 @@ class PoemsController < ApplicationController
     return current_user.word_count >= 600
   end
 
+  def title_byronic(poem_text)
+    words = poem_text.downcase.gsub(/[^a-z\s]/, '').split
+
+    byronic_words = ['byronic',
+      'brooding',
+      'moody',
+      'sorrow',
+      'tempestuous',
+      'moors',
+      'stormy',
+      'tortured',
+      'loss',
+      'angst',
+      'vampire',
+      'heathcliff',
+      'sorrowful',
+      'wistful',
+      'longing',
+      'pining',
+      'suffering',
+      'depression',
+      'depressed',
+      'sad',
+      'sadness',
+      'agony',
+      'bipolar'
+    ]
+
+    words.each do |word|
+      if byronic_words.include?(word)
+        return true
+      end
+    end
+
+    return false
+  end
+
   def title_repartee(source_user)
-    binding.pry
     other_user = User.where(twitter_handle: source_user).first
-    unless other_user.blank?
+    if !other_user.blank? && other_user != current_user
       return !(other_user.poems.where(source_user: current_user.twitter_handle).blank?)
     end
     false

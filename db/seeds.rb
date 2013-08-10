@@ -38,6 +38,10 @@ Title.create(title: "John Tweets",
   description: "The memory of Keats is alive in your work!",
   image: "title-john-tweets.jpg")
 
+Title.create(title: "True Poe-t",
+  description: "Quoth the Raven: Forevermore! You used a three-word sequence that also appears in the poems of Edgar Allan Poe.",
+  image: "title-poe.jpg")
+
 Title.create(title: "Lovecraftian",
   description: "That is not dead which can eternal tweet / And with strange poems, even strangers meet.",
   image: "title-lovecraftian.jpg")
