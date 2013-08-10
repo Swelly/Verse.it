@@ -117,23 +117,8 @@ class PoemsController < ApplicationController
       )
 
       # TIME TO CHECK FOR TITLES
-      @titles = []
 
-      if current_user.titles.where(title: "Apprenctice Wordsmith").blank?
-        if title_first_post
-          aTitle = Title.where(title: "Apprentice Wordsmith").first
-          @titles.push(aTitle)
-          current_user.titles << aTitle
-        end
-      end
-
-      if current_user.titles.where(title: "Let Us Go Through Certain Half-Deserted Tweets").blank?
-        if title_let_us(@poem.text)
-          aTitle = Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
-          @titles.push(aTitle)
-          current_user.titles << aTitle
-        end
-      end
+      @titles = check_for_titles(@poem.text)
 
       tweet_text = '#vrsit '
       tweet_text += params[:source_user] + ' '
@@ -170,19 +155,119 @@ class PoemsController < ApplicationController
   ### TITLES
   #####################################
 
-  def title_first_post
-    puts "COUNT #{current_user.poems.count.to_s} \n\n\n\n\n"
-    if current_user.poems.count == 1
-      return true
+  def check_for_titles(poem_text)
+
+    user_titles = current_user.titles
+
+    # XXX
+    # I would love to DRY up this code by just iterating
+    # through the titles, but each title needs to be
+    # associated with its function. What to do?
+
+    ##### Apprentice Wordsmith
+    if user_titles.include?
+      if title_first_post
+        aTitle = Title.where(title: "Apprentice Wordsmith").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
     end
-    return false
+
+    def title_first_post
+      if current_user.poems.count == 1
+        return true
+      end
+      return false
+    end
+
+    ##### Lord Tennyson
+    if current_user.titles.where(title: "Lord Tennyson").blank?
+      if title_tennyson
+        aTitle = Title.where(title: "Lord Tennyson").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    def title_tennyson
+      if current_user.poems.count == 10
+        return true
+      end
+      return false
+    end
+
+    ##### Let Us Go Through Certain Half-Deserted Tweets
+    if current_user.titles.where(title: "Let Us Go Through Certain Half-Deserted Tweets").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    def title_let_us(poem_text)
+      if poem_text.length < 70
+        return true
+      end
+      return false
+    end
+
+    ##### Wordsworthy
+    if current_user.titles.where(title: "Wordsworthy").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Wordsworthy").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    # Charge of the Tweet Brigade
+    if current_user.titles.where(title: "Charge of the Tweet Brigade").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Charge of the Tweet Brigade").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    # Byronic Hero
+    if current_user.titles.where(title: "Byronic Hero").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Byronic Hero").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    # John Tweets
+    if current_user.titles.where(title: "John Tweets").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "John Tweets").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    # Lovecraftian
+    if current_user.titles.where(title: "Lovecraftian").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Lovecraftian").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
+    # Duke of Repartee
+    if current_user.titles.where(title: "Duke of Repartee").blank?
+      if title_let_us(@poem.text)
+        aTitle = Title.where(title: "Duke of Repartee").first
+        @titles.push(aTitle)
+        current_user.titles << aTitle
+      end
+    end
+
   end
 
-  def title_let_us(poem_text)
-    if poem_text.length < 70
-      return true
-    end
-    return false
-  end
+
 
 end
