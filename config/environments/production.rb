@@ -4,10 +4,10 @@ VerseApp::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
-  config.action_dispatch.rack_cache = {
-    metastore:   "redis://localhost:6379/1/metastore",
-    entitystore: "redis://localhost:6379/1/entitystore"
-  }
+  # config.action_dispatch.rack_cache = {
+  #   metastore:   "redis://localhost:6379/1/metastore",
+  #   entitystore: "redis://localhost:6379/1/entitystore"
+  # }
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
