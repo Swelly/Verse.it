@@ -1,3 +1,5 @@
+require Rails.root.join('lib', 'assets', 'wordTrie.rb')
+
 class PoemsController < ApplicationController
 
   # GET
@@ -197,12 +199,12 @@ class PoemsController < ApplicationController
     #   end
     # end
 
-    # # Poe-Trie
-    # unless user_titles.include?("Poe-Trie")
-    #   if title_poe(poem_text)
-    #     received_titles << Title.where(title: "Poe-Trie").first
-    #   end
-    # end
+    # Poe-Trie
+    unless user_titles.include?("Poe-Trie")
+      if title_poe(aPoem.text)
+        received_titles << Title.where(title: "Poe-Trie").first
+      end
+    end
 
     # Lovecraftian
     unless user_titles.include?("Lovecraftian")
@@ -277,6 +279,22 @@ class PoemsController < ApplicationController
       end
     end
 
+    return false
+  end
+
+  def title_poe(poem_text)
+    yaml_string = File.read(File.join(Rails.root, 'poe_trie.txt'))
+    poe_trie = YAML::load(yaml_string)
+
+    words = poem_text.downcase.gsub(/[^a-z\s]/, '').split
+
+    words.each_with_index do |word, i|
+      # binding.pry
+      seq = "#{word} #{words[i+1]} #{words[i+2]}"
+      if poe_trie.find(seq)
+        return true
+      end
+    end
     return false
   end
 
