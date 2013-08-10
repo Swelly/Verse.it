@@ -71,7 +71,8 @@ class PoemsController < ApplicationController
     @poem = Poem.create()
 
     @poem.text = params[:text]
-    @poem.source_user = params[:source_user]
+    source_user = params[:source_user]
+    @poem.source_user = source_user.slice(1, source_user.length - 1)
     @poem.user = current_user
 
     if @poem.save
@@ -80,7 +81,7 @@ class PoemsController < ApplicationController
       current_user.word_count += @poem.text.split.size
 
       # then check for titles
-      @titles = check_for_titles(@poem.text)
+      @titles = check_for_titles(@poem)
       @titles.each do |title|
         current_user.titles << title
       end
@@ -132,7 +133,7 @@ class PoemsController < ApplicationController
   ### TITLES
   #####################################
 
-  def check_for_titles(poem_text)
+  def check_for_titles(aPoem)
 
     received_titles = []
 
@@ -164,7 +165,7 @@ class PoemsController < ApplicationController
 
     # Let Us Go Through Certain Half-Deserted Tweets
     unless user_titles.include?("Let Us Go Through Certain Half-Deserted Tweets")
-      if title_let_us(poem_text)
+      if title_let_us(aPoem.text)
         aTitle = Title.where(title: "Let Us Go Through Certain Half-Deserted Tweets").first
         received_titles.push(aTitle)
       end
@@ -188,7 +189,7 @@ class PoemsController < ApplicationController
 
     # # Byronic Hero
     # unless user_titles.include?("Byronic Hero")
-    #   if title_byronic(poem_text)
+    #   if title_byronic(aPoem.text)
     #     aTitle = Title.where(title: "Byronic Hero").first
     #     received_titles.push(aTitle)
     #   end
@@ -196,7 +197,7 @@ class PoemsController < ApplicationController
 
     # # John Tweets
     # unless current_user.titles.where(title: "John Tweets").blank?
-    #   if title_john_tweets(poem_text)
+    #   if title_john_tweets(aPoem.text)
     #     aTitle = Title.where(title: "John Tweets").first
     #     received_titles.push(aTitle)
     #   end
@@ -204,19 +205,19 @@ class PoemsController < ApplicationController
 
     # # Lovecraftian
     # unless current_user.titles.where(title: "Lovecraftian").blank?
-    #   if title_lovecraftian(poem_text)
+    #   if title_lovecraftian(aPoem.text)
     #     aTitle = Title.where(title: "Lovecraftian").first
     #     received_titles.push(aTitle)
     #   end
     # end
 
-    # # Duke of Repartee
-    # unless current_user.titles.where(title: "Duke of Repartee").blank?
-    #   if title_repartee
-    #     aTitle = Title.where(title: "Duke of Repartee").first
-    #     received_titles.push(aTitle)
-    #   end
-    # end
+    # Duke of Repartee
+    unless user_titles.include?(title: "Duke of Repartee")
+      if title_repartee(aPoem.source_user)
+        aTitle = Title.where(title: "Duke of Repartee").first
+        received_titles.push(aTitle)
+      end
+    end
 
     return received_titles
   end # end of check_for_titles
@@ -241,6 +242,15 @@ class PoemsController < ApplicationController
 
   def title_tweet_brigade
     return current_user.word_count >= 600
+  end
+
+  def title_repartee(source_user)
+    binding.pry
+    other_user = User.where(twitter_handle: source_user).first
+    unless other_user.blank?
+      return !(other_user.poems.where(source_user: current_user.twitter_handle).blank?)
+    end
+    false
   end
 
 end
