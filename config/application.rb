@@ -63,6 +63,6 @@ module VerseApp
     config.assets.version = '1.0'
 
     # Redis config
-    config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+    # config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
   end
 end
