@@ -197,10 +197,10 @@ class PoemsController < ApplicationController
     #   end
     # end
 
-    # # A True Poe-t
-    # unless user_titles.include?("A True Poe-t")
+    # # Poe-Trie
+    # unless user_titles.include?("Poe-Trie")
     #   if title_poe(poem_text)
-    #     received_titles << Title.where(title: "A True Poe-t").first
+    #     received_titles << Title.where(title: "Poe-Trie").first
     #   end
     # end
 
@@ -281,32 +281,32 @@ class PoemsController < ApplicationController
   end
 
   def title_lovecraftian(poem_text)
-    words = poem_text.downcase.gsub(/[^a-z\s\-\']/, '').split
+    words = poem_text.downcase.gsub(/[^a-z\s]/, '').split
 
     lovecraft_words = ['lovecraft',
-      'yog-sothoth',
+      'yogsothoth',
       'shoggoth',
-      'shub-niggurath',
+      'shubniggurath',
       'cthulhu',
-      'r\'lyeh',
+      'rlyeh',
       'kadath',
       'ulthar',
       'azathoth',
       'celephais',
       'nyarlathotep',
       'necronomicon',
-      'al-hazred',
+      'alhazred',
       'fhtagn',
       'arkham',
       'dunwich',
       'miskatonic',
       'leng',
       'eldritch',
-      'non-euclidean',
+      'noneuclidean',
       'innsmouth',
       'tsathoggua',
       'dagon',
-      'tekeli-li'
+      'tekelili'
     ]
 
     words.each do |word|
