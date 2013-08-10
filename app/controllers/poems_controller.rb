@@ -192,13 +192,6 @@ class PoemsController < ApplicationController
       end
     end
 
-    # # John Tweets
-    # unless user_titles.include?("John Tweets")
-    #   if title_john_tweets(aPoem.text)
-    #     received_titles << Title.where(title: "John Tweets").first
-    #   end
-    # end
-
     # Poe-Trie
     unless user_titles.include?("Poe-Trie")
       if title_poe(aPoem.text)
@@ -217,6 +210,13 @@ class PoemsController < ApplicationController
     unless user_titles.include?("Duke of Repartee")
       if title_repartee(aPoem.source_user)
         received_titles << Title.where(title: "Duke of Repartee").first
+      end
+    end
+
+    # Rake, Progressing
+    unless user_titles.include?("Rake, Progressing")
+      if title_rake(aPoem.source_user)
+        received_titles << Title.where(title: "Rake, Progressing").first
       end
     end
 
@@ -343,6 +343,34 @@ class PoemsController < ApplicationController
       return !(other_user.poems.where(source_user: current_user.twitter_handle).blank?)
     end
     false
+  end
+
+  def title_rake(poem_text)
+    words = poem_text.downcase.gsub(/[^a-z\s]/, '').split
+
+    rake_words = ['fuck',
+      'fucking',
+      'shit',
+      'whore',
+      'sex',
+      'orgy',
+      'brothel',
+      'gambling',
+      'booze',
+      'liquor',
+      'beer',
+      'beers',
+      'cock'
+    ]
+
+    words.each do |word|
+      if rake_words.include?(word)
+        return true
+      end
+    end
+
+    return false
+
   end
 
 end

@@ -46,7 +46,7 @@ Title.create(title: "Duke of Repartee",
   description: "You replied to someone who wrote you a poem.",
   image: "title-repartee.png")
 
-Title.create(title: "Rake's Progess",
-  description: "You're a dirty libertine, aren't you?",
+Title.create(title: "Rake, Progressing",
+  description: "What a filthy libertine you are!",
   image: "title-rake.png")
 
