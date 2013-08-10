@@ -215,13 +215,14 @@ class PoemsController < ApplicationController
 
     # Rake, Progressing
     unless user_titles.include?("Rake, Progressing")
-      if title_rake(aPoem.source_user)
+      if title_rake(aPoem.text)
         received_titles << Title.where(title: "Rake, Progressing").first
       end
     end
 
     return received_titles
   end # end of check_for_titles
+
 
 
   ##### Title check functions
@@ -351,6 +352,8 @@ class PoemsController < ApplicationController
     rake_words = ['fuck',
       'fucking',
       'shit',
+      'shitting',
+      'shite',
       'whore',
       'sex',
       'orgy',
