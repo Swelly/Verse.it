@@ -56,7 +56,7 @@ class PoemsController < ApplicationController
     # query Twitter API to get source user's last 30 tweets
     # XXX
     begin
-      @tweets = Twitter.user_timeline(handle)
+      @tweets = Twitter.user_timeline(handle, count: 30)
     rescue Twitter::Error::TooManyRequests
       puts "Twitter API Rate Limit Exceeded"
       @tweets = {}
