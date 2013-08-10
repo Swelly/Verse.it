@@ -20,6 +20,9 @@ class WordTrie
     words.each do |word|
       return nil unless node = node[word]
     end
+    puts "Node: #{node}"
+    puts "End: #{:end}"
+    puts "Node end: #{node[:end]}"
     node[:end] && true
   end
 
