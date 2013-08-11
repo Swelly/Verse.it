@@ -72,16 +72,18 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
 <!-- "You posted!" page -->
 <!-- XXX
 REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
-<div id="you-posted" class="hidden">
-  <p>Excellent work! You've shared your art with the Twitterverse!</p>
-  <div id="titles"></div>
-  <%= button_to 'Write another?', '/poems/new', method: 'get' %>
-  <%= button_to 'Go to the salon', '/poems', method: 'get' %>
-<div class = "container">
+<div id = "all-user-selection">
   <div id="you-posted" class="hidden">
     <p>Excellent work! You've shared your art with the Twitterverse!</p>
-    <%= button_to 'Write another?', '/poems/new', method: "get" %>
-    <%= button_to 'Go to the salon', '/poems', method: "get" %>
+    <div id="titles"></div>
+    <%= button_to 'Write another?', '/poems/new', method: 'get' %>
+    <%= button_to 'Go to the salon', '/poems', method: 'get' %>
+  <div class = "container">
+    <div id="you-posted" class="hidden">
+      <p>Excellent work! You've shared your art with the Twitterverse!</p>
+      <%= button_to 'Write another?', '/poems/new', method: "get" %>
+      <%= button_to 'Go to the salon', '/poems', method: "get" %>
+    </div>
   </div>
 </div>
 

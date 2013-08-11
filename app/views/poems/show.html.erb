@@ -1,14 +1,15 @@
 <div class = "container">
-  <h1>A Poem by @<%= @poem.user.twitter_handle %></h1>
+  <h2 id = "poem-auth">A Poem by @<%= @poem.user.twitter_handle %></h2>
   <p>From the tweets of <%= @poem.source_user %></p><br>
 
-  <p class="poem-text"><%= @poem.text %></p>
+  <p class="poem-text">"<%= @poem.text %>"</p>
+  <br>
 
   <% if current_user == @poem.user %>
-    <button id="delete-poem-button">Delete this poem?</button>
+    <button id="delete-poem-button" class ="btn-danger">Delete this poem?</button>
     <div id="sure">
       <p>Are you sure?</p>
-      <%= button_to 'Yes', "/poems/#{@poem.id}", method: 'delete' %>
+      <%= button_to 'Yes', "/poems/#{@poem.id}", method: 'delete', class: "btn-danger" %>
     </div>
   <% end %>
 
