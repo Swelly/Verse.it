@@ -17,10 +17,6 @@ namespace :twitter do
 
     client = TweetStream::Client
     puts client
-    client.new.sample do |status|
-      puts "#{status.user.screen_name}"
-      Twitteruser.create(screen_name: status.user.screen_name)
-    end
 
     users_i_like = ['ichthala',
       'wescarr17',
@@ -31,6 +27,13 @@ namespace :twitter do
     users_i_like.each do |user|
       Twitteruser.create(screen_name: user)
     end
+
+    client.new.sample do |status|
+      puts "#{status.user.screen_name}"
+      Twitteruser.create(screen_name: status.user.screen_name)
+    end
+
+
 
     client.on_limit do |skip_count|
       # do something
