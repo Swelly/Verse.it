@@ -33,9 +33,9 @@ body > .navbar {
 
 /* Change the docs' brand */
 body > .navbar .brand {
-  padding-right: 0;
-  padding-left: 0;
+  padding: 13px 0 0 0;
   margin-left: 20px;
+  /*margin-top: 15px;*/
   float: left;
   font-weight: bold;
   color: #000;

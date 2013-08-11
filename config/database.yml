@@ -23,10 +23,10 @@ test:
   username: verse
   password:
 
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: verse_production
-#   pool: 5
-#   username: verse
-#   password:
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: verse_production
+  pool: 5
+  username: verse
+  password:

@@ -49,11 +49,6 @@ body {
   width: 35px;
   text-align: left;
 }
-#user-select {
-  height: 500px;
-  width: 420px;
-  float: left;
-}
 
 .user-display {
   height: 800px;
@@ -72,5 +67,5 @@ body {
 }
 
 .poem-text {
-  font-size: 2em;
+  font-size: 15px;
 }

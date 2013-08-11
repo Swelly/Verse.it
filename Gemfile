@@ -14,7 +14,7 @@ gem 'redis-rails' # provides a full set of stores (*Cache*, Session, HTTP Cache)
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-gem 'pg'
+gem 'pg', :group => :production
 
 gem 'twitter'
 gem 'tweetstream'

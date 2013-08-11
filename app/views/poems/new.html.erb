@@ -6,7 +6,7 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
     <%= image_tag "arrowLeft.png" %>
   </div>
 
-  <div id="user-select">
+  <div id="user-selection">
   </div>
 
   <div id="right-arrow" class="span3">
@@ -16,11 +16,9 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
   <div>
     <button class= "btn btn-info" id="user-select-button">I like this one!</button>
   </div>
-
   <div id="user-search" class="clearfix:after">
-    <label for="search">Or, find a user of your choice:</label>
-    <input id="search" name="search" type="text" />
-    <input id="user-search-button" type="submit" value="Fetch me this one!" />
+    <input id="search" name="search" type="text" placeholder = "Find someone else"/>
+    <input class ="btn btn-info" type="submit" value="Fetch" />
   </div>
 
 </div>
@@ -74,16 +72,18 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
 <!-- "You posted!" page -->
 <!-- XXX
 REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
-<div id="you-posted" class="hidden">
-  <p>Excellent work! You've shared your art with the Twitterverse!</p>
-  <div id="titles"></div>
-  <%= button_to 'Write another?', '/poems/new', method: 'get' %>
-  <%= button_to 'Go to the salon', '/poems', method: 'get' %>
-<div class = "container">
+<div id = "all-user-selection">
   <div id="you-posted" class="hidden">
     <p>Excellent work! You've shared your art with the Twitterverse!</p>
-    <%= button_to 'Write another?', '/poems/new', method: "get" %>
-    <%= button_to 'Go to the salon', '/poems', method: "get" %>
+    <div id="titles"></div>
+    <%= button_to 'Write another?', '/poems/new', method: 'get' %>
+    <%= button_to 'Go to the salon', '/poems', method: 'get' %>
+  <div class = "container">
+    <div id="you-posted" class="hidden">
+      <p>Excellent work! You've shared your art with the Twitterverse!</p>
+      <%= button_to 'Write another?', '/poems/new', method: "get" %>
+      <%= button_to 'Go to the salon', '/poems', method: "get" %>
+    </div>
   </div>
 </div>
 

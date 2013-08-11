@@ -13,6 +13,7 @@
   <h2><%= @user.twitter_handle %>'s Titles:</h2>
 
     <%= render @user.titles %>
+    <br>
 
   <% if current_user && current_user.id == @user.id %>
     <%= render 'devise/menu/registration_items' %>
