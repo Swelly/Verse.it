@@ -1,10 +1,4 @@
 ---
-AnticSlab-Regular.ttf: AnticSlab-Regular-95b530b8037692eceebca9a1dbd782aa.ttf
-AnticSlab-Regular/index.ttf: AnticSlab-Regular-95b530b8037692eceebca9a1dbd782aa.ttf
-HomemadeApple.ttf: HomemadeApple-b7785cbb58c594f4091fc24fdf6e7e98.ttf
-HomemadeApple/index.ttf: HomemadeApple-b7785cbb58c594f4091fc24fdf6e7e98.ttf
-Quintessential-Regular.ttf: Quintessential-Regular-30ed62f1b1339208c6f300815d172d83.ttf
-Quintessential-Regular/index.ttf: Quintessential-Regular-30ed62f1b1339208c6f300815d172d83.ttf
 arrowLeft.png: arrowLeft-c980cae641f56ef13a1cc826d784c130.png
 arrowLeft/index.png: arrowLeft-c980cae641f56ef13a1cc826d784c130.png
 arrowRight.png: arrowRight-7711fedf097b31d9295ad8e0513c08cb.png
@@ -35,7 +29,7 @@ title-wordsworthy.png: title-wordsworthy-4c1890afef61bfe53bb3574088011d3a.png
 title-wordsworthy/index.png: title-wordsworthy-4c1890afef61bfe53bb3574088011d3a.png
 application.js: application-713305f8d3efa8de780b006ca85318a3.js
 application/index.js: application-713305f8d3efa8de780b006ca85318a3.js
-application.css: application-0ec711e75766b58aec127e65fe4d268f.css
-application/index.css: application-0ec711e75766b58aec127e65fe4d268f.css
+application.css: application-ce090e2f5050e5a5e7b824f40d336226.css
+application/index.css: application-ce090e2f5050e5a5e7b824f40d336226.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
