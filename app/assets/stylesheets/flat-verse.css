@@ -162,13 +162,16 @@ a {
   transition: 0.18s;
   -webkit-backface-visibility: hidden;
 }
+
 a:hover {
   color: #7AA1A7;
   text-decoration: none;
 }
+
 .brand {
   font-family: 'Homemade Apple', cursive;
 }
+
 #you-posted {
   background-color: rgba(255,255,255, 0.4);
   box-shadow: 0px 0px 3px #BDBDBD;
@@ -178,6 +181,7 @@ a:hover {
   text-align: center;
   height: auto;
 }
+
 h1,
 .h1 {
   font-family: 'Homemade Apple', cursive;
@@ -187,12 +191,12 @@ h1,
 }
 h2,
 .h2 {
-  font-family: 'Quintessential', cursive;
+  font-family: 'Antic Slab', serif;
   font-size: 47;
 }
 h3,
 .h3 {
-  font-family: 'Antic Slab' serfif;
+  font-family: 'Antic Slab', serif;
   font-size: 35px;
   border-bottom: 1px dotted;
 }
