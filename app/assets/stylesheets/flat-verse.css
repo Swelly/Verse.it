@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Lobster+Two|Quintessential|Homemade+Apple");
+@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Quintessential|Homemade+Apple");
 
 .inline-block {
   display: inline-block;
@@ -124,11 +124,11 @@ body {
 }
 
 #user-handle {
-  font-family: 'Lobster Two', cursive;
+  font-family: 'Quintessential', cursive;
   font-size: 30px;
   border-bottom: 1px solid #363220;
 }
-#user-selection {
+#user-select {
   height: 400px;
   width: 420px;
   float: left;
