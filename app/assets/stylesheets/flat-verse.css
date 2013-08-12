@@ -1,5 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=Antic+Slab|Lobster+Two|Quintessential|Homemade+Apple");
-
 .inline-block {
   display: inline-block;
   zoom: 1;
@@ -34,18 +32,24 @@ body {
   padding-top: 30px;
 }
 #title {
-  /*font-family: 'Homemade Apple', cursive;*/
-  font-size: 65px;
-  line-height: 150%;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 75px;
+  line-height: 400%;
   margin-right: auto;
+  text-shadow: 0px 1px 1px #4d4d4d;
+        color: #0B3861;
 }
 #all-user-selection {
   width: auto;
   height: auto;
-  margin-top: 25px;
+  margin-top: 45px;
+  margin-left: 185px;
 }
 #user-search {
   clear: both;
+  text-align: center;
+  width: 300px;
+  margin-left: 150px;
 }
 #poem-page {
   display: block;
@@ -113,25 +117,30 @@ body {
   margin-left: 70px;
 }
 #clear {
-  top: -10px;
-  margin-right: 18px;
+  margin-top: 5px;
+  margin-right: 13px;
+  padding: 5px 10px;
 }
-#char_count {
-  float: right;
-  border-radius: 6px;
-  background-color: rgba(255,50,230,0.8);
-  padding: 5px;
+#char-count {
+  font-size: 20px;
 }
 
 #user-handle {
-  font-family: 'Lobster Two', cursive;
+  font-family: 'Quintessential', cursive;
   font-size: 30px;
   border-bottom: 1px solid #363220;
 }
-#user-selection {
-  height: 400px;
+#user-select {
+  height: 300px;
   width: 420px;
   float: left;
+  text-align: center;
+  margin: 0 10px;
+  padding-top: 20px;
+  background-color: rgba(255,255,255, 0.4);
+  box-shadow: 0px 0px 3px #BDBDBD;
+  border-radius: 12px;
+  margin-bottom: 40px;
 }
 #user-select-button {
   float: left;
@@ -147,10 +156,10 @@ textarea {
 a {
   color: #9E855E;
   text-decoration: none;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+  -webkit-transition: 0.18s;
+  -moz-transition: 0.18s;
+  -o-transition: 0.18s;
+  transition: 0.18s;
   -webkit-backface-visibility: hidden;
 }
 a:hover {
@@ -160,10 +169,21 @@ a:hover {
 .brand {
   font-family: 'Homemade Apple', cursive;
 }
+#you-posted {
+  background-color: rgba(255,255,255, 0.4);
+  box-shadow: 0px 0px 3px #BDBDBD;
+  width: 600px;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  height: auto;
+}
 h1,
 .h1 {
   font-family: 'Homemade Apple', cursive;
   font-size: 62.006px /* 64px */;
+  width: 400px;
+  border-bottom: 1px dotted gray;
 }
 h2,
 .h2 {
@@ -452,6 +472,7 @@ a.muted:focus {
 }
 .btn.btn-info {
   background-color: rgba(52,73,94,0.85);
+  margin-bottom: 10px;
 }
 .btn.btn-info:hover,
 .btn.btn-info:focus,
