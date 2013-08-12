@@ -98,12 +98,18 @@ body {
   width: 400px;
   min-width: 200px;
   height: 500px;
-  padding: 20px 20px 18px 20px;
+  padding: 0 20px 18px 20px;
   /*border: 3px dotted black;*/
   /*background-color: rgba(101,100,100,0.1);*/
 }
+#genius {
+  /*bottom: 0;*/
+  /*text-align: center;*/
+  margin-left: 90px;
+  margin-top: 110px;
+}
 .poem {
-  min-height: 450px;
+  min-height: 435px;
   background-color: rgba(101,100,100,0.1);
   border: 1px solid black;
 }
