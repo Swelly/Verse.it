@@ -102,7 +102,7 @@ class PoemsController < ApplicationController
       tweet_text = '#vrsit '
       tweet_text += params[:source_user] + ' '
       tweet_text += @poem.text.truncate(90) + ' '
-      tweet_text += 'verse.it/poems/' + @poem.id.to_s
+      tweet_text += 'verseit.herokuapp.com/poems/' + @poem.id.to_s
       client.update(tweet_text)
 
     else
