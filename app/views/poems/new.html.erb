@@ -1,0 +1,336 @@
+<!-- XXX
+THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
+
+<div id="all-user-selection">
+  <div id="left-arrow" class="span3">
+    <%= image_tag "arrowLeft.png" %>
+  </div>
+
+  <div id="user-select">
+  </div>
+
+  <div id="right-arrow" class="span3">
+    <%= image_tag "arrowRight.png" %>
+  </div>
+
+  <div>
+    <button class= "btn btn-info" id="user-select-button">I like this one!</button>
+  </div>
+  <div id="user-search" class="clearfix:after">
+    <input id="search" name="search" type="text" placeholder = "Find someone else"/>
+    <input class ="btn btn-info" id = "user-search-button" type="submit" value="Fetch" />
+  </div>
+
+</div>
+
+<div id="poem-page" class="hidden">
+  <div id = "instructions-header">
+    <p id = "instruct"> <!-- Click to hide this header text -->
+      Click on any word in the tweet list to move it into your poem blotter.
+    </p>
+  </div>
+
+  <div class="poem-wrapper"> <!-- Holds the dynamic aspects -->
+
+    <div id="tweets">
+      <p id="user-handle"></p>
+      <!-- Tweets will occupy this window -->
+    </div>
+<button class="btn btn-info" id="genius">Genius!</button>
+    <div id="poem-form"> <!-- Holds the poem and the punctuation -->
+        <div id="char-count">140</div>
+      <div class="poem">
+
+
+        <!-- Words will go in here once tweet text is clicked -->
+      </div>
+      <div class="punctuation-panel">
+        <!-- clickable spans to add punctuation in front of words -->
+        <button class = "btn btn-mini punct">,</button>
+        <button class = "btn btn-mini punct">.</button>
+        <button class = "btn btn-mini punct">?</button>
+        <button class = "btn btn-mini punct">!</button>
+        <button class = "btn btn-mini punct">:</button>
+        <button class = "btn btn-mini punct">;</button>
+        <button class = "btn btn-mini"  id="backspace">delete</button>
+        <button class = "btn btn-mini punct" id="newline">¬</button>
+        <button class = "btn btn-danger" id="clear">clear</button>
+      </div> <!-- Panel end -->
+
+      <!-- Will update with every character entered -->
+    </div>
+    <!-- Poem form end -->
+
+
+
+  </div>
+  <!-- Wrapper end -->
+
+</div>
+<!-- Poem page end -->
+
+
+<!-- "You posted!" page -->
+<!-- XXX
+REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
+<div id = "all-user-selection">
+  <div id="you-posted" class="hidden">
+    <p>Excellent work! You've shared your art with the Twitterverse!</p>
+    <div id="titles"></div>
+    <br>
+    <%= button_to 'Write another?', '/poems/new', method: 'get', class: "btn-primary" %>
+    <%= button_to 'Go to the salon', '/poems', method: 'get', class: "btn-primary" %>
+  <div class = "container">
+    <div id="you-posted" class="hidden">
+      <br>
+      <p>Excellent work! You've shared your art with the Twitterverse!</p>
+      <%= button_to 'Write another?', '/poems/new', method: "get", class: "btn-primary" %>
+      <%= button_to 'Go to the salon', '/poems', method: "get", class: "btn-primary" %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+/////////////////////////
+// SOURCE USER SELECTION
+/////////////////////////
+
+var currUserIndex = 0;
+var userDivs = [];
+var box;
+
+var counterStuff = {
+  count: 0,
+  counter: null
+}
+
+// XXX
+// I have two potential iteration variables, div id or global variable, which is better?
+
+var createUserDisplay = function(divID, user) {
+  var userDisplay = $('<div></div>');
+  userDisplay.append('<img src="' + user.profile_image_url + '"><br>');
+  userDisplay.append('<span class="handle"><a href="http://www.twitter.com/' + user.screen_name +'">' + user.screen_name + '</a></span><br>');
+  userDisplay.append(user.name + '<br>');
+  userDisplay.append(user.description + '<br><br>');
+  userDisplay.append(user.status.text);
+  userDisplay.attr('id', divID);
+  return userDisplay;
+};
+
+$(function() {
+
+  box = $('#user-select');
+
+  // get some random users
+  $.ajax({
+    url: '/poems/select_user',
+    dataType: 'json',
+    type: 'GET'
+  }).done(function(data) { //handle the json response
+
+    $(data).each(function(index, user) { userDivs.push(createUserDisplay(index, user)); });
+    box.html(userDivs[currUserIndex]);
+  });
+
+  $('#left-arrow').click(scrollLeft);
+  $('#right-arrow').click(scrollRight);
+  $('#user-select-button').click(initiatePoemCreation);
+  $('#user-search-button').click(initiatePoemCreation);
+
+  $('#genius').click(saveAndShare);
+
+  counterStuff.counter = $('#char-count');
+  counterStuff.count = 0;
+
+});
+
+var updateCounter = function() {
+  counterStuff.counter.text((140 - counterStuff.count).toString());
+}
+
+var scrollLeft = function() {
+  if (currUserIndex !== 0) {
+    currUserIndex -= 1;
+    box.html($(userDivs[currUserIndex]));
+  }
+};
+
+var scrollRight = function() {
+  if (currUserIndex < userDivs.length - 1) {
+    currUserIndex += 1;
+    box.html($(userDivs[currUserIndex]));
+  }
+};
+
+/////////////////////////
+// POEM CREATION
+/////////////////////////
+
+var initiatePoemCreation = function(event) {
+
+  var user;
+  if ($(event.target).attr('id') === "user-select-button") {
+    user = {
+      handle: $('.handle')[0].innerText
+    };
+  }
+  else if ($(event.target).attr('id') === "user-search-button") {
+    user = {
+      handle: $('#search').val()
+    }
+  }
+
+  $.ajax({
+    type: 'POST',
+    url: '/poems/write_poem',
+    dataType: 'json',
+    data: user
+  }).done(function(data) {
+    // returned data = { user: user info, tweets: array of last 30 tweets }
+    // use the returned data to generate the poem creation view
+    // XXX
+    // perhaps another ajax request, this time returning html?
+
+    $('#user-handle').text('@' + data[0].user.screen_name);
+
+    var tweets = [];
+    _.each(data, function(aTweet) {
+      tweets.push(aTweet);
+    })
+
+    // XXX
+    // Can I extract this iterator?
+    var tweetDivs = _.map(tweets, function(tweet) {
+      var tweetDiv = $('<div class="tweet"></div>');
+      tweetDiv.append('<p class="tweet-text">' + tweet.text + '</p>');
+      tweetDiv.append('<p class="tweet-time">' + tweet.created_at + '</p>');
+      return tweetDiv;
+    });
+
+    // process HTML within tweets to make each word a span with class "word"
+    // then append each element to the tweets div for poem form entry
+    _.each(tweetDivs, function(element) {
+      var textInTweet = $(element).find('.tweet-text')[0].innerText;
+      var wordsArray = textInTweet.split(/\s/);
+      for (var i = 0; i < wordsArray.length; i += 1) {
+        wordsArray[i] = ("<span class='word'>" + wordsArray[i] + " </span>");
+      }
+      var wordsInSpans = _.reduce(wordsArray, function(memo, word){ return memo + word; });
+      $(element).find('.tweet-text')[0].innerHTML = wordsInSpans;
+      $('#tweets').append(element);
+    });
+
+    $('#all-user-selection').slideUp(1000);
+    $('#poem-page').removeClass('hidden').show(1000);
+    $('.word').click(addWord);
+
+  });
+};
+
+// Appends a word to the poem panel when it's clicked in the tweet panel
+var addWord = function(event) {
+  // create a new div with the styling we want
+  var word = $(event.target).text();
+  word = word.trim();
+
+  // XXX
+  // remove leading and trailing punctuation from words
+
+  if ( counterStuff.count + word.length + 1 <= 140 ) {
+    if ($('.poem .btn').length === 0) {
+      counterStuff.count = word.length;
+    }
+    else {
+      counterStuff.count = counterStuff.count + word.length + 1;
+    }
+    updateCounter();
+    var wordButton = $('<button class="btn btn-mini">' + word + '</button>');
+    $('.poem').append(wordButton);
+  }
+
+};
+
+// Appends punctuation (if clicked) to poem form
+$('.punct').click(function() {
+  if (counterStuff.count < 140) {
+    counterStuff.count += 1;
+    updateCounter();
+    var poemButton = this;
+    $(poemButton).clone().appendTo('.poem');
+  }
+});
+
+// Removes the last child when backspace is clicked
+$('#backspace').click(function() {
+  if ($(".poem .btn").length !== 0) {
+    var removeLength = $(".poem :last-child").text().length;
+    if (removeLength === counterStuff.count) {
+      counterStuff.count = 0;
+    }
+    else {
+      // the +1 is for the extra space char removed
+      counterStuff.count -= (removeLength + 1);
+    }
+    updateCounter();
+
+    $(".poem :last-child").remove();
+  }
+});
+
+$('#clear').click(function() {
+  $(".poem").html('');
+  counterStuff.count = 0;
+  updateCounter();
+});
+
+//clears the poem form (reset)
+$('#clear').click(function() {
+  $('.poem').children().remove();
+})
+
+// rids of the instructions
+$('#instruct').click(function() {
+  $('#instruct').slideUp(400);
+});
+
+// refactor later. Can put mouseout function in hover function
+$('img').hover(function() {
+    $(this).css("opacity", '0.70');
+});
+$('img').mouseout(function() {
+    $(this).css('opacity', '1.0');
+});
+
+// genius button shares to twitter
+var saveAndShare = function() {
+  // save the poem as a variable
+  var poem = {};
+  var text = "";
+  $.each($('.poem')[0].children, function(index, element) {
+    if ($(element).hasClass('punct')) {
+      text = text.trim() + element.innerText + ' ';
+    }
+    else {
+      text += element.innerText + ' ';
+    }
+  });
+  text = text.trim();
+  text = text.split('¬').join('\n');
+  poem.text = text;
+
+  poem.source_user = $('#user-handle').text();
+
+  // send the poem to poems#create via Ajax request
+  $.ajax({
+    type: 'POST',
+    url: '/poems',
+    data: poem,
+    dataType: 'script'
+  });
+};
+
+</script>
