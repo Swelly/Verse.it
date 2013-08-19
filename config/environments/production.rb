@@ -1,6 +1,22 @@
 VerseApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  client = Dalli::Client.new  config.action_dispatch.rack_cache = {
+    metastore: client,
+    entitystore: client,
+    allow_reload: false
+  }
+
+  config.cache_store = :dalli_store
+
+  config.serve_static_assets = true
+
+  config.static_cache_control = "public, max-age=2592000"
+
+  config.assets.digest = true
+
+  config.action_controller.perform_caching = true
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
