@@ -11,7 +11,7 @@ describe Poem do
     FactoryGirl.build(:poem, text: "").should_not be_valid
   end
 
-  # it "is invalid without an author"
+  it { should belong_to(:user) }
 
   it "is invalid without a source user" do
     FactoryGirl.build(:poem, source_user: "").should_not be_valid

@@ -17,15 +17,35 @@ describe PoemsController do
   end
 
   describe "GET #select_user" do
+    it "populates an array of 9 random users + horse_ebooks"
   end
 
   describe "POST #write_poem" do
+    it "populates an array of source user's last 30 tweets"
   end
 
   describe "POST #create" do
+    contect "with a logged-in user" do
+      context "with valid attributes" do
+        it "saves the poem to the database"
+        it "shares the poem to Twitter"
+      end
+
+      context "with invalid attributes" do
+        it "does not save the poem to the database"
+        it "does not share to Twitter"
+      end
+    end
+
+    context "with no user logged in" do
+      it "redirects the user to Twitter log-in"
+    end
+
   end
 
   describe "DELETE #destroy" do
+    it "removes the poem from the database"
+    it "redirects to the user's profile page"
   end
 
   describe "title checks" do
