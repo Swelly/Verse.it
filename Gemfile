@@ -35,8 +35,16 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+
 group :development, :test do
   gem 'rspec'
+  gem 'factory_girl_rails'
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
   gem 'pry-debugger'        # Adds step, next, finish, and continue commands and breakpoints
@@ -47,7 +55,7 @@ group :development, :test do
                             # https://github.com/ctran/annotate_models
   gem 'quiet_assets'        # Turns off the Rails asset pipeline log
                             # https://github.com/evrone/quiet_assets
-  gem 'better_errors'       # Replaces the standard Rails error page with a much better and more useful error page
+  # gem 'better_errors'       # Replaces the standard Rails error page with a much better and more useful error page
                             # https://github.com/charliesome/better_errors
   gem 'binding_of_caller'   # Advanced features for better_errors advanced features (REPL, local/instance variable inspection, pretty stack frame names)
                             # https://github.com/banister/binding_of_caller
