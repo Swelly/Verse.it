@@ -116,16 +116,6 @@ class PoemsController < ApplicationController
 
   end
 
-  # GET
-  # we probably don't need this
-  def edit
-  end
-
-  # PUT
-  # don't need this either
-  def update
-  end
-
   # DELETE
   # deletes a poem, redirects to user profile?
   def destroy
