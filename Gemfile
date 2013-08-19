@@ -1,21 +1,19 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
+
 gem 'rails', '3.2.13'
 gem 'twitter'
 
+gem 'jquery-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
+gem 'newrelic_rpm' # Installing New_Relic as a gem
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'dotenv-rails'
 
-gem 'redis-rails' # provides a full set of stores (*Cache*, Session, HTTP Cache)
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# gem 'sqlite3'
 gem 'pg', :group => :production
-
+gem 'puma', :group => :production
 gem 'twitter'
 gem 'tweetstream'
 gem 'unicorn'
@@ -74,18 +72,3 @@ group :development, :test do
                             # https://github.com/voormedia/rails-erd
   gem 'rspec-rails', '~> 2.0' # Rspec-rails is a testing framework for Rails 3.x and 4.x.
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
