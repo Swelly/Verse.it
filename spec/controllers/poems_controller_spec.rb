@@ -3,13 +3,29 @@ require 'spec_helper'
 describe PoemsController do
 
   describe "GET #index" do
-    it "populates an array of poems"
-    it "renders the index (Salon) view"
+    it "populates an array of poems" do
+      poem = FactoryGirl.create(:poem)
+      get :index
+      assigns(:poems).should eq([poem])
+    end
+
+    it "renders the index (Salon) view" do
+      get :index
+      response.should render_template :index
+    end
   end
 
   describe "GET #show" do
-    it "returns the poem with the given ID"
-    it "renders the show view"
+    it "returns the poem with the given ID" do
+      poem = FactoryGirl.create(:poem)
+      get :show, id: poem
+      assigns(:poem).should eq(poem)
+    end
+
+    it "renders the show view" do
+      get :show, id: FactoryGirl.create(:contact)
+      response.should render_template :show
+    end
   end
 
   describe "GET #new" do
@@ -25,7 +41,7 @@ describe PoemsController do
   end
 
   describe "POST #create" do
-    contect "with a logged-in user" do
+    context "with a logged-in user" do
       context "with valid attributes" do
         it "saves the poem to the database"
         it "shares the poem to Twitter"
@@ -40,7 +56,6 @@ describe PoemsController do
     context "with no user logged in" do
       it "redirects the user to Twitter log-in"
     end
-
   end
 
   describe "DELETE #destroy" do
@@ -48,14 +63,14 @@ describe PoemsController do
     it "redirects to the user's profile page"
   end
 
-  describe "title checks" do
 
+
+  describe "title checks" do
     describe "title_first_post" do
     end
 
     describe "title_tennyson" do
     end
-
   end
 
 end
