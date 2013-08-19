@@ -1,7 +1,4 @@
-require 'yaml'
-require_relative '../assets/wordTrie'
-
-namespace :poe_tree do
+namespace :poe_array do
   desc "TODO"
   task :build => :environment do
 

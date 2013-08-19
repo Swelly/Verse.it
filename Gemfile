@@ -18,6 +18,7 @@ gem 'pg', :group => :production
 
 gem 'twitter'
 gem 'tweetstream'
+gem 'unicorn'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +35,13 @@ end
 gem 'jquery-rails'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+
+group :development do
+  gem 'memcachier'
+  gem 'rack-cache'
+  gem 'dalli'
+  gem 'kgio'
+end
 
 group :test do
   gem 'faker'
