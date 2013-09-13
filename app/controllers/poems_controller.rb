@@ -81,32 +81,33 @@ class PoemsController < ApplicationController
     @poem.user = current_or_guest_user
 
     if @poem.save
-
       # update the user's word_count
-      current_user.word_count += @poem.text.split.size
+      current_or_guest_user.word_count += @poem.text.split.size
 
       # then check for titles
-      @titles = check_for_titles(@poem)
-      @titles.each do |title|
-        current_user.titles << title
+      if current_user
+        @titles = check_for_titles(@poem)
+        @titles.each do |title|
+          current_user.titles << title
+        end
+
+        token = current_user.twitter_oauth_token #||= ENV['YOUR_OAUTH_TOKEN']
+        secret = current_user.twitter_oauth_secret #||= ENV['YOUR_OAUTH_TOKEN_SECRET']
+
+        # time to tweet the poem!
+        client = Twitter::Client.new(
+          consumer_key: ENV['YOUR_CONSUMER_KEY'],
+          consumer_secret: ENV['YOUR_CONSUMER_SECRET'],
+          oauth_token: token,
+          oauth_token_secret: secret
+        )
+
+        tweet_text = '#vrsit '
+        tweet_text += params[:source_user] + ' '
+        tweet_text += @poem.text.truncate(90) + ' '
+        tweet_text += 'verseit.herokuapp.com/poems/' + @poem.id.to_s
+        client.update(tweet_text)
       end
-
-      token = current_user.twitter_oauth_token #||= ENV['YOUR_OAUTH_TOKEN']
-      secret = current_user.twitter_oauth_secret #||= ENV['YOUR_OAUTH_TOKEN_SECRET']
-
-      # time to tweet the poem!
-      client = Twitter::Client.new(
-        consumer_key: ENV['YOUR_CONSUMER_KEY'],
-        consumer_secret: ENV['YOUR_CONSUMER_SECRET'],
-        oauth_token: token,
-        oauth_token_secret: secret
-      )
-
-      tweet_text = '#vrsit '
-      tweet_text += params[:source_user] + ' '
-      tweet_text += @poem.text.truncate(90) + ' '
-      tweet_text += 'verseit.herokuapp.com/poems/' + @poem.id.to_s
-      client.update(tweet_text)
 
     else
       # XXX
@@ -135,7 +136,7 @@ class PoemsController < ApplicationController
     received_titles = []
 
     user_titles = []
-    current_user.titles.each do |title|
+    current_or_guest_user.titles.each do |title|
       user_titles << title.title
     end
 
@@ -346,7 +347,7 @@ class PoemsController < ApplicationController
 
     rake_words = ['fuck',
       'fucking',
-      'fucked',å
+      'fucked',
       'shit',
       'shitting',
       'shite',
