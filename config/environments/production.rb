@@ -1,13 +1,13 @@
 VerseApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  client = Dalli::Client.new  config.action_dispatch.rack_cache = {
-    metastore: client,
-    entitystore: client,
-    allow_reload: false
-  }
+  # client = Dalli::Client.new  config.action_dispatch.rack_cache = {
+  #   metastore: client,
+  #   entitystore: client,
+  #   allow_reload: false
+  # }
 
-  config.cache_store = :dalli_store
+  # config.cache_store = :dalli_store
 
   config.serve_static_assets = true
 
