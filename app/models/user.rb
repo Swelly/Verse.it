@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                           password:Devise.friendly_token[0,20],
                           word_count:0,
                           url: ''
-                          )
+                        )
     end
     return user
   end
@@ -48,10 +48,6 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
-  end
-
-  def self.new_guest
-    new { |u| u.guest = true }
   end
 
 end

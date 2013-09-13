@@ -78,11 +78,7 @@ class PoemsController < ApplicationController
     source_user = params[:source_user]
     @poem.source_user = source_user.slice(1, source_user.length - 1)
 
-    if current_user
-      @poem.user = current_user
-    else
-      @poem.user = User.new_guest
-    end
+    @poem.user = current_or_guest_user
 
     if @poem.save
 
@@ -350,6 +346,7 @@ class PoemsController < ApplicationController
 
     rake_words = ['fuck',
       'fucking',
+      'fucked',å
       'shit',
       'shitting',
       'shite',
