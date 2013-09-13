@@ -16,7 +16,7 @@ gem 'pg', :group => :production
 gem 'puma', :group => :production
 gem 'twitter'
 gem 'tweetstream'
-gem 'unicorn'
+# gem 'unicorn'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -6,6 +6,7 @@ class PoemsController < ApplicationController
   # shows some recent or popular poems?
   def index
     @poems = Poem.order("created_at DESC")[0..29]
+    expires_in 3.minutes, public: true #ADDED LINE
   end
 
   # GET

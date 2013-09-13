@@ -29,8 +29,10 @@ namespace :twitter do
     end
 
     client.new.sample do |status|
-      puts "#{status.user.screen_name}"
-      Twitteruser.create(screen_name: status.user.screen_name)
+      if status.lang == "en"
+        puts "#{status.user.screen_name}"
+        Twitteruser.create(screen_name: status.user.screen_name)
+      end
     end
 
 
