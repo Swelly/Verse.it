@@ -1,6 +1,14 @@
-<% unless @titles.empty? %>
-  $('#titles').html('<p>You\'ve earned a title!</p><%= render @titles %>');
-<% end %>
+<%  if current_user %>
 
-$('#poem-page').hide(1000);
-$('#you-posted').removeClass('hidden').show(1000);
+  <% unless @titles.empty? %>
+    $('#titles').html('<p>You\'ve earned a title!</p><%= render @titles %>');
+  <% end %>
+
+  $('#poem-page').hide(1000);
+  $('#you-posted').removeClass('hidden').show(1000);
+
+<% else %>
+
+
+
+<% end %>

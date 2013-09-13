@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810233948) do
+ActiveRecord::Schema.define(:version => 20130913203811) do
 
   create_table "favorites", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130810233948) do
     t.integer  "word_count"
     t.string   "provider"
     t.integer  "uid"
+    t.boolean  "guest"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

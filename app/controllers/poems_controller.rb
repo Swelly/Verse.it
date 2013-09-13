@@ -71,12 +71,18 @@ class PoemsController < ApplicationController
   # POST
   # adds the poem to the database and redirects to show
   def create
-    @poem = Poem.create()
+
+    @poem = Poem.create
 
     @poem.text = params[:text]
     source_user = params[:source_user]
     @poem.source_user = source_user.slice(1, source_user.length - 1)
-    @poem.user = current_user
+
+    if current_user
+      @poem.user = current_user
+    else
+      @poem.user = User.new_guest
+    end
 
     if @poem.save
 
