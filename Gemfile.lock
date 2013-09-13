@@ -63,7 +63,6 @@ GEM
     columnize (0.3.6)
     cookiejar (0.3.0)
     daemons (1.1.9)
-    dalli (2.6.4)
     debug_inspector (0.0.2)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -125,7 +124,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
-    kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (1.2.2)
@@ -136,7 +134,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcachier (0.0.2)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -275,16 +272,13 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 3.2.1)
-  dalli
   devise
   dotenv-rails
   factory_girl_rails
   faker
   guard-rspec
   jquery-rails
-  kgio
   launchy
-  memcachier
   meta_request
   newrelic_rpm
   omniauth
@@ -295,7 +289,6 @@ DEPENDENCIES
   pry-stack_explorer
   puma
   quiet_assets
-  rack-cache
   rails (= 3.2.13)
   rails-erd
   rspec

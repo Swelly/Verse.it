@@ -34,12 +34,12 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
-group :development do
-  gem 'memcachier'
-  gem 'rack-cache'
-  gem 'dalli'
-  gem 'kgio'
-end
+# group :development do
+#   gem 'memcachier'
+#   gem 'rack-cache'
+#   gem 'dalli'
+#   gem 'kgio'
+# end
 
 group :test do
   gem 'faker'
