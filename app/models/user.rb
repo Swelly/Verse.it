@@ -27,17 +27,17 @@ class User < ActiveRecord::Base
     end
     unless user
       user = User.create(
-                           name:auth.extra.raw_info.name,
-                           twitter_handle:auth.extra.raw_info.screen_name,
-                           provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           twitter_oauth_token: auth.credentials.token,
-                           twitter_oauth_secret: auth.credentials.secret,
-                           password:Devise.friendly_token[0,20],
-                           word_count:0,
-                           url: ''
-                           )
+                          name:auth.extra.raw_info.name,
+                          twitter_handle:auth.extra.raw_info.screen_name,
+                          provider:auth.provider,
+                          uid:auth.uid,
+                          email:auth.info.email,
+                          twitter_oauth_token: auth.credentials.token,
+                          twitter_oauth_secret: auth.credentials.secret,
+                          password:Devise.friendly_token[0,20],
+                          word_count:0,
+                          url: ''
+                        )
     end
     return user
   end
