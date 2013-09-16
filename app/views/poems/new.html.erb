@@ -92,6 +92,28 @@ REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
 
 
 
+<!-- this is the modal that tells you to sign in -->
+<div class="modal fade" id="signin-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Oops!</h4>
+      </div>
+      <div class="modal-body">
+        <p>It looks like you're not signed in! Sign in with your Twitter account to save and share your poem.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Sign in with Twitter</button> -->
+        <%= button_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 <script>
 
 /////////////////////////

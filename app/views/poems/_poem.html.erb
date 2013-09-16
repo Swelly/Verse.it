@@ -1,3 +1,5 @@
-<h5>By <a href="http://www.twitter.com/<%= poem.user.twitter_handle %>">@<%= poem.user.twitter_handle %></a> via <a href="http://www.twitter.com/<%= poem.source_user %>"><%= poem.source_user %></a></h5>
-<p><a href="/poems/<%= poem.id %>"><%= poem.text %></a></p>
-<p><%= poem.created_at %></p>
+<% if poem.user %>
+  <h5>By <a href="http://www.twitter.com/<%= poem.user.twitter_handle %>">@<%= poem.user.twitter_handle %></a> via <a href="http://www.twitter.com/<%= poem.source_user %>">@<%= poem.source_user %></a></h5>
+  <p><a href="/poems/<%= poem.id %>"><%= poem.text %></a></p>
+  <p><%= poem.created_at %></p>
+<% end %>
