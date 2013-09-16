@@ -23,7 +23,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
 
       end
-
+      redirect_to(root_path)
     else
       session["devise.twitter_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url

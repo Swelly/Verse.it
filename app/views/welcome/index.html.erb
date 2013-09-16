@@ -2,7 +2,11 @@
   <div class = "left_container">
   </div>
   <div class = "right_container">
-    <%= link_to user_omniauth_authorize_path(:twitter), class: "sprites" %>
+    <div id = "register">
+      <div style = "padding-top: 120px">
+        <p>Want to try it out?<br> Click the bird!</p>
+        <%= link_to "", user_omniauth_authorize_path(:twitter), class: "sprites" %>
+      </div>
     </div>
   </div>
 </div>

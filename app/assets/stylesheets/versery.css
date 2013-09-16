@@ -24,20 +24,26 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
-.sprites {
-  background-image: url(sprites.png);
-  background-color: transparent;
+a.sprites {
+  background-image: url(sprites_1.png);
+  z-index: 100;
   background-repeat: no-repeat;
+  width: 133px;
+  height: 108px;
+  background-position: -134px 0;
+  display: block;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  transition: opacity 0.20s ease-in-out 0s;
+  -webkit-transition: opacity 0.20s ease-in-out 0s;
 }
-.register_active {
-  width: 266px;
-  height: 216px;
+
+a.sprites:hover {
+  width: 133px;
+  height: 108px;
   background-position: 0 0;
-}
-.register_static {
-  width: 266px;
-  height: 216px;
-  background-position: -267px 0;
+  opacity: 0.6;
+  text-align: center;
 }
 
 
@@ -45,6 +51,7 @@ img {
 header {
   width: 100%;
   z-index: 99;
+  height: 90px;
 }
 
 header .sticky-nav {
@@ -70,7 +77,7 @@ header #logo {
   color: rgb(58, 58, 116);
   float: left;
   list-style: none;
-  margin: 5px 15px;
+  margin: 8px 15px;
 }
 
 header #logo a {
@@ -128,16 +135,6 @@ nav#menu #menu-nav li.current a,
 nav#menu #menu-nav li a:hover {
   color: #FACC7B;
 }
-/*
-.navbar {
-  height: 55px;
-  color: #E37341;
-  border-bottom: 1px solid rgb(34, 34, 34);
-  -webkit-box-shadow: 0 1px 10px rgba(13, 187, 255, 0.8);
-  -moz-box-shadow: 0 1px 10px rgba(13, 187, 255, 0.8);
-  box-shadow: 0 1px 10px rgba(13, 187, 255, 0.4);
-  z-index: 1001;
-}*/
 
 .navbar-fix {
   background: #E37341;
@@ -235,9 +232,9 @@ footer {
 
 .left_container {
   height: 100%;
-  width: 500px;
+  width: 50%;
   float: left;
-  background: grey;
+   background: rgb(232, 240, 255);
 }
 
 .right_container {
@@ -245,8 +242,17 @@ footer {
   width: 500px;
   float: right;
   position: relative;
-  /* background: grey; */
-  overflow: hidden;
+  overflow: show;
+  /* background: rgb(232, 240, 255); */
+}
+
+.right_container > #register {
+  box-shadow: 0 0 3px rgb(117, 109, 65);
+  border-radius: 15px;
+  background: rgb(253, 253, 253);
+  height: 90%;
+  width: 80%;
+  margin-top: 35px;
 }
 
 .pages-wrapper {
@@ -258,7 +264,6 @@ footer {
   position: relative;
   *zoom: 1;
   text-align: center;
-  margin: 0;
   width: 100%;
   height: 650px;
 }
@@ -415,6 +420,7 @@ a {
   -o-transition: 0.18s;
   transition: 0.18s;
   -webkit-backface-visibility: hidden;
+  margin: 0 auto;
 }
 
 a:hover {
@@ -895,3 +901,97 @@ input[type="checkbox"]:focus {
   margin-left: 0;
   margin-right: 0;
 }
+
+/* MODAL */
+
+/*
+.modal-backdrop {
+  z-index: 1040;
+  background-color: #243342;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: 0.95;
+  filter: alpha(opacity=95);
+}
+.modal {
+  z-index: 1050;
+  width: 624px;
+  margin-left: -312px;
+  background-color: #f9fafb;
+  border: 2px solid #ebedef;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-background-clip: border-box;
+  -moz-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-box-shadow: -14px 14px 0 0 rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -14px 14px 0 0 rgba(0, 0, 0, 0.35);
+  box-shadow: -14px 14px 0 0 rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 767px) {
+  .modal {
+    width: auto;
+    margin: 0;
+  }
+}
+@media (max-width: 480px) {
+  .modal {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+.modal-header {
+  padding: 17px 19px 15px 24px;
+  border-bottom: 1px solid #ebedef;
+}
+.modal-header .close {
+  margin: 5px 0 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+  color: #34495e;
+}
+.modal-header h3 {
+  font-size: 24px;
+}
+.modal-body {
+  padding: 20px 24px 20px;
+}
+.modal-body p {
+  font-size: 16.002px;
+  line-height: 1.6249200000000001;
+}
+.modal-footer {
+  padding: 19px 22px 20px;
+  background-color: #ebedef;
+  border-top: none;
+  -webkit-border-radius: 0 0 7px 7px;
+  -moz-border-radius: 0 0 7px 7px;
+  border-radius: 0 0 7px 7px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.modal-footer .btn + .btn {
+  margin-left: 12px;
+}
+@media (max-width: 480px) {
+  .modal-footer .btn {
+    display: block;
+    min-width: auto;
+    margin-bottom: 15px;
+  }
+  .modal-footer .btn:last-child {
+    margin-bottom: 0;
+  }
+  .modal-footer .btn + .btn {
+    margin-left: 0;
+  }
+}
+*/
