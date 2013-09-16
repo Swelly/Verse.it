@@ -1,18 +1,19 @@
 <!-- XXX
 THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
-<h1>Poem Creation</h1>
 <div id="all-user-selection">
+  <h1>Poem Creation</h1>
   <p class="summary">Who will inspire you today?</p>
+
   <div id="random-users">
     <p>Select one of the 10 random users we've fetched for you...</p>
-    <div id="left-arrow" class="span3">
+    <div id="left-arrow" class="arrow">
       <%= image_tag "arrowLeft.png" %>
     </div>
 
     <div id="user-select">
     </div>
 
-    <div id="right-arrow" class="span3">
+    <div id="right-arrow" class="arrow">
       <%= image_tag "arrowRight.png" %>
     </div>
 
@@ -21,7 +22,7 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
     </div>
   </div><!-- end random users div -->
 
-  <div id="user-search" class="clearfix:after">
+  <div id="user-search">
     <p>...or choose your own inspiration.</p>
     <input id="search" name="search" type="text" placeholder = "Find someone else"/>
     <input class ="btn btn-info" id = "user-search-button" type="submit" value="Fetch" />
@@ -42,7 +43,9 @@ THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
       <p id="user-handle"></p>
       <!-- Tweets will occupy this window -->
     </div>
-<button class="btn btn-info" id="genius">Genius!</button>
+
+    <button class="btn btn-info" id="genius">Genius!</button>
+
     <div id="poem-form"> <!-- Holds the poem and the punctuation -->
         <div id="char-count">140</div>
       <div class="poem">
