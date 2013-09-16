@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
+  # XXX
+  # bring back this method
   # protect_from_forgery
 
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user
       if session[:guest_user_id]
-        logging_in
+        # logging_in
         guest_user.destroy
         session[:guest_user_id] = nil
       end
@@ -40,6 +42,7 @@ class ApplicationController < ActionController::Base
 
     guest_poem = guest_user.poems.last
     current_user.poems << guest_poem
+    current_user.save
 
   end
 
@@ -47,6 +50,7 @@ class ApplicationController < ActionController::Base
     u = User.create(
                       name: "guest",
                       email: "guest_#{Time.now.to_i}#{rand(99)}@example.com",
+                      twitter_handle: "guest_#{Time.now.to_i}",
                       word_count: 0
                     )
     u.save!(:validate => false)

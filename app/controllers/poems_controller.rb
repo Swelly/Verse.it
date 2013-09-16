@@ -72,6 +72,7 @@ class PoemsController < ApplicationController
   # adds the poem to the database and redirects to show
   def create
 
+    binding.pry
     @poem = Poem.create
 
     @poem.text = params[:text]
@@ -102,10 +103,10 @@ class PoemsController < ApplicationController
           oauth_token_secret: secret
         )
 
-        tweet_text = '#vrsit '
+        tweet_text = '#vrsry '
         tweet_text += params[:source_user] + ' '
         tweet_text += @poem.text.truncate(90) + ' '
-        tweet_text += 'verseit.herokuapp.com/poems/' + @poem.id.to_s
+        tweet_text += 'versery.net/poems/' + @poem.id.to_s
         client.update(tweet_text)
       end
 

@@ -8,6 +8,7 @@ VerseApp::Application.routes.draw do
 
   post '/poems/write_poem' => 'poems#write_poem'
   get '/poems/select_user' => 'poems#select_user'
+  post '/poems/created' => 'poems#create', :as => 'create_poem'
   get '/users/:id' => 'users#show', :as => 'profile'
 
   resources :poems

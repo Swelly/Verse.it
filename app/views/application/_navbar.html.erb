@@ -5,9 +5,7 @@
       <li><%= link_to('Create', '/poems/new') %></li>
       <li><%= link_to('The Salon', '/poems') %></li>
       <li><%= link_to('About', '/about') %></li>
-      <!-- XXX -->
       <% if current_user %>
-      <!-- Not working for me - Wes -->
       <li id="username"><%= link_to("#{current_user.twitter_handle}", "/users/#{current_user.id}") %></li>
       <% end %>
       <li><%= render 'devise/menu/login_items' %></li>
