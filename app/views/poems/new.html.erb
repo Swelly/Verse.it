@@ -1,27 +1,33 @@
 <!-- XXX
 THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
-
+<h1>Poem Creation</h1>
 <div id="all-user-selection">
-  <div id="left-arrow" class="span3">
-    <%= image_tag "arrowLeft.png" %>
-  </div>
+  <p class="summary">Who will inspire you today?</p>
+  <div id="random-users">
+    <p>Select one of the 10 random users we've fetched for you...</p>
+    <div id="left-arrow" class="span3">
+      <%= image_tag "arrowLeft.png" %>
+    </div>
 
-  <div id="user-select">
-  </div>
+    <div id="user-select">
+    </div>
 
-  <div id="right-arrow" class="span3">
-    <%= image_tag "arrowRight.png" %>
-  </div>
+    <div id="right-arrow" class="span3">
+      <%= image_tag "arrowRight.png" %>
+    </div>
 
-  <div>
-    <button class= "btn btn-info" id="user-select-button">I like this one!</button>
-  </div>
+    <div>
+      <button class= "btn btn-info" id="user-select-button">I like this one!</button>
+    </div>
+  </div><!-- end random users div -->
+
   <div id="user-search" class="clearfix:after">
+    <p>...or choose your own inspiration.</p>
     <input id="search" name="search" type="text" placeholder = "Find someone else"/>
     <input class ="btn btn-info" id = "user-search-button" type="submit" value="Fetch" />
   </div>
 
-</div>
+</div><!-- end all-user-selection -->
 
 <div id="poem-page" class="hidden">
   <div id = "instructions-header">
@@ -97,16 +103,15 @@ REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Oops!</h4>
       </div>
       <div class="modal-body">
         <p>It looks like you're not signed in! Sign in with your Twitter account to save and share your poem.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Sign in with Twitter</button> -->
-        <%= button_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+        <%= button_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
