@@ -228,7 +228,7 @@ footer a {
 
 .footer-link {
   float: right;
-  margin-left: 10px;
+  padding-left: 10px;
 }
 
 #footer-nav {
@@ -342,22 +342,27 @@ footer a {
 }
 
 #all-user-selection {
-  width: auto;
+  width: 80%;
   height: auto;
-  margin-top: 45px;
-  margin-left: 185px;
+ /* margin-top: 45px;
+  margin-left: 185px;*/
+  margin: 0 auto;
 }
 
 #random-users {
-  width: 45%;
-  display: inline;
+  width: 40%;
+  float: left;
+}
+
+.arrow {
+  width: 25%;
+  float: left;
 }
 
 #user-search {
-  clear: both;
   text-align: center;
-  width: 45%;
-  margin-left: 150px;
+  width: 40%;
+  float: right;
 }
 
 #poem-page {
@@ -458,7 +463,7 @@ footer a {
 
 #user-select {
   height: 300px;
-  width: 420px;
+  width: 70%;
   float: left;
   text-align: center;
   margin: 0 10px;
@@ -470,8 +475,7 @@ footer a {
 }
 
 #user-select-button {
-  float: left;
-  margin-top: 100px;
+  margin: 0 auto;
 }
 
 input,

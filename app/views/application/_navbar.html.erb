@@ -4,8 +4,6 @@
       <li id="logo"><%= link_to('Versery', '/', :class => 'brand') %></li>
     </div>
 
-    <%= link_to('', '/poems/new', :class => 'create') %>
-
     <nav id="menu">
       <ul id="menu-nav">
         <li class = "navlink"><%= link_to('The Salon', '/poems') %></li>
@@ -15,5 +13,8 @@
         <li><%= render 'devise/menu/login_items' %></li>
         </ul>
     </nav>
+
+    <%= link_to('', '/poems/new', :class => 'create') %>
+
   </div>
 </header>
