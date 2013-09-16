@@ -19,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           @user.word_count += poem.text.split.size
           @user.save
 
-          redirect_to create_poem_path
+          redirect_to create_poem_from_guest_path
         end
 
       end

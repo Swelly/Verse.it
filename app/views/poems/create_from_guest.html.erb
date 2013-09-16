@@ -1,0 +1,15 @@
+<div id="all-user-selection">
+  <div id="you-posted">
+    <p>Excellent work! You've shared your art with the Twitterverse!</p>
+
+    <% unless @titles.empty? %>
+    <div id="titles">
+      <p>You've earned a title!</p>
+      <%= render @titles %>
+    </div>
+    <% end %>
+
+    <br>
+    <%= button_to 'Write another?', '/poems/new', method: 'get', class: "btn-primary" %>
+    <%= button_to 'Go to the salon', '/poems', method: 'get', class: "btn-primary" %>
+</div>

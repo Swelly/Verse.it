@@ -72,7 +72,6 @@ class PoemsController < ApplicationController
   # adds the poem to the database and redirects to show
   def create
 
-    binding.pry
     @poem = Poem.create
 
     @poem.text = params[:text]
@@ -118,6 +117,44 @@ class PoemsController < ApplicationController
     respond_to do |format|
       format.js {}
     end
+
+  end
+
+  # this controller action checks for titles and shares the poem
+  # if it's already been moved from the guest user to the current user
+  def create_from_guest
+
+    @poem = current_user.poems.last
+
+    # update the user's word_count
+    current_user.word_count += @poem.text.split.size
+
+    # then check for titles
+    if current_user
+      @titles = check_for_titles(@poem)
+      @titles.each do |title|
+        current_user.titles << title
+      end
+
+      token = current_user.twitter_oauth_token #||= ENV['YOUR_OAUTH_TOKEN']
+      secret = current_user.twitter_oauth_secret #||= ENV['YOUR_OAUTH_TOKEN_SECRET']
+
+      # time to tweet the poem!
+      client = Twitter::Client.new(
+        consumer_key: ENV['YOUR_CONSUMER_KEY'],
+        consumer_secret: ENV['YOUR_CONSUMER_SECRET'],
+        oauth_token: token,
+        oauth_token_secret: secret
+      )
+
+      tweet_text = '#vrsry '
+      tweet_text += '@' + @poem.source_user + ' '
+      tweet_text += @poem.text.truncate(90) + ' '
+      tweet_text += 'versery.net/poems/' + @poem.id.to_s
+      client.update(tweet_text)
+    end
+
+    render :create_from_guest
 
   end
 
