@@ -1,18 +1,19 @@
 <header>
-    <div class="sticky-nav">
-        <div id="logo">
-          <li id="logo"><%= link_to('Versery', '/', :class => 'brand') %></li>
-        </div>
-        <nav id="menu">
-          <ul id="menu-nav">
-            <li id = "navlink"><%= link_to('Create', '/poems/new') %></li>
-            <li id = "navlink"><%= link_to('The Salon', '/poems') %></li>
-            <li id = "navlink"><%= link_to('About', '/about') %></li>
-            <% if current_user %>
-            <li id="username", ><%= link_to("#{current_user.twitter_handle}", "/users/#{current_user.id}") %></li>
-            <% end %>
-            <li><%= render 'devise/menu/login_items' %></li>
-            </ul>
-        </nav>
+  <div class="sticky-nav">
+    <div id="logo">
+      <li id="logo"><%= link_to('Versery', '/', :class => 'brand') %></li>
     </div>
+
+    <%= link_to('', '/poems/new', :class => 'create') %>
+
+    <nav id="menu">
+      <ul id="menu-nav">
+        <li class = "navlink"><%= link_to('The Salon', '/poems') %></li>
+        <% if current_user %>
+        <li id="username", ><%= link_to("#{current_user.twitter_handle}", "/users/#{current_user.id}") %></li>
+        <% end %>
+        <li><%= render 'devise/menu/login_items' %></li>
+        </ul>
+    </nav>
+  </div>
 </header>
