@@ -1,27 +1,33 @@
 <!-- XXX
 THIS ENTIRE FILE NEEDS SOME CLEANINGZ -->
-
+<h1>Poem Creation</h1>
 <div id="all-user-selection">
-  <div id="left-arrow" class="span3">
-    <%= image_tag "arrowLeft.png" %>
-  </div>
+  <p class="summary">Who will inspire you today?</p>
+  <div id="random-users">
+    <p>Select one of the 10 random users we've fetched for you...</p>
+    <div id="left-arrow" class="span3">
+      <%= image_tag "arrowLeft.png" %>
+    </div>
 
-  <div id="user-select">
-  </div>
+    <div id="user-select">
+    </div>
 
-  <div id="right-arrow" class="span3">
-    <%= image_tag "arrowRight.png" %>
-  </div>
+    <div id="right-arrow" class="span3">
+      <%= image_tag "arrowRight.png" %>
+    </div>
 
-  <div>
-    <button class= "btn btn-info" id="user-select-button">I like this one!</button>
-  </div>
+    <div>
+      <button class= "btn btn-info" id="user-select-button">I like this one!</button>
+    </div>
+  </div><!-- end random users div -->
+
   <div id="user-search" class="clearfix:after">
+    <p>...or choose your own inspiration.</p>
     <input id="search" name="search" type="text" placeholder = "Find someone else"/>
     <input class ="btn btn-info" id = "user-search-button" type="submit" value="Fetch" />
   </div>
 
-</div>
+</div><!-- end all-user-selection -->
 
 <div id="poem-page" class="hidden">
   <div id = "instructions-header">

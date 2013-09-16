@@ -39,11 +39,9 @@ body {
 .poem-display {
   background-color: #fff;
   width: 40%;
-  /*border: 3px dotted #c98e3a;*/
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
-  /*position: absolute;*/
   float: left;
   box-shadow: 0 0 3px rgba(17, 11, 11, 0.61);
 }
@@ -336,10 +334,15 @@ footer {
   margin-left: 185px;
 }
 
+#random-users {
+  width: 45%;
+  display: inline;
+}
+
 #user-search {
   clear: both;
   text-align: center;
-  width: 300px;
+  width: 45%;
   margin-left: 150px;
 }
 
@@ -498,6 +501,7 @@ h1,
   border-bottom: 1px dotted gray;
   margin: 0 auto;
   text-align: center;
+  margin-top: 40px;
 }
 h2,
 .h2 {
