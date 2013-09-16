@@ -25,14 +25,14 @@ body {
 }
 
 
-.index_container {
+./*index_container {
   text-align: center;
   margin-right: auto;
   margin-left: 100px;
   padding-right: 50px;
   *zoom: 1;
   padding-top: 30px;
-}
+}*/
 #title {
   font-family: 'Homemade Apple', cursive;
   font-size: 75px;
