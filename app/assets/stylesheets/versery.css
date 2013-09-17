@@ -73,8 +73,7 @@ a.create:hover {
 }
 
 p#timestamp {
-  position: absolute;
-  bottom: 0;
+  position: relative;
 }
 
 .summary {
