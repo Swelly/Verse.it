@@ -7,8 +7,8 @@ body {
   background-image:url('bgTile.jpg');
   background-repeat:repeat;
   margin: 0;
-  min-width: 1000px;
-  height: 700px;
+  min-width: 1020px;
+  height: 800px;
 }
 
 a.create {
@@ -40,20 +40,41 @@ a.create:hover {
   visibility: hidden;
 }
 
+.container {
+  height: 100%;
+  width: 100%;
+  min-width: 900px;
+}
+
 .poem-display {
-  background-color: #fff;
-  width: 40%;
-  border-radius: 10px;
-  margin: 10px;
+  background-color: #FDFDFD;
+  width: 25%;
+  min-width: 300px;
+  height: 50%;
+  min-height: 240px;
+  border-radius: 6px;
+  margin: 15px;
   padding: 10px;
   float: left;
-  box-shadow: 0 0 3px rgba(17, 11, 11, 0.61);
+  box-shadow: 0 0 3px rgba(129, 111, 72, 1);
+}
+
+.poem-display > .poem-content {
+  position: relative;
 }
 
 #salon-poems {
-  margin: 0 auto;
-  width: 90%;
+  width: 100%;
+  min-width: 1000px;
+  margin-left: 7%;
+  height: auto;
   position: relative;
+  text-align: left;
+}
+
+p#timestamp {
+  position: absolute;
+  bottom: 0;
 }
 
 .summary {
@@ -62,11 +83,11 @@ a.create:hover {
 }
 
 .intro-p {
-  font-size: 1.75em;
-  font-weight: strong;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(170, 42, 42);
+  border-bottom: 1px dashed rgb(235, 235, 235);
 }
-
-
 
 img {
   width: auto\9;
@@ -216,7 +237,7 @@ li.navlink {
 /* FOOTER */
 
 footer {
-  width: 90%;
+  width: 82%;
   height: 20px;
   clear: both;
   position: relative;
@@ -305,30 +326,28 @@ footer a {
 
 .left-container {
   height: 100%;
-  width: 40%;
+  width: 35%;
   float: left;
-  /*background: rgb(232, 240, 255);*/
   text-align: left;
-  margin-top: 20px;
-  margin-left: 50px;
+  margin: 20px 10px 0 50px;
+  font-size: 16px;
+  color: black;
 }
 
 .right-container {
   height: 80%;
-  width: 500px;
+  width: 499px;
   float: right;
   position: relative;
-  overflow: show;
-  /* background: rgb(232, 240, 255); */
 }
 
 .right-container > #register {
-  box-shadow: 0 0 3px rgb(117, 109, 65);
+  box-shadow: 0 0 3px rgb(202, 202, 202);
   border-radius: 15px;
   background: rgb(253, 253, 253);
-  height: 90%;
+  height: 85%;
   width: 80%;
-  margin-top: 35px;
+  margin-top: 65px;
 }
 
 .pages-wrapper {
@@ -554,7 +573,10 @@ h5,
 .h5 {
   font-size: 22px;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
+}
+h5 a {
+  color: rgb(69, 170, 162);
 }
 h6,
 .h6 {

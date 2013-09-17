@@ -1,15 +1,15 @@
 <div class = "index-container">
   <div class = "left-container">
-    <p class="intro-p">Welcome to Versery, the Twitter poetry app!</p>
-    <p>Versery lets you interact with strangers in ways that can be by turns funny, creative, and profound. Get any Twitter user's last 30 tweets and use their words to construct a poem (no more than 140 characters, though—"brevity is the soul of wit," after all!). When your poem is complete, it will be shared to your Twitter with a mention to the user you sourced the words from.</p>
-    <p>If you're very creative (or lucky... or bawdy...), you just might earn a special title in the Kingdom of Versery for your efforts!</p>
-    <p>Ready to give it a shot? Sign in with your Twitter account and write away!</p>
+    <p class="intro-p">Welcome to Versery!</p>
+    <p>Versery lets you interact with strangers in ways that can be by turns funny, creative, and profound. Get any Twitter user's last 30 tweets and use their words to construct a poem <small>(no more than 140 characters)</small>.</p> <p>When your poem is complete, it will be shared to your Twitter with a mention to the user you sourced the words from.</p>
+    <p>If you're very creative <small>(or lucky... or bawdy...)</small>, you just might earn a special title in the Kingdom of Versery for your efforts!</p>
   </div>
 
   <div class = "right-container">
     <div id = "register">
       <div style = "padding-top: 120px">
-        <p>Want to try it out?<br> Click the bird!</p>
+        <p>Click the bird to begin!</p>
+        <br>
         <%= link_to "", user_omniauth_authorize_path(:twitter), class: "sprites" %>
       </div>
     </div>

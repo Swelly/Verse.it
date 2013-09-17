@@ -1,7 +1,9 @@
 <% if poem.user %>
   <div class="poem-display">
-    <h5>By <a href="http://www.twitter.com/<%= poem.user.twitter_handle %>">@<%= poem.user.twitter_handle %></a> via <a href="http://www.twitter.com/<%= poem.source_user %>">@<%= poem.source_user %></a></h5>
-    <p><a href="/poems/<%= poem.id %>"><%= poem.text %></a></p>
-    <p><%= poem.created_at %></p>
+    <div class="poem-content">
+      <h5>By <a href="http://www.twitter.com/<%= poem.user.twitter_handle %>">@<%= poem.user.twitter_handle %></a> via <a href="http://www.twitter.com/<%= poem.source_user %>">@<%= poem.source_user %></a></h5>
+      <p><a href="/poems/<%= poem.id %>"><%= poem.text %></a></p>
+      <p id="timestamp"><%= poem.created_at %></p>
+    </div>
   </div>
 <% end %>
