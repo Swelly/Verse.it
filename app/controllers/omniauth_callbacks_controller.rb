@@ -5,29 +5,36 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)
 
     if @user.persisted?
-      sign_in @user, :event => :authentication #this will throw if @user is not activated
+      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Twitter") if is_navigational_format?
-      if guest_user
-        poem = guest_user.poems.last
-
-        if poem
-          @user.poems << poem
-
-          # xxx
-          # this code is duplicated in poems#create
-          # any way to dry it up?
-          @user.word_count += poem.text.split.size
-          @user.save
-
-          redirect_to create_poem_from_guest_path
-        end
-      end
-
-      redirect_to('/')
     else
       session["devise.twitter_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to '/'
     end
+  end
+
+  def twitter_with_poem
+    binding.pry
+    @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)
+
+    if @user.persisted?
+      sign_in @user, :event => :authentication #this will throw if @user is not activated
+      set_flash_message(:notice, :success, :kind => "Twitter") if is_navigational_format?
+
+      poem = guest_user.poems.last
+      if poem
+        @user.poems << poem
+        @user.word_count += poem.text.split.size
+        @user.save
+
+        redirect_to create_poem_from_guest_path
+      end
+
+    else
+      session["devise.twitter_data"] = request.env["omniauth.auth"]
+      redirect_to '/'
+    end
+
   end
 
 end

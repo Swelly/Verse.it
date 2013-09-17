@@ -61,6 +61,13 @@ a.create:hover {
   text-align: center;
 }
 
+.intro-p {
+  font-size: 1.75em;
+  font-weight: strong;
+}
+
+
+
 img {
   width: auto\9;
   height: auto;
@@ -217,6 +224,7 @@ footer {
   border-top: 1px dotted rgb(177, 177, 177);
   margin: 0 auto;
 }
+
 footer a {
   color: rgb(194, 168, 64);
 }
@@ -295,15 +303,18 @@ footer a {
 
 /* Content */
 
-.left_container {
+.left-container {
   height: 100%;
-  width: 50%;
+  width: 40%;
   float: left;
-   background: rgb(232, 240, 255);
+  /*background: rgb(232, 240, 255);*/
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 50px;
 }
 
-.right_container {
-  height: 100%;
+.right-container {
+  height: 80%;
   width: 500px;
   float: right;
   position: relative;
@@ -311,7 +322,7 @@ footer a {
   /* background: rgb(232, 240, 255); */
 }
 
-.right_container > #register {
+.right-container > #register {
   box-shadow: 0 0 3px rgb(117, 109, 65);
   border-radius: 15px;
   background: rgb(253, 253, 253);
@@ -325,12 +336,14 @@ footer a {
   padding: 50px;
 }
 
-.index_container {
+.index-container {
   position: relative;
   *zoom: 1;
   text-align: center;
-  width: 100%;
-  height: 650px;
+  width: 90%;
+  height: 75%;
+  margin: 0 auto;
+  padding-top: 20px;
 }
 
 #title {

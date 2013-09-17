@@ -229,6 +229,14 @@ Devise.setup do |config|
     client_options: {ssl:
       {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
+  config.omniauth :twitter_with_poem,
+    ENV['YOUR_CONSUMER_KEY'],
+    ENV['YOUR_CONSUMER_SECRET'],
+    strategy_class: OmniAuth::Strategies::Twitter
+    {scope: 'email, offline_access',
+    client_options: {ssl:
+      {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

@@ -1,6 +1,9 @@
 VerseApp::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", :registrations => 'registrations' }
+  # devise_scope :user do
+  #   post '/users/auth/twitter_with_poem' => 'omniauth_callbacks#twitter_with_poem', :as => 'twitter_with_poem'
+  # end
 
   root :to => 'welcome#index'
   get '/about' => 'welcome#about', :as => 'about'
