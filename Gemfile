@@ -5,7 +5,6 @@ gem 'rails', '3.2.13'
 gem 'twitter'
 
 gem 'jquery-rails'
-gem 'dotenv-rails', :groups => [:development, :test]
 gem 'newrelic_rpm' # Installing New_Relic as a gem
 gem 'devise'
 gem 'omniauth'
@@ -29,10 +28,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
-gem 'dotenv-rails', :groups => [:development, :test]
 
 group :test do
   gem 'faker'
@@ -64,4 +59,5 @@ group :development, :test do
   gem 'rails-erd'           # Diagrams your models. NOTE! $ brew install graphviz
                             # https://github.com/voormedia/rails-erd
   gem 'rspec-rails', '~> 2.0' # Rspec-rails is a testing framework for Rails 3.x and 4.x.
+  gem 'dotenv-rails'
 end
