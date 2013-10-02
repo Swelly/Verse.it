@@ -221,7 +221,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  config.omniauth :twitter || :twitter_with_poem,
+  config.omniauth :twitter,
     ENV['YOUR_CONSUMER_KEY'],
     ENV['YOUR_CONSUMER_SECRET'],
     strategy_class: OmniAuth::Strategies::Twitter
@@ -229,13 +229,13 @@ Devise.setup do |config|
     client_options: {ssl:
       {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
-  # config.omniauth :twitter_with_poem,
-  #   ENV['YOUR_CONSUMER_KEY'],
-  #   ENV['YOUR_CONSUMER_SECRET'],
-  #   strategy_class: OmniAuth::Strategies::Twitter
-  #   {scope: 'email, offline_access',
-  #   client_options: {ssl:
-  #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :twitter_with_poem,
+    ENV['YOUR_CONSUMER_KEY'],
+    ENV['YOUR_CONSUMER_SECRET'],
+    strategy_class: OmniAuth::Strategies::Twitter
+    {scope: 'email, offline_access',
+    client_options: {ssl:
+      {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
