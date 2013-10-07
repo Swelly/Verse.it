@@ -14,7 +14,7 @@
   <% end %>
 
   <% unless current_user %>
-    <p>Are you <%= @poem.source_user %>?   <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %> to reply!</p>
+    <p>Are you <%= @poem.source_user %>?   <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter_login) %> to reply!</p>
   <% end %>
 </div>
 

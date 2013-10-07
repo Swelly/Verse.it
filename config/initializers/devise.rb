@@ -221,7 +221,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   #     {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-  config.omniauth :twitter,
+  config.omniauth :twitter_login,
     ENV['YOUR_CONSUMER_KEY'],
     ENV['YOUR_CONSUMER_SECRET'],
     strategy_class: OmniAuth::Strategies::Twitter
