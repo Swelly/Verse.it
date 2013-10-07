@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   # bring back this method
   # protect_from_forgery
 
+  helper_method :current_user
+
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user
@@ -28,23 +36,6 @@ class ApplicationController < ActionController::Base
      guest_user
   end
 
-  private
-
-  # called (once) when the user logs in, insert any code your application needs
-  # to hand off from guest_user to current_user.
-  def logging_in
-    # For example:
-    # guest_comments = guest_user.comments.all
-    # guest_comments.each do |comment|
-      # comment.user_id = current_user.id
-      # comment.save!
-    # end
-
-    guest_poem = guest_user.poems.last
-    current_user.poems << guest_poem
-    current_user.save
-
-  end
 
   def create_guest_user
     u = User.create(

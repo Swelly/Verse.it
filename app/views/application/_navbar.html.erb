@@ -10,7 +10,6 @@
         <% if current_user %>
         <li id="username", ><%= link_to("#{current_user.twitter_handle}", "/users/#{current_user.id}") %></li>
         <% end %>
-        <li><%= render 'devise/menu/login_items' %></li>
         </ul>
     </nav>
 

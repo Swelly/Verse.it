@@ -7,9 +7,9 @@ gem 'twitter'
 gem 'jquery-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'newrelic_rpm' # Installing New_Relic as a gem
-gem 'devise'
+# gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem 'omniauth-twitter'
 gem 'dotenv-rails'
 
 gem 'pg', :group => :production

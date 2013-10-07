@@ -1,6 +1,6 @@
 VerseApp::Application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", :registrations => 'registrations' }
+  # devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", :registrations => 'registrations' }
   # devise_scope :user do
   #   post '/users/auth/twitter_with_poem' => 'omniauth_callbacks#twitter_with_poem', :as => 'twitter_with_poem'
   # end
@@ -16,6 +16,9 @@ VerseApp::Application.routes.draw do
 
   resources :poems
   resources :titles
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

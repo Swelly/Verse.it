@@ -9,16 +9,16 @@ class User < ActiveRecord::Base
                   :uid, :name, :email,
                   :twitter_oauth_token,
                   :twitter_oauth_secret,
-                  :remember_me, :password,
-                  :password_confirmation,
                   :bio, :url, :twitter_handle,
                   :word_count
 
-  devise :database_authenticatable,
-              :registerable, :recoverable,
-              :rememberable, :trackable,
-              :token_authenticatable,
-              :timeoutable, :omniauthable
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+    end
+  end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
                           email:auth.info.email,
                           twitter_oauth_token: auth.credentials.token,
                           twitter_oauth_secret: auth.credentials.secret,
-                          password:Devise.friendly_token[0,20],
                           word_count:0,
                           url: ''
                         )

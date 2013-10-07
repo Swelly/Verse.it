@@ -1,0 +1,6 @@
+<% if current_user %>
+  <%= current_user.twitter_handle %>
+  <%= link_to "Sign Out", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>
