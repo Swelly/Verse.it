@@ -1,6 +1,6 @@
 <% if current_user %>
-  <%= current_user.twitter_handle %>
-  <%= link_to "Sign Out", signout_path %>
+  <li class="navlink"><%= link_to current_user.twitter_handle, profile_path(current_user.id) %></li>
+  <li class="navlink"><%= link_to "Sign Out", signout_path %></li>
 <% else %>
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <li class="navlink"><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
 <% end %>

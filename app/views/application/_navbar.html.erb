@@ -7,10 +7,8 @@
     <nav id="menu">
       <ul id="menu-nav">
         <li class = "navlink"><%= link_to('The Salon', '/poems') %></li>
-        <% if current_user %>
-        <li id="username", ><%= link_to("#{current_user.twitter_handle}", "/users/#{current_user.id}") %></li>
-        <% end %>
-        </ul>
+        <%= render 'login_items' %>
+      </ul>
     </nav>
 
     <%= link_to('', '/poems/new', :class => 'create') %>
