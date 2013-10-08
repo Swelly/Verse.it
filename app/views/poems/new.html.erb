@@ -112,8 +112,8 @@ REALLY WISH I COULD DO A REDIRECT BEFORE THIS -->
         <p>It looks like you're not signed in! Sign in with your Twitter account to save and share your poem.</p>
       </div>
       <div class="modal-footer">
-        <%= button_to "Sign in with Twitter", "/auth/twitter_with_poem", class: "btn btn-primary" %>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= button_to "Sign in with Twitter", "/auth/twitter", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="close-button">Close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -170,6 +170,7 @@ $(function() {
   $('#user-search-button').click(initiatePoemCreation);
 
   $('#genius').click(saveAndShare);
+  $('#close-button').click(deleteGuestPoem);
 
   counterStuff.counter = $('#char-count');
   counterStuff.count = 0;
@@ -358,6 +359,13 @@ var saveAndShare = function() {
     url: '/poems',
     data: poem,
     dataType: 'script'
+  });
+};
+
+var deleteGuestPoem = function() {
+  $.ajax({
+    type: 'DELETE',
+    url: '/poems/guest'
   });
 };
 

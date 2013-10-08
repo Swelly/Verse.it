@@ -155,7 +155,6 @@ class PoemsController < ApplicationController
     end
 
     render :create_from_guest
-
   end
 
   # DELETE
@@ -163,6 +162,18 @@ class PoemsController < ApplicationController
   def destroy
     Poem.find(params[:id]).destroy
     redirect_to("/users/#{current_user.id}")
+  end
+
+  # DELETE
+  def destroy_guest_poem
+    success = nil
+    if guest_user
+      success = guest_user.poems.last.destroy
+    end
+
+    respond_to do |format|
+      format.json { render json: success }
+    end
   end
 
   #####################################
