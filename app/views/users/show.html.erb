@@ -16,6 +16,6 @@
     <br>
 
   <% if current_user && current_user.id == @user.id %>
-    <%= render 'devise/menu/registration_items' %>
+    <%= link_to "Edit your profile", "/users/#{@user.id}/edit" %>
   <% end %>
 </div>

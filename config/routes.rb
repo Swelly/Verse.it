@@ -14,14 +14,16 @@ VerseApp::Application.routes.draw do
   get '/poems/guest_check' => 'poems#create_from_guest', :as => 'create_poem_from_guest'
 
   get '/users/:id' => 'users#show', :as => 'profile'
-  get '/users/:id/edit' => 'users#edit'
-  put '/users/:id' => 'users#update'
+  get '/users/:id/edit' => 'users#edit', :as => 'edit_user'
+  put '/users/:id' => 'users#update', :as => 'update_user'
 
   resources :poems
   resources :titles
 
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/signout" => "sessions#destroy", :as => :signout
+  match '/auth/:provider/callback' => 'sessions#create'
+  match '/signout' => 'sessions#destroy', :as => :signout
+  match 'auth/failure', to: redirect('/')
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

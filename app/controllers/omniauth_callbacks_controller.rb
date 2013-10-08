@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # end
       # redirect_to create_poem_from_guest_path
     else
-      session["devise.twitter_data"] = request.env["omniauth.auth"]
+      # session["devise.twitter_data"] = request.env["omniauth.auth"]
       redirect_to '/'
     end
   end
@@ -38,7 +38,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
 
     else
-      session["devise.twitter_data"] = request.env["omniauth.auth"]
+      # session["devise.twitter_data"] = request.env["omniauth.auth"]
       redirect_to '/'
     end
   end
