@@ -87,6 +87,8 @@ class PoemsController < ApplicationController
       # then check for titles
       if current_user
         @titles = check_for_titles(@poem)
+        puts "!!!"
+        puts @titles
         @titles.each do |title|
           current_user.titles << title
         end
@@ -124,7 +126,8 @@ class PoemsController < ApplicationController
   # if it's already been moved from the guest user to the current user
   def create_from_guest
 
-    @poem = current_user.poems.last
+    @poem = guest_user.poems.last
+    current_user.poems << @poem
 
     # update the user's word_count
     current_user.word_count += @poem.text.split.size
@@ -132,6 +135,7 @@ class PoemsController < ApplicationController
     # then check for titles
     if current_user
       @titles = check_for_titles(@poem)
+      raise titles.to_yaml
       @titles.each do |title|
         current_user.titles << title
       end

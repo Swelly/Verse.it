@@ -11,7 +11,7 @@ VerseApp::Application.routes.draw do
 
   post '/poems/write_poem' => 'poems#write_poem'
   get '/poems/select_user' => 'poems#select_user'
-  get '/poems/guest_check' => 'poems#create_from_guest', :as => 'create_poem_from_guest'
+  get '/poems/create_from_guest' => 'poems#create_from_guest', :as => 'create_poem_from_guest'
   delete '/poems/guest' => 'poems#destroy_guest_poem'
 
   get '/users/:id' => 'users#show', :as => 'profile'
